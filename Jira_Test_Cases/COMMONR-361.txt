@@ -1,0 +1,103 @@
+■ 이슈 키: COMMONR-361
+■ 제목: DM20 FW Upgrade TEST
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+[Old 시료]
+1. V1.2.2 -> 등록예정 버전으로 FW Upgrade
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. FW Upgrade가 성공 및 RS485 통신에 문제없다.
+> Input/Output/Wiegand Out 정상동작
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+[Old 시료]
+1. V1.2.1 -> 등록예정 버전으로 FW Upgrade
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. FW Upgrade가 성공 및 RS485 통신에 문제없다.
+> Input/Output/Wiegand Out 정상동작
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+[Old 시료]
+1. V1.1.5 -> 등록예정 버전으로 FW Upgrade
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. FW Upgrade가 성공 및 RS485 통신에 문제없다.
+> Input/Output/Wiegand Out 정상동작
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+[Old 시료]
+1. V1.1.4 -> 등록예정 버전으로 FW Upgrade
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. FW Upgrade가 성공 및 RS485 통신에 문제없다.
+> Input/Output/Wiegand Out 정상동작
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+[Rev 시료]
+1. V1.2.1 -> 등록예정 버전으로 FW Upgrade
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. FW Upgrade가 성공 및 RS485 통신에 문제없다.
+> Input/Output/Wiegand Out 정상동작
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+[Rev 시료]
+1. V1.2.2 -> 등록예정 버전으로 FW Upgrade
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. FW Upgrade가 성공 및 RS485 통신에 문제없다.
+> Input/Output/Wiegand Out 정상동작
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+[Old 시료]
+1. 등록예정 버전 -> V1.2.1 & V1.2.1 하위 버전으로 FW Upgrade
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. FW Upgrade가 성공 및 RS485 통신에 문제없다.
+> Input/Output/Wiegand Out 정상동작
+------------------------------------------------------------
+[Step 8]
+스텝 (Step)
+[Rev 시료]
+1. 등록예정 버전 -> V1.2.1 & V1.2.1 하위 버전으로 FW Upgrade
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. FW Upgrade가 성공 및 RS485 통신에 문제없다.
+> Input/Output 정상동작
+> Wiegand Port 0,1이 반대로 동작
+------------------------------------------------------------

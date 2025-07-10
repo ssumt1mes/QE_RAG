@@ -1,0 +1,200 @@
+■ 이슈 키: COMMONR-107
+■ 제목: 구역 - Schedule Lock/Unlock Zone - 중복 스케줄
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. Scheduled Lock Zone 을 Schedule "A" 를 설정하여 생성
+2. Scheduled Unlock Zone 을 Schedule "B" 를 설정하여 생성
+3. 동작 확인
+
+데이터 (Data)
+시간 설정 스케줄
+Ex.>
+> Schedule "A" : 09:00~13:00
+> Schedule "B" : 12:00~15:00
+
+예상 결과 (Expected Result)
+> 09:00 가 되면 Scheduled Lock Zone 의 Schedule "A" 에 의해 Locked 된다.
+> 12:00 가 되면 Scheduled Unlock Zone 의 Schedule "B" 에 의해 Unlocked 된다.
+> Schedule "A" 의 종료시간, 13:00 이 되면 Door 는 Normal 상태로 변경된다.
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. Scheduled Unlock Zone 을 Schedule "A" 를 설정하여 생성
+2. Scheduled Lock Zone 을 Schedule "B" 를 설정하여 생성
+3. 동작 확인
+
+데이터 (Data)
+시간 설정 스케줄
+Ex.>
+> Schedule "A" : 09:00~13:00
+> Schedule "B" : 12:00~15:00
+
+예상 결과 (Expected Result)
+> 09:00 가 되면 Scheduled Unlock Zone 의 Schedule "A" 에 의해 Unlocked 된다.
+> 12:00 가 되면 Scheduled Lock Zone 의 Schedule "B" 에 의해 Locked 된다.
+> Schedule "A" 의 종료시간, 13:00 이 되면 Door 는 Normal 상태로 변경된다.
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. Scheduled Lock Zone(1) 을 Schedule "A" 를 설정하여 생성
+2. Scheduled Lock Zone(2) 을 Schedule "B" 를 설정하여 생성
+3. 동작 확인
+
+데이터 (Data)
+시간 설정 스케줄
+Ex.>
+> Schedule "A" : 09:00~13:00
+> Schedule "B" : 12:00~15:00
+
+예상 결과 (Expected Result)
+> 09:00 가 되면 Scheduled Lock Zone(1) 의 Schedule "A" 에 의해 Locked 된다.
+> 12:00 가 되면 Scheduled Lock Zone(2) 의 Schedule "B" 에 의해 Locked 가 유지된다.
+> Schedule "A" 의 종료시간, 13:00 이 되면 Door 는 Normal 상태로 변경된다.
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1. Scheduled Unlock Zone(1) 을 Schedule "A" 를 설정하여 생성
+2. Scheduled Unlock Zone(2) 을 Schedule "B" 를 설정하여 생성
+3. 동작 확인
+
+데이터 (Data)
+시간 설정 스케줄
+Ex.>
+> Schedule "A" : 09:00~13:00
+> Schedule "B" : 12:00~15:00
+
+예상 결과 (Expected Result)
+> 09:00 가 되면 Scheduled Unlock Zone(1) 의 Schedule "A" 에 의해 Unlocked 된다.
+> 12:00 가 되면 Scheduled Unlock Zone(2) 의 Schedule "B" 에 의해 Unlocked 가 유지된다.
+> Schedule "A" 의 종료시간, 13:00 이 되면 Door 는 Normal 상태로 변경된다.
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1. Scheduled Lock Zone 을 Schedule "A" 를 설정하여 생성
+2. Scheduled Unlock Zone 을 Schedule "B" 를 설정하여 생성
+3. 동작 확인
+
+데이터 (Data)
+기본 스케줄 / 시간 설정 스케줄
+Ex.>
+> Schedule "A" : Always
+> Schedule "B" : 12:00~15:00
+
+예상 결과 (Expected Result)
+> Scheduled Lock Zone 의 Schedule "A" 에 의해 Locked 된다.
+> 12:00 가 되면 Scheduled Unlock Zone 의 Schedule "B" 에 의해 Unlocked 된다.
+> Schedule "B" 의 종료시간, 15:00 이 되면 Door 는 Normal 상태로 변경된다.
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1. Scheduled Unlock Zone 을 Schedule "A" 를 설정하여 생성
+2. Scheduled Lock Zone 을 Schedule "B" 를 설정하여 생성
+3. 동작 확인
+
+데이터 (Data)
+기본 스케줄 / 시간 설정 스케줄
+Ex.>
+> Schedule "A" : Always
+> Schedule "B" : 12:00~15:00
+
+예상 결과 (Expected Result)
+> Scheduled Unlock Zone 의 Schedule "A" 에 의해 Unlocked 된다.
+> 12:00 가 되면 Scheduled Lock Zone 의 Schedule "B" 에 의해 Locked 된다.
+> Schedule "B" 의 종료시간, 15:00 이 되면 Door 는 Normal 상태로 변경된다.
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+1. Scheduled Lock Zone 을 Schedule "A"(기존) 를 설정하여 생성
+2. Schedule "B"(신규) 생성
+3. Schedule Unlock Zone 을 Schedule "B"(신규) 를 설정하여 생성
+4. 동작 확인
+
+데이터 (Data)
+시간 설정 스케줄
+Ex.>
+Schedule "A" : 09:00~13:00 (기존)
+Schedule "B" : 09:00~13:00 (신규)
+
+예상 결과 (Expected Result)
+> 09:00 가 되면 Scheduled Unlock Zone 의 Schedule "B"(신규) 에 의해 Unlocked 된다.
+> Schedule "B" 의 종료시간, 13:00 이 되면 Door 는 Normal 상태로 변경된다.
+------------------------------------------------------------
+[Step 8]
+스텝 (Step)
+1. Scheduled Unlock Zone 을 Schedule "A"(기존) 를 설정하여 생성
+2. Schedule "B"(신규) 생성
+3. Schedule Lock Zone 을 Schedule "B"(신규) 를 설정하여 생성
+4. 동작 확인
+
+데이터 (Data)
+시간 설정 스케줄
+Ex.>
+Schedule "A" : 09:00~13:00 (기존)
+Schedule "B" : 09:00~13:00 (신규)
+
+예상 결과 (Expected Result)
+> 09:00 가 되면 Scheduled Lock Zone 의 Schedule "B"(신규) 에 의해 Locked 된다.
+> Schedule "B" 의 종료시간, 13:00 이 되면 Door 는 Normal 상태로 변경된다.
+------------------------------------------------------------
+[Step 9]
+스텝 (Step)
+1. Scheduled Lock Zone 을 Schedule "A" 를 설정하여 생성
+2. Scheduled Unlock Zone 을 Schedule "B" 를 설정하여 생성
+3. 동작 확인
+
+데이터 (Data)
+시간 설정 스케줄
+Ex.>
+Schedule "A" : 09:00~13:00
+Schedule "B" : 13:00~17:00
+
+예상 결과 (Expected Result)
+> 09:00 가 되면 Scheduled Lock Zone 의 Schedule "A" 에 의해 Locked 된다.
+> 13:00 가 되면 Scheduled Unlock Zone 의 Schedule "B" 에 의해 Unlocked 된다.
+> Schedule "B" 의 종료시간, 17:00 이 되면 Door 는 Normal 상태로 변경된다.
+------------------------------------------------------------
+[Step 10]
+스텝 (Step)
+1. Scheduled Unlock Zone 을 Schedule "A" 를 설정하여 생성
+2. Scheduled Lock Zone 을 Schedule "B" 를 설정하여 생성
+3. 동작 확인
+
+데이터 (Data)
+시간 설정 스케줄
+Ex.>
+Schedule "A" : 09:00~13:00
+Schedule "B" : 13:00~17:00
+
+예상 결과 (Expected Result)
+> 09:00 가 되면 Scheduled Unlock Zone 의 Schedule "A" 에 의해 Unlocked 된다.
+> 13:00 가 되면 Scheduled Lock Zone 의 Schedule "B" 에 의해 Locked 된다.
+> Schedule "B" 의 종료시간, 17:00 이 되면 Door 는 Normal 상태로 변경된다.
+------------------------------------------------------------
+[Step 11]
+스텝 (Step)
+1. Zone> Add Zone> Door "A" 만 사용하여 다수의 Scheduled Lock 생성
+2. 동작확인
+
+데이터 (Data)
+Scheduled Lock Zone
+
+예상 결과 (Expected Result)
+> 하나의 Door 로 Scheduled Lock Zone을 다수 개 설정할 수 있어야 한다.
+> 다수 개 설정한 Zone의 Schedule 중복 설정이 가능하다.
+------------------------------------------------------------
+[Step 12]
+스텝 (Step)
+1. Zone> Add Zone> Door "A" 만 사용하여 다수의 Scheduled Unlock Zone 생성
+2. 동작확인
+
+데이터 (Data)
+Scheduled Unlock Zone
+
+예상 결과 (Expected Result)
+> 하나의 Door 로 Scheduled Unlock Zone을 다수 개 설정할 수 있어야 한다.
+> 다수 개 설정한 Zone의 Schedule 중복 설정이 가능하다.
+------------------------------------------------------------

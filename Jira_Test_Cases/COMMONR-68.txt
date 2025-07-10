@@ -1,0 +1,944 @@
+■ 이슈 키: COMMONR-68
+■ 제목: Triggered & Action - Input
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. Device : Master만 연결
+2. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Master 장치 선택 > Port : Input Port 0 선택 > Switch : Normally Open 선택 > Duration : 100 > Schedule : Always 선택
+
+데이터 (Data)
+[BioStar]
+Action Device : Master
+1. Action 선택
+1) Output
+2) Alert Sound
+3) Release All Alarm
+4) Disable Device
+5) Function 
+> Access Granted
+> Access Denied
+
+예상 결과 (Expected Result)
+1. 설정한 Output이 Master 장치에서 출력된다.
+2. 설정한 Alert Sound Alarm이 Master 장치에서 출력된다.
+2-1) Alert Sound Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Sound Type : Sound가 목록에 존재
+ > Play Option : Infinite/Counts 존재 
+2-2) Alert Buzzer Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Buzzer Type : low/medium/high
+2-3) IO 장치 제외
+3. Signal Alarm에 대해 Release All Alarm이 된다.
+4. Disable Device로 설정한 장치가 잠긴다.
+> 메뉴 진입은 가능하다. (Master 장치만)
+> 모든 인증모드에서 인증이 불가하다.(ID / Card / Finger / Face)
+> LED는 Red-Magenta 로 2초 간격 전환된다.
+> 장치 잠금/해제 로그가 남는다.
+> 장치 잠금 해제 후 장치 정상동작 확인(인증)
+5. Access Granted
+> 인증성공 팝업과 소리 1회만 처리.
+> Input Port 로그는 남음.
+6. Access Denied
+> 인증 실패 팝업과 소리가 1회만 처리된다.
+> Input Port 로그는 남음.
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. Device : Master만 연결
+2. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Master 장치 선택 > Port : Input Port 0 선택 > Switch : Normally Close 선택 > Duration : 100 > Schedule : Always 선택
+
+데이터 (Data)
+[BioStar]
+Action Device : Master
+1. Action 선택
+1) Output
+2) Alert Sound
+3) Release All Alarm
+4) Disable Device
+5) Function 
+> Access Granted
+> Access Denied
+
+예상 결과 (Expected Result)
+1. 설정한 Output이 Master 장치에서 출력된다.
+2. 설정한 Alert Sound Alarm이 Master 장치에서 출력된다.
+2-1) Alert Sound Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Sound Type : Sound가 목록에 존재
+ > Play Option : Infinite/Counts 존재 
+2-2) Alert Buzzer Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Buzzer Type : low/medium/high
+2-3) IO 장치 제외
+3. Signal Alarm에 대해 Release All Alarm이 된다.
+4. Disable Device로 설정한 장치가 잠긴다.
+> 메뉴 진입은 가능하다. (Master 장치만)
+> 모든 인증모드에서 인증이 불가하다.(ID / Card / Finger / Face)
+> LED는 Red-Magenta 로 2초 간격 전환된다.
+> 장치 잠금/해제 로그가 남는다.
+> 장치 잠금 해제 후 장치 정상동작 확인(인증)
+5. Access Granted
+> 인증성공 팝업과 소리 1회만 처리.
+> Input Port 로그는 남음.
+6. Access Denied
+> 인증 실패 팝업과 소리가 1회만 처리된다.
+> Input Port 로그는 남음.
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. Device : Master만 연결
+2. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Master 장치 선택 > Port : Input Port 1 선택 > Switch : Normally Open 선택 > Duration : 100 > Schedule : Always 선택
+
+데이터 (Data)
+[BioStar]
+Action Device : Master
+1. Action 선택
+1) Output
+2) Alert Sound
+3) Release All Alarm
+4) Disable Device
+5) Function 
+> Access Granted
+> Access Denied
+
+예상 결과 (Expected Result)
+1. 설정한 Output이 Master 장치에서 출력된다.
+2. 설정한 Alert Sound Alarm이 Master 장치에서 출력된다.
+2-1) Alert Sound Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Sound Type : Sound가 목록에 존재
+ > Play Option : Infinite/Counts 존재 
+2-2) Alert Buzzer Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Buzzer Type : low/medium/high
+2-3) IO 장치 제외
+3. Signal Alarm에 대해 Release All Alarm이 된다.
+4. Disable Device로 설정한 장치가 잠긴다.
+> 메뉴 진입은 가능하다. (Master 장치만)
+> 모든 인증모드에서 인증이 불가하다.(ID / Card / Finger / Face)
+> LED는 Red-Magenta 로 2초 간격 전환된다.
+> 장치 잠금/해제 로그가 남는다.
+> 장치 잠금 해제 후 장치 정상동작 확인(인증)
+5. Access Granted
+> 인증성공 팝업과 소리 1회만 처리.
+> Input Port 로그는 남음.
+6. Access Denied
+> 인증 실패 팝업과 소리가 1회만 처리된다.
+> Input Port 로그는 남음.
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1. Device : Master만 연결
+2. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Master 장치 선택 > Port : Input Port 1 선택 > Switch : Normally Close 선택 > Duration : 100 > Schedule : Always 선택
+
+데이터 (Data)
+[BioStar]
+Action Device : Master
+1. Action 선택
+1) Output
+2) Alert Sound
+3) Release All Alarm
+4) Disable Device
+5) Function 
+> Access Granted
+> Access Denied
+
+예상 결과 (Expected Result)
+1. 설정한 Output이 Master 장치에서 출력된다.
+2. 설정한 Alert Sound Alarm이 Master 장치에서 출력된다.
+2-1) Alert Sound Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Sound Type : Sound가 목록에 존재
+ > Play Option : Infinite/Counts 존재 
+2-2) Alert Buzzer Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Buzzer Type : low/medium/high
+2-3) IO 장치 제외
+3. Signal Alarm에 대해 Release All Alarm이 된다.
+4. Disable Device로 설정한 장치가 잠긴다.
+> 메뉴 진입은 가능하다. (Master 장치만)
+> 모든 인증모드에서 인증이 불가하다.(ID / Card / Finger / Face)
+> LED는 Red-Magenta 로 2초 간격 전환된다.
+> 장치 잠금/해제 로그가 남는다.
+> 장치 잠금 해제 후 장치 정상동작 확인(인증)
+5. Access Granted
+> 인증성공 팝업과 소리 1회만 처리.
+> Input Port 로그는 남음.
+6. Access Denied
+> 인증 실패 팝업과 소리가 1회만 처리된다.
+> Input Port 로그는 남음.
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1. Device : Master-Slave(SIO2, DM20) 연결
+2. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Master 장치 선택 > Port : Input Port 0 선택 > Switch : Normally Open 선택 > Duration : 100 > Schedule : Always 선택
+
+데이터 (Data)
+[BioStar]
+Action Device : Slave(SIO2, DM20포함)
+1. Action 선택
+1) Output
+2) Alert Sound
+3) Release All Alarm
+4) Disable Device
+5) Function 
+> Access Granted
+> Access Denied
+
+예상 결과 (Expected Result)
+1. 설정한 Output이 Slave 장치에서 출력된다.
+2. 설정한 Alert Sound Alarm이 Slave 장치에서 출력된다.
+2-1) Alert Sound Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Sound Type : Sound가 목록에 존재
+ > Play Option : Infinite/Counts 존재 
+2-2) Alert Buzzer Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Buzzer Type : low/medium/high
+2-3) IO 장치 제외
+3. Signal Alarm에 대해 Release All Alarm이 된다.
+4. Disable Device로 설정한 장치가 잠긴다.
+> 메뉴 진입은 가능하다. (Master 장치만)
+> 모든 인증모드에서 인증이 불가하다.(ID / Card / Finger / Face)
+> LED는 Red-Magenta 로 2초 간격 전환된다.
+> 장치 잠금/해제 로그가 남는다.
+> 장치 잠금 해제 후 장치 정상동작 확인(인증)
+5. Access Granted
+> 인증성공 팝업과 소리 1회만 처리.
+> Input Port 로그는 남음.
+6. Access Denied
+> 인증 실패 팝업과 소리가 1회만 처리된다.
+> Input Port 로그는 남음.
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1. Device : Master-Slave(SIO2, DM20) 연결
+2. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Master 장치 선택 > Port : Input Port 0 선택 > Switch : Normally Close 선택 > Duration : 100 > Schedule : Always 선택
+
+데이터 (Data)
+[BioStar]
+Action Device : Slave(SIO2, DM20포함)
+1. Action 선택
+1) Output
+2) Alert Sound
+3) Release All Alarm
+4) Disable Device
+5) Function 
+> Access Granted
+> Access Denied
+
+예상 결과 (Expected Result)
+1. 설정한 Output이 Slave 장치에서 출력된다.
+2. 설정한 Alert Sound Alarm이 Slave 장치에서 출력된다.
+2-1) Alert Sound Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Sound Type : Sound가 목록에 존재
+ > Play Option : Infinite/Counts 존재 
+2-2) Alert Buzzer Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Buzzer Type : low/medium/high
+2-3) IO 장치 제외
+3. Signal Alarm에 대해 Release All Alarm이 된다.
+4. Disable Device로 설정한 장치가 잠긴다.
+> 메뉴 진입은 가능하다. (Master 장치만)
+> 모든 인증모드에서 인증이 불가하다.(ID / Card / Finger / Face)
+> LED는 Red-Magenta 로 2초 간격 전환된다.
+> 장치 잠금/해제 로그가 남는다.
+> 장치 잠금 해제 후 장치 정상동작 확인(인증)
+5. Access Granted
+> 인증성공 팝업과 소리 1회만 처리.
+> Input Port 로그는 남음.
+6. Access Denied
+> 인증 실패 팝업과 소리가 1회만 처리된다.
+> Input Port 로그는 남음
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+1. Device : Master-Slave(SIO2, DM20) 연결
+2. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Master 장치 선택 > Port : Input Port 1 선택 > Switch : Normally Open 선택 > Duration : 100 > Schedule : Always 선택
+
+데이터 (Data)
+[BioStar]
+Action Device : Slave(SIO2, DM20포함)
+1. Action 선택
+1) Output
+2) Alert Sound
+3) Release All Alarm
+4) Disable Device
+5) Function 
+> Access Granted
+> Access Denied
+
+예상 결과 (Expected Result)
+1. 설정한 Output이 Slave 장치에서 출력된다.
+2. 설정한 Alert Sound Alarm이 Slave 장치에서 출력된다.
+2-1) Alert Sound Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Sound Type : Sound가 목록에 존재
+ > Play Option : Infinite/Counts 존재 
+2-2) Alert Buzzer Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Buzzer Type : low/medium/high
+2-3) IO 장치 제외
+3. Signal Alarm에 대해 Release All Alarm이 된다.
+4. Disable Device로 설정한 장치가 잠긴다.
+> 메뉴 진입은 가능하다. (Master 장치만)
+> 모든 인증모드에서 인증이 불가하다.(ID / Card / Finger / Face)
+> LED는 Red-Magenta 로 2초 간격 전환된다.
+> 장치 잠금/해제 로그가 남는다.
+> 장치 잠금 해제 후 장치 정상동작 확인(인증)
+5. Access Granted
+> 인증성공 팝업과 소리 1회만 처리.
+> Input Port 로그는 남음.
+6. Access Denied
+> 인증 실패 팝업과 소리가 1회만 처리된다.
+> Input Port 로그는 남음
+------------------------------------------------------------
+[Step 8]
+스텝 (Step)
+1. Device : Master-Slave(SIO2, DM20) 연결
+2. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Master 장치 선택 > Port : Input Port 1 선택 > Switch : Normally Close 선택 > Duration : 100 > Schedule : Always 선택
+
+데이터 (Data)
+[BioStar]
+Action Device : Slave(SIO2, DM20포함)
+1. Action 선택
+1) Output
+2) Alert Sound
+3) Release All Alarm
+4) Disable Device
+5) Function 
+> Access Granted
+> Access Denied
+
+예상 결과 (Expected Result)
+1. 설정한 Output이 Slave 장치에서 출력된다.
+2. 설정한 Alert Sound Alarm이 Slave 장치에서 출력된다.
+2-1) Alert Sound Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Sound Type : Sound가 목록에 존재
+ > Play Option : Infinite/Counts 존재 
+2-2) Alert Buzzer Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Buzzer Type : low/medium/high
+2-3) IO 장치 제외
+3. Signal Alarm에 대해 Release All Alarm이 된다.
+4. Disable Device로 설정한 장치가 잠긴다.
+> 메뉴 진입은 가능하다. (Master 장치만)
+> 모든 인증모드에서 인증이 불가하다.(ID / Card / Finger / Face)
+> LED는 Red-Magenta 로 2초 간격 전환된다.
+> 장치 잠금/해제 로그가 남는다.
+> 장치 잠금 해제 후 장치 정상동작 확인(인증)
+5. Access Granted
+> 인증성공 팝업과 소리 1회만 처리.
+> Input Port 로그는 남음.
+6. Access Denied
+> 인증 실패 팝업과 소리가 1회만 처리된다.
+> Input Port 로그는 남음
+------------------------------------------------------------
+[Step 9]
+스텝 (Step)
+1. Device : Master-Slave(SIO2, DM20) 연결
+2. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Slave 장치 선택 > Port : Input Port 0 선택 > Switch : Normally Open 선택 > Duration : 100 > Schedule : Always 선택
+
+데이터 (Data)
+[BioStar]
+Action Device : Master
+1. Action 선택
+1) Output
+2) Alert Sound
+3) Release All Alarm
+4) Disable Device
+5) Function 
+> Access Granted
+> Access Denied
+
+예상 결과 (Expected Result)
+1. 설정한 Output이 Master 장치에서 출력된다.
+2. 설정한 Alert Sound Alarm이 Master 장치에서 출력된다.
+2-1) Alert Sound Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Sound Type : Sound가 목록에 존재
+ > Play Option : Infinite/Counts 존재 
+2-2) Alert Buzzer Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Buzzer Type : low/medium/high
+2-3) IO 장치 제외
+3. Signal Alarm에 대해 Release All Alarm이 된다.
+4. Disable Device로 설정한 장치가 잠긴다.
+> 메뉴 진입은 가능하다. (Master 장치만)
+> 모든 인증모드에서 인증이 불가하다.(ID / Card / Finger / Face)
+> LED는 Red-Magenta 로 2초 간격 전환된다.
+> 장치 잠금/해제 로그가 남는다.
+> 장치 잠금 해제 후 장치 정상동작 확인(인증)
+5. Access Granted
+> 인증성공 팝업과 소리 1회만 처리.
+> Input Port 로그는 남음.
+6. Access Denied
+> 인증 실패 팝업과 소리가 1회만 처리된다.
+> Input Port 로그는 남음.
+------------------------------------------------------------
+[Step 10]
+스텝 (Step)
+1. Device : Master-Slave(SIO2, DM20) 연결
+2. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Slave 장치 선택 > Port : Input Port 0 선택 > Switch : Normally Close 선택 > Duration : 100 > Schedule : Always 선택
+
+데이터 (Data)
+[BioStar]
+Action Device : Master
+1. Action 선택
+1) Output
+2) Alert Sound
+3) Release All Alarm
+4) Disable Device
+5) Function 
+> Access Granted
+> Access Denied
+
+예상 결과 (Expected Result)
+1. 설정한 Output이 Master 장치에서 출력된다.
+2. 설정한 Alert Sound Alarm이 Master 장치에서 출력된다.
+2-1) Alert Sound Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Sound Type : Sound가 목록에 존재
+ > Play Option : Infinite/Counts 존재 
+2-2) Alert Buzzer Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Buzzer Type : low/medium/high
+2-3) IO 장치 제외
+3. Signal Alarm에 대해 Release All Alarm이 된다.
+4. Disable Device로 설정한 장치가 잠긴다.
+> 메뉴 진입은 가능하다. (Master 장치만)
+> 모든 인증모드에서 인증이 불가하다.(ID / Card / Finger / Face)
+> LED는 Red-Magenta 로 2초 간격 전환된다.
+> 장치 잠금/해제 로그가 남는다.
+> 장치 잠금 해제 후 장치 정상동작 확인(인증)
+5. Access Granted
+> 인증성공 팝업과 소리 1회만 처리.
+> Input Port 로그는 남음.
+6. Access Denied
+> 인증 실패 팝업과 소리가 1회만 처리된다.
+> Input Port 로그는 남음.
+------------------------------------------------------------
+[Step 11]
+스텝 (Step)
+1. Device : Master-Slave(SIO2, DM20) 연결
+2. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Slave 장치 선택 > Port : Input Port 1 선택 > Switch : Normally Open 선택 > Duration : 100 > Schedule : Always 선택
+
+데이터 (Data)
+[BioStar]
+Action Device : Master
+1. Action 선택
+1) Output
+2) Alert Sound
+3) Release All Alarm
+4) Disable Device
+5) Function 
+> Access Granted
+> Access Denied
+
+예상 결과 (Expected Result)
+1. 설정한 Output이 Master 장치에서 출력된다.
+2. 설정한 Alert Sound Alarm이 Master 장치에서 출력된다.
+2-1) Alert Sound Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Sound Type : Sound가 목록에 존재
+ > Play Option : Infinite/Counts 존재 
+2-2) Alert Buzzer Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Buzzer Type : low/medium/high
+2-3) IO 장치 제외
+3. Signal Alarm에 대해 Release All Alarm이 된다.
+4. Disable Device로 설정한 장치가 잠긴다.
+> 메뉴 진입은 가능하다. (Master 장치만)
+> 모든 인증모드에서 인증이 불가하다.(ID / Card / Finger / Face)
+> LED는 Red-Magenta 로 2초 간격 전환된다.
+> 장치 잠금/해제 로그가 남는다.
+> 장치 잠금 해제 후 장치 정상동작 확인(인증)
+5. Access Granted
+> 인증성공 팝업과 소리 1회만 처리.
+> Input Port 로그는 남음.
+6. Access Denied
+> 인증 실패 팝업과 소리가 1회만 처리된다.
+> Input Port 로그는 남음.
+------------------------------------------------------------
+[Step 12]
+스텝 (Step)
+1. Device : Master-Slave(SIO2, DM20) 연결
+2. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Slave 장치 선택 > Port : Input Port 1 선택 > Switch : Normally Close 선택 > Duration : 100 > Schedule : Always 선택
+
+데이터 (Data)
+[BioStar]
+Action Device : Master
+1. Action 선택
+1) Output
+2) Alert Sound
+3) Release All Alarm
+4) Disable Device
+5) Function 
+> Access Granted
+> Access Denied
+
+예상 결과 (Expected Result)
+1. 설정한 Output이 Master 장치에서 출력된다.
+2. 설정한 Alert Sound Alarm이 Master 장치에서 출력된다.
+2-1) Alert Sound Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Sound Type : Sound가 목록에 존재
+ > Play Option : Infinite/Counts 존재 
+2-2) Alert Buzzer Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Buzzer Type : low/medium/high
+2-3) IO 장치 제외
+3. Signal Alarm에 대해 Release All Alarm이 된다.
+4. Disable Device로 설정한 장치가 잠긴다.
+> 메뉴 진입은 가능하다. (Master 장치만)
+> 모든 인증모드에서 인증이 불가하다.(ID / Card / Finger / Face)
+> LED는 Red-Magenta 로 2초 간격 전환된다.
+> 장치 잠금/해제 로그가 남는다.
+> 장치 잠금 해제 후 장치 정상동작 확인(인증)
+5. Access Granted
+> 인증성공 팝업과 소리 1회만 처리.
+> Input Port 로그는 남음.
+6. Access Denied
+> 인증 실패 팝업과 소리가 1회만 처리된다.
+> Input Port 로그는 남음.
+------------------------------------------------------------
+[Step 13]
+스텝 (Step)
+1. Device : Master-Slave(SIO2, DM20) 연결
+2. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Slave 장치 선택 > Port : Input Port 0 선택 > Switch : Normally Open 선택 > Duration : 100 > Schedule : Always 선택
+
+데이터 (Data)
+[BioStar]
+Action Device : Slave(SIO2, DM20포함)
+1. Action 선택
+1) Output
+2) Alert Sound
+3) Release All Alarm
+4) Disable Device
+5) Function 
+> Access Granted
+> Access Denied
+
+예상 결과 (Expected Result)
+1. 설정한 Output이 Slave 장치에서 출력된다.
+2. 설정한 Alert Sound Alarm이 Slave 장치에서 출력된다.
+2-1) Alert Sound Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Sound Type : Sound가 목록에 존재
+ > Play Option : Infinite/Counts 존재 
+2-2) Alert Buzzer Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Buzzer Type : low/medium/high
+2-3) IO 장치 제외
+3. Signal Alarm에 대해 Release All Alarm이 된다.
+4. Disable Device로 설정한 장치가 잠긴다.
+> 메뉴 진입은 가능하다. (Master 장치만)
+> 모든 인증모드에서 인증이 불가하다.(ID / Card / Finger / Face)
+> LED는 Red-Magenta 로 2초 간격 전환된다.
+> 장치 잠금/해제 로그가 남는다.
+> 장치 잠금 해제 후 장치 정상동작 확인(인증)
+5. Access Granted
+> 인증성공 팝업과 소리 1회만 처리.
+> Input Port 로그는 남음.
+6. Access Denied
+> 인증 실패 팝업과 소리가 1회만 처리된다.
+> Input Port 로그는 남음
+------------------------------------------------------------
+[Step 14]
+스텝 (Step)
+1. Device : Master-Slave(SIO2, DM20) 연결
+2. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Slave 장치 선택 > Port : Input Port 0 선택 > Switch : Normally Close 선택 > Duration : 100 > Schedule : Always 선택
+
+데이터 (Data)
+[BioStar]
+Action Device : Slave(SIO2, DM20포함)
+1. Action 선택
+1) Output
+2) Alert Sound
+3) Release All Alarm
+4) Disable Device
+5) Function 
+> Access Granted
+> Access Denied
+
+예상 결과 (Expected Result)
+1. 설정한 Output이 Slave 장치에서 출력된다.
+2. 설정한 Alert Sound Alarm이 Slave 장치에서 출력된다.
+2-1) Alert Sound Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Sound Type : Sound가 목록에 존재
+ > Play Option : Infinite/Counts 존재 
+2-2) Alert Buzzer Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Buzzer Type : low/medium/high
+2-3) IO 장치 제외
+3. Signal Alarm에 대해 Release All Alarm이 된다.
+4. Disable Device로 설정한 장치가 잠긴다.
+> 메뉴 진입은 가능하다. (Master 장치만)
+> 모든 인증모드에서 인증이 불가하다.(ID / Card / Finger / Face)
+> LED는 Red-Magenta 로 2초 간격 전환된다.
+> 장치 잠금/해제 로그가 남는다.
+> 장치 잠금 해제 후 장치 정상동작 확인(인증)
+5. Access Granted
+> 인증성공 팝업과 소리 1회만 처리.
+> Input Port 로그는 남음.
+6. Access Denied
+> 인증 실패 팝업과 소리가 1회만 처리된다.
+> Input Port 로그는 남음
+------------------------------------------------------------
+[Step 15]
+스텝 (Step)
+1. Device : Master-Slave(SIO2, DM20) 연결
+2. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Slave 장치 선택 > Port : Input Port 1 선택 > Switch : Normally Open 선택 > Duration : 100 > Schedule : Always 선택
+
+데이터 (Data)
+[BioStar]
+Action Device : Slave(SIO2, DM20포함)
+1. Action 선택
+1) Output
+2) Alert Sound
+3) Release All Alarm
+4) Disable Device
+5) Function 
+> Access Granted
+> Access Denied
+
+예상 결과 (Expected Result)
+1. 설정한 Output이 Slave 장치에서 출력된다.
+2. 설정한 Alert Sound Alarm이 Slave 장치에서 출력된다.
+2-1) Alert Sound Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Sound Type : Sound가 목록에 존재
+ > Play Option : Infinite/Counts 존재 
+2-2) Alert Buzzer Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Buzzer Type : low/medium/high
+2-3) IO 장치 제외
+3. Signal Alarm에 대해 Release All Alarm이 된다.
+4. Disable Device로 설정한 장치가 잠긴다.
+> 메뉴 진입은 가능하다. (Master 장치만)
+> 모든 인증모드에서 인증이 불가하다.(ID / Card / Finger / Face)
+> LED는 Red-Magenta 로 2초 간격 전환된다.
+> 장치 잠금/해제 로그가 남는다.
+> 장치 잠금 해제 후 장치 정상동작 확인(인증)
+5. Access Granted
+> 인증성공 팝업과 소리 1회만 처리.
+> Input Port 로그는 남음.
+6. Access Denied
+> 인증 실패 팝업과 소리가 1회만 처리된다.
+> Input Port 로그는 남음
+------------------------------------------------------------
+[Step 16]
+스텝 (Step)
+1. Device : Master-Slave(SIO2, DM20) 연결
+2. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Slave 장치 선택 > Port : Input Port 1 선택 > Switch : Normally Close 선택 > Duration : 100 > Schedule : Always 선택
+
+데이터 (Data)
+[BioStar]
+Action Device : Slave(SIO2, DM20포함)
+1. Action 선택
+1) Output
+2) Alert Sound
+3) Release All Alarm
+4) Disable Device
+5) Function 
+> Access Granted
+> Access Denied
+
+예상 결과 (Expected Result)
+1. 설정한 Output이 Slave 장치에서 출력된다.
+2. 설정한 Alert Sound Alarm이 Slave 장치에서 출력된다.
+2-1) Alert Sound Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Sound Type : Sound가 목록에 존재
+ > Play Option : Infinite/Counts 존재 
+2-2) Alert Buzzer Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Buzzer Type : low/medium/high
+2-3) IO 장치 제외
+3. Signal Alarm에 대해 Release All Alarm이 된다.
+4. Disable Device로 설정한 장치가 잠긴다.
+> 메뉴 진입은 가능하다. (Master 장치만)
+> 모든 인증모드에서 인증이 불가하다.(ID / Card / Finger / Face)
+> LED는 Red-Magenta 로 2초 간격 전환된다.
+> 장치 잠금/해제 로그가 남는다.
+> 장치 잠금 해제 후 장치 정상동작 확인(인증)
+5. Access Granted
+> 인증성공 팝업과 소리 1회만 처리.
+> Input Port 로그는 남음.
+6. Access Denied
+> 인증 실패 팝업과 소리가 1회만 처리된다.
+> Input Port 로그는 남음
+------------------------------------------------------------
+[Step 17]
+스텝 (Step)
+[같은 DM20에서 Supervised Input 설정 Port 중복]
+1. Device : Master-Slave(SIO2, DM20) 연결
+2. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Slave 장치 선택 > Port : Supervised Input Port 0 선택 > Switch : Short 선택 > Duration : 100 > Schedule : Always 선택
+3. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Slave 장치 선택 > Port : Supervised Input Port 0 선택 > Switch : Open 선택 > Duration : 100 > Schedule : Always 선택
+
+데이터 (Data)
+[BioStar]
+Action Device : Master, Slave
+1. Action 선택
+1) Output
+2) Alert Sound
+3) Release All Alarm
+4) Disable Device
+5) Function 
+> Access Granted
+> Access Denied
+
+예상 결과 (Expected Result)
+1. 설정한 Output이 Master/Slave 장치에서 출력된다.
+2. 설정한 Alert Sound Alarm이 Master/Slave 장치에서 출력된다.
+2-1) Alert Sound Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Sound Type : Sound가 목록에 존재
+ > Play Option : Infinite/Counts 존재 
+2-2) Alert Buzzer Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Buzzer Type : low/medium/high
+2-3) IO 장치 제외
+3. Signal Alarm에 대해 Release All Alarm이 된다.
+4. Disable Device로 설정한 장치가 잠긴다.
+> 메뉴 진입은 가능하다. (Master 장치만)
+> 모든 인증모드에서 인증이 불가하다.(ID / Card / Finger / Face)
+> LED는 Red-Magenta 로 2초 간격 전환된다.
+> 장치 잠금/해제 로그가 남는다.
+> 장치 잠금 해제 후 장치 정상동작 확인(인증)
+5. Access Granted
+> 인증성공 팝업과 소리 1회만 처리.
+> Input Port 로그는 남음.
+6. Access Denied
+> 인증 실패 팝업과 소리가 1회만 처리된다.
+> Input Port 로그는 남음
+------------------------------------------------------------
+[Step 18]
+스텝 (Step)
+1. Device : Master-Slave(SIO2, DM20) 연결
+2. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Master 장치 선택 > Port : Input Port 0,1 선택 > Switch : Normally Open, Close 선택 > Duration : 100 > Schedule : Always 선택
+
+데이터 (Data)
+[BioStar]
+Action Device : Slave(SIO2, DM20포함)
+1. Action 선택
+1) Output
+
+Add Long Signal 설정 값(예)
+ - Delay : 100 / Count : 1000 / On : 1 / Off : 0
+
+예상 결과 (Expected Result)
+1. 설정한 Output이 Slave 장치에서 출력된다.
+2. 설정한 Alert Sound Alarm이 Slave 장치에서 출력된다.
+2-1) Alert Sound Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Sound Type : Sound가 목록에 존재
+ > Play Option : Infinite/Counts 존재 
+2-2) Alert Buzzer Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Buzzer Type : low/medium/high
+2-3) IO 장치 제외
+3. Signal Alarm에 대해 Release All Alarm이 된다.
+4. Disable Device로 설정한 장치가 잠긴다.
+> 메뉴 진입은 가능하다. (Master 장치만)
+> 모든 인증모드에서 인증이 불가하다.(ID / Card / Finger / Face)
+> LED는 Red-Magenta 로 2초 간격 전환된다.
+> 장치 잠금/해제 로그가 남는다.
+> 장치 잠금 해제 후 장치 정상동작 확인(인증)
+5. Access Granted
+> 인증성공 팝업과 소리 1회만 처리.
+> Input Port 로그는 남음.
+6. Access Denied
+> 인증 실패 팝업과 소리가 1회만 처리된다.
+> Input Port 로그는 남음
+------------------------------------------------------------
+[Step 19]
+스텝 (Step)
+1. Device : Master-Slave(SIO2, DM20) 연결
+2. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Slave 장치 선택 > Port : Input Port 0,1 선택 > Switch : Normally Open, Close 선택 > Duration : 100 > Schedule : Always 선택
+
+데이터 (Data)
+[BioStar]
+Action Device : Slave(SIO2, DM20포함)
+1. Action 선택
+1) Output
+
+Add New Signal 설정 값(예)
+ - Delay : 100 / Count : 1000 / On : 1 / Off : 0
+
+예상 결과 (Expected Result)
+1. 설정한 Output이 Slave 장치에서 출력된다.
+2. 설정한 Alert Sound Alarm이 Slave 장치에서 출력된다.
+2-1) Alert Sound Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Sound Type : Sound가 목록에 존재
+ > Play Option : Infinite/Counts 존재 
+2-2) Alert Buzzer Type이 출력된다.
+ > Device : 하위 장치가 존재할 경우
+ > Alert Buzzer Type : low/medium/high
+2-3) IO 장치 제외
+3. Signal Alarm에 대해 Release All Alarm이 된다.
+4. Disable Device로 설정한 장치가 잠긴다.
+> 메뉴 진입은 가능하다. (Master 장치만)
+> 모든 인증모드에서 인증이 불가하다.(ID / Card / Finger / Face)
+> LED는 Red-Magenta 로 2초 간격 전환된다.
+> 장치 잠금/해제 로그가 남는다.
+> 장치 잠금 해제 후 장치 정상동작 확인(인증)
+5. Access Granted
+> 인증성공 팝업과 소리 1회만 처리.
+> Input Port 로그는 남음.
+6. Access Denied
+> 인증 실패 팝업과 소리가 1회만 처리된다.
+> Input Port 로그는 남음
+------------------------------------------------------------
+[Step 20]
+스텝 (Step)
+[Camera QR]
+
+1. Device : Master/Default만 연결
+2. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Master/Default 장치 선택 > Port : Input Port 0 선택 > Switch 선택 > Duration : 100 > Schedule : Always 선택
+3. Action > Disable Device
+4. Trigger 로 설정한 Input 접지
+
+데이터 (Data)
+Action Device : Master/Default
+
+> QR/Barcode : Enabled
+> Camera 활성화/비활성화
+
+Switch
+>Normally Open
+>Normally Close
+
+예상 결과 (Expected Result)
+1. Disable Device로 설정한 장치가 잠긴다.
+> 메뉴 진입은 가능하다. (Master 장치만)
+> motion을 띄워 Camera를 활성화 시킨 상태에서 Disable 시 Camera QR비활성화
+2. 모든 인증모드에서 인증이 불가하다.
+(ID / Card / Fnger / Face/QR 인증 불가)
+> Camera QR 화면 미출력
+3. 장치 잠금 해제 후 장치 정상동작 확인(인증)
+4. 장치 잠금/해제 로그가 남는다.
+------------------------------------------------------------
+[Step 21]
+스텝 (Step)
+[Camera QR]
+
+1. Device : Master/Default만 연결
+2. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Master/Default 장치 선택 > Port : Input Port 1 선택 > Switch 선택 > Duration : 100 > Schedule : Always 선택
+3. Action > Disable Device
+4. Trigger 로 설정한 Input 접지
+
+데이터 (Data)
+Action Device : Master/Default
+
+> QR/Barcode : Enabled
+> Camera 활성화/비활성화
+
+Switch
+>Normally Open
+>Normally Close
+
+예상 결과 (Expected Result)
+1. Disable Device로 설정한 장치가 잠긴다.
+> 메뉴 진입은 가능하다. (Master 장치만)
+> motion을 띄워 Camera를 활성화 시킨 상태에서 Disable 시 Camera QR비활성화
+2. 모든 인증모드에서 인증이 불가하다.
+(ID / Card / Fnger / Face/QR 인증 불가)
+> Camera QR 화면 미출력
+3. 장치 잠금 해제 후 장치 정상동작 확인(인증)
+4. 장치 잠금/해제 로그가 남는다.
+------------------------------------------------------------
+[Step 22]
+스텝 (Step)
+[Camera QR]
+
+1. Device : Master-Slave(SIO2, DM20) 연결
+2. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Master 장치 선택 > Port : Input Port 1 선택 > Switch 선택 > Duration : 100 > Schedule : Always 선택
+3. Action > Disable Device
+4. Trigger 로 설정한 Input 접지
+
+데이터 (Data)
+Action Device : Slave(Camera QR 지원 장치)
+
+> QR/Barcode : Enabled
+> Camera 활성화/비활성화
+
+Switch
+>Normally Open
+>Normally Close
+
+예상 결과 (Expected Result)
+1. Disable Device로 설정한 장치가 잠긴다.
+> motion을 띄워 Camera를 활성화 시킨 상태에서 Disable 시 Camera QR 비활성화
+2. 모든 인증모드에서 인증이 불가하다.
+(ID / Card / Fnger / Face/QR 인증 불가)
+> Camera QR 화면 미출력
+3. 장치 잠금 해제 후 장치 정상동작 확인(인증)
+4. 장치 잠금/해제 로그가 남는다.
+------------------------------------------------------------
+[Step 23]
+스텝 (Step)
+[Camera QR]
+
+1. Device : Master-Slave(SIO2, DM20) 연결
+2. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Slave 장치 선택 > Port : Input Port 0 선택 > Switch 선택 > Duration : 100 > Schedule : Always 선택
+3. Action > Disable Device
+4. Trigger 로 설정한 Input 접지
+
+데이터 (Data)
+Action Device : Master(Camera QR 지원 장치)
+
+> QR/Barcode : Enabled
+> Camera 활성화/비활성화
+
+Switch
+>Normally Open
+>Normally Close
+
+예상 결과 (Expected Result)
+1. Disable Device로 설정한 장치가 잠긴다.
+> 메뉴 진입은 가능하다. (Master 장치만)
+> motion을 띄워 Camera를 활성화 시킨 상태에서 Disable 시 Camera QR 비활성화
+2. 모든 인증모드에서 인증이 불가하다.
+(ID / Card / Fnger / Face/QR 인증 불가)
+> Camera QR 화면 미출력
+3. 장치 잠금 해제 후 장치 정상동작 확인(인증)
+4. 장치 잠금/해제 로그가 남는다.
+------------------------------------------------------------
+[Step 24]
+스텝 (Step)
+[Camera QR]
+
+1. Device : Master-Slave(SIO2, DM20) 연결
+ 2. Device > Advanced > Trigger & Action > +Add > Trigger > Input 선택 > Device : Slave 장치 선택 > Port : Input Port 1 선택 > Switch 선택 > Duration : 100 > Schedule : Always 선택
+ 3. Action > Disable Device
+ 4. Trigger 로 설정한 Input 접지
+
+데이터 (Data)
+Action Device : Master(Camera QR 지원 장치)
+
+> QR/Barcode : Enabled
+> Camera 활성화/비활성화
+
+Switch
+>Normally Open
+>Normally Close
+
+예상 결과 (Expected Result)
+1. Disable Device로 설정한 장치가 잠긴다.
+> 메뉴 진입은 가능하다. (Master 장치만)
+> motion을 띄워 Camera를 활성화 시킨 상태에서 Disable 시 Camera QR 비활성화
+2. 모든 인증모드에서 인증이 불가하다.
+(ID / Card / Fnger / Face/QR 인증 불가)
+> Camera QR 화면 미출력
+3. 장치 잠금 해제 후 장치 정상동작 확인(인증)
+4. 장치 잠금/해제 로그가 남는다.
+------------------------------------------------------------

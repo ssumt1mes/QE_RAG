@@ -1,0 +1,109 @@
+■ 이슈 키: COMMONR-284
+■ 제목: OSDP 
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. 첨부파일의 OSDP TC 수행
+
+데이터 (Data)
+> Default 모드(=Intelligent Slave)
+> Slave 모드
+
+예상 결과 (Expected Result)
+1. 기대결과에 만족해야 한다.
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. 타 Master에 IM120을 Slave로 추가 후 삭제
+2. 삭제한 장치를 OSDP Tool에 연결
+3. (Default Key)Secure Channel 수행
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 장치가 들고있는 Key와 상이하기 때문에 Secure Session이 맺어지지 않는다.
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. 타 Master에 IM120을 Slave로 추가 후 삭제
+2. Init 버튼을 이용해 Network 초기화
+3. 초기화된 장치를 OSDP Tool에 연결
+4. (Default Key)Secure Channel 수행
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Default Key로 Secure Session이 맺어진다.
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1. 타 Master에 IM120을 Slave로 추가 후 삭제
+2. Init 버튼 3회 +1회 클릭으로 설정 초기화
+3. 초기화된 장치를 OSDP Tool에 연결
+4. (Default Key)Secure Channel 수행
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Default Key로 Secure Session이 맺어진다.
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1. OSDP Tool을 이용해 장치에 Keyset(Default Key가 아닌 key) 수행
+3. OSDP Tool과 연결끊음
+4. OSDP Tool과 연결 후 Default Key로 Secure Channel 수행
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Default 외의 값으로 KeySet 된 상태에서는 Secure Session이 맺어지지 않는다.
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1. OSDP Tool을 이용해 장치에 Keyset(Default Key가 아닌 key) 수행
+2. OSDP Tool과 연결끊음
+3. OSDP Tool과 연결 후 OSDP Tool의 Key를 장치와 동일하게 설정
+4. Secure Channel 수행
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Key set한 key로 Secure Session이 맺어진다.
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+[Key Set된 장치 - OSDP Tool간 Secure Session으로 통신중]
+1. Reset 버튼 클릭
+2. Secure Session 통신유무 확인
+
+데이터 (Data)
+Network Reset
+Config Reset
+Secure Tamper
+Factory Reset
+
+예상 결과 (Expected Result)
+1. 장치가 들고있는 Key(=Default)와 Tool이 들고있는 Key(≠Default)가 상이하기 때문에 Secure 통신이 이루어지지 않는다.
+> Tool 종료됨.
+------------------------------------------------------------
+[Step 8]
+스텝 (Step)
+1. OSDP Tool을 연결 후 Manual lock / unlock, Lock Override 동작 수행
+2. Door Icon 표시 확인
+
+데이터 (Data)
+Lock Override 수행 시 사전 조건
+- Door Status : Manual Lock or Schedule lock
+
+예상 결과 (Expected Result)
+1. Manual lock / unlock일 때 자물쇠 Icon lock / unlock으로 표시된다.
+2. Lock Override Card 인증했을 때 Unlock Icon으로 표시되며 Clear Alarm 후 Release했을 때 Unlock Icon 사라진다.
+------------------------------------------------------------

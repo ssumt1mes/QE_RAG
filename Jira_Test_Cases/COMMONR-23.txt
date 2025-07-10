@@ -1,0 +1,20 @@
+■ 이슈 키: COMMONR-23
+■ 제목: 사용자 - 검색
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. DEVICE > Device List > Device 체크 박스 선택 > Manage Users in Device[기능 버튼내에서 선택]
+
+데이터 (Data)
+[BioStar]
+> 정규 등록 버전 / 신규 QA 검증 배포용
+
+예상 결과 (Expected Result)
+1. 장치에 있는 사용자가 리스트로 표시가 되어야 한다.
+= 장치의 등록 현황과 유사
+= Total User Count, Finger Count, Face Count, Card Count 표시
+= User ID/Finger/Face/1:1 Security Level/Status
+------------------------------------------------------------

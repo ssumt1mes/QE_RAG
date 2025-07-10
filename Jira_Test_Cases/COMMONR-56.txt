@@ -1,0 +1,381 @@
+■ 이슈 키: COMMONR-56
+■ 제목: 구역 - Scheduled Lock Zone
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. Zone> Add Zone> Scheduled Lock Zone
+2. Active/Inactive 설정 > Zone 생성
+3. 장치에서 인증 시도
+
+데이터 (Data)
+Active/Inactive
+> Active
+> Inactive
+
+예상 결과 (Expected Result)
+> Active 설정으로 생성한 Zone인 경우 Scheduled Lock으로 동작해야 한다.
+: Scheduled Lock 의 설정에 의해 인증 성공/실패 발생한다.
+> Inactive 설정으로 생성한 Zone인 경우 Scheduled Lock이 동작하지 않아야 한다.
+: Normal상태로 동작
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+<스케줄 생성된 상태>
+1. Scheduled Lock Zone 생성
+2. Door Lock Type 설정 > 스케줄 설정 > Zone 생성
+3. 스케줄에 설정된 시간 > Monitoring
+4. Door Status > Door Status Type 확인
+5. Zone Status > Status 확인
+6. 장치에서 인증 시도
+
+데이터 (Data)
+Door Lock Type
+> Exit Allowed
+> Access Not Allowed
+
+예상 결과 (Expected Result)
+> Door Status 의 Door Status Type 에 Scheduled Lock 표시한다.
+> Zone Status 의 Status 에 Scheduled Lock 표시한다.
+> 인증 실패 발생한다.
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. Scheduled Lock Zone 생성
+2. Door Lock Type 설정
+3. 스케줄 설정 > Zone 생성
+4. Entry/Exit 장치에 인증 시도
+
+데이터 (Data)
+Door Lock Type
+> Exit Allowed
+
+예상 결과 (Expected Result)
+> 스케줄에 설정된 시간이 되면 Exit Device 는 Locked 되지 않고 Entry Device 만 Locked 된다.
+> Entry Device 에 인증시 인증실패 발생한다.
+> Exit Device 에 인증시 인증성공 발생한다.
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1. Scheduled Lock Zone 생성
+2. Door Lock Type 설정
+3. 스케줄 설정 > Zone 생성
+4. Entry/Exit 장치에 인증 시도
+
+데이터 (Data)
+Door Lock Type
+> Access Not Allowed
+
+예상 결과 (Expected Result)
+> 스케줄에 설정된 시간이 되면 Entry/Exit Device 모두 Locked 된다.
+> Entry/Exit Device 에 인증시 인증실패 발생한다.
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1. Scheduled Lock Zone 생성
+2. Door Lock Type 설정 > 스케줄 설정
+3. Bypass Group 설정 > Zone 생성
+
+데이터 (Data)
+1. Door Lock Type
+> Exit Allowed
+> Access Not Allowed
+
+2. Bypass Group
+> Max : 16
+
+예상 결과 (Expected Result)
+> Bypass Group 은 최대 16개를 설정할 수 있어야 한다.
+> Schedule Lock Zone 추가에 이상이 없어야 한다.
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1. Scheduled Lock Zone 생성
+2. Door Lock Type : Exit Allowed 설정
+3. 스케줄 설정 > Bypass Group : Not Use 설정 > Zone 생성
+4. 스케줄에 설정된 시간에 Bypass Group 에 속한 사용자로 Entry/Exit 장치에 인증 시도
+*Bypass Group Not Use 는 Access Group 이 하나도 선택되지 않은 상태
+
+데이터 (Data)
+1. Door Lock Type
+> Exit Allowed
+
+2. Bypass Group
+> Not Use
+
+예상 결과 (Expected Result)
+> 스케줄에 설정된 시간에 Entry Device 에 인증시 인증실패 발생한다.
+> 스케줄에 설정된 시간에 Exit Device 에 인증시 인증성공 발생한다.
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+1. Scheduled Lock Zone 생성
+2. Door Lock Type 설정
+3. 스케줄 설정 > Bypass Group : Access Group 설정 > Zone 생성
+4. 스케줄에 설정된 시간에 Bypass Group 에 속한 사용자로 Entry/Exit 장치에 인증 시도
+
+데이터 (Data)
+1. Door Lock Type
+> Exit Allowed
+
+2. Bypass Group
+> Access Group
+
+예상 결과 (Expected Result)
+Bypass Group 에 속한 사용자로 스케줄에 설정된 시간에 Entry/Exit Device 에 인증시 인증성공 발생한다.
+------------------------------------------------------------
+[Step 8]
+스텝 (Step)
+1. Scheduled Lock Zone 생성
+2. Door Lock Type 설정
+3. 스케줄 설정 > Bypass Group 설정 > Zone 생성
+4. 스케줄에 설정된 시간에 Bypass Group 에 속한 사용자로 Entry/Exit 장치에 인증 시도
+
+데이터 (Data)
+1. Door Lock Type
+> Access Not Allowed
+
+2. Bypass Group
+> Not Use
+> Access Group
+
+예상 결과 (Expected Result)
+> Not Use 설정된 경우 스케줄에 설정된 시간에 인증시 인증실패 발생한다.
+> Access Group 설정된 경우 스케줄에 설정된 시간에 Bypass Group 에 속한 사용자로 인증시 인증성공 발생한다.
+------------------------------------------------------------
+[Step 9]
+스텝 (Step)
+1. Scheduled Lock Zone 생성
+2. Door Lock Type 설정
+3. 스케줄 설정 > Bypass Group 설정 > Zone 생성
+4. 스케줄에 설정된 시간이 끝날 때의 동작 확인
+
+데이터 (Data)
+Door Lock Type
+> Exit Allowed
+> Access Not Allowed
+
+예상 결과 (Expected Result)
+스케줄에 설정된 시간이 끝나도 Locked 상태를 유지해야 한다.
+------------------------------------------------------------
+[Step 10]
+스텝 (Step)
+1. Scheduled Lock Zone 생성
+2. Door Lock Type 설정 > 스케줄 설정
+3. Alarm 설정 > Bypass Group : Access Group 설정 > Zone 생성
+4. 스케줄에 설정된 시간에 Bypass Group 에 속하지 않은 사용자로 Entry/Exit 장치에 인증시도
+5. 스케줄에 설정된 시간에 Bypass Group 에 속한 사용자로 Entry/Exit 장치에 인증시도
+
+데이터 (Data)
+1. Door Lock Type
+> Exit Allowed
+
+2. Alarm Action
+> Output
+> Release All Alarm
+> Reboot Device
+> Disable Device
+
+예상 결과 (Expected Result)
+> Bypass Group 에 속하지 않은 사용자로 Entry Device 인증시 인증실패 발생하며 설정된 Alarm 동작한다.
+> Bypass Group 에 속하지 않은 사용자로 Exit Device 인증시 인증성공 발생하고 Unlocked 후 Locked 된다.
+> Bypass Group 에 속한 사용자로 Entry/Exit Device 인증시 인증성공 발생하고 Unlocked 후 Locked 된다.
+------------------------------------------------------------
+[Step 11]
+스텝 (Step)
+1. Scheduled Lock Zone 생성
+2. Door Lock Type 설정 > 스케줄 설정
+3. Alarm 설정 > Bypass Group : Access Group 설정 > Zone 생성
+4. 스케줄에 설정된 시간에 Bypass Group 에 속하지 않은 사용자로 Entry/Exit 장치에 인증시도
+5. 스케줄에 설정된 시간에 Bypass Group 에 속한 사용자로 Entry/Exit 장치에 인증시도
+
+데이터 (Data)
+1. Door Lock Type
+> Access Not Allowed
+
+2. Alarm Action
+> Output
+> Release All Alarm
+> Reboot Device
+> Disable Device
+
+예상 결과 (Expected Result)
+> Bypass Group 에 속하지 않은 사용자로 인증시 인증실패 발생하며 설정된 Alarm 동작한다.
+> Bypass Group 에 속한 사용자로 인증시 인증성공 발생하고 Unlocked 후 Locked 된다.
+------------------------------------------------------------
+[Step 12]
+스텝 (Step)
+1. Scheduled Lock Zone 생성
+2. Door Lock Type 설정
+3. 현재 시간이 포함된 스케줄 설정 > Zone 생성
+4. Master 장치 Reboot 시도
+
+데이터 (Data)
+Door Lock Type
+> Exit Allowed
+> Access Not Allowed
+
+예상 결과 (Expected Result)
+Master가 Reboot되는 경우에도 Locked 상태를 유지해야 한다.
+------------------------------------------------------------
+[Step 13]
+스텝 (Step)
+<Scheduled Lock Zone 다수 생성된 상태>
+1. Zone > Scheduled Lock
+2. 하나 or 다수의 Zone 선택 > 삭제
+
+데이터 (Data)
+Zone 삭제
+> 개별삭제
+> 전체삭제
+
+예상 결과 (Expected Result)
+Zone에 대해 개별삭제/전체삭제를 할 수 있어야 한다.
+> 삭제 시 Monitoring > Door Status > Door Ststus Type : Normal로 상태 변경
+------------------------------------------------------------
+[Step 14]
+스텝 (Step)
+1. Zone > Scheduled Lock > Zone 선택
+2. 정보 편집 > Apply
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+Zone 정보 변경이 가능해야 한다.
+------------------------------------------------------------
+[Step 15]
+스텝 (Step)
+1. Scheduled Lock Zone 생성
+2. 현재 시간이 포함된 스케줄 설정 > Zone 생성
+3. Monitoring> Door Status> Zone 에 포함된 Door 선택
+4. Manual Lock/Unlock 버튼 클릭
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+Zone에서 설정한 Scheduled Lock Zone보다 Monitoring에서의 Unlock/Lock의 우선순위가 높다.
+------------------------------------------------------------
+[Step 16]
+스텝 (Step)
+<A Door 생성한 상태>
+1. Zone> Add Scheduled Unlock Zone> 강제잠금 스케줄- 12:00AM~12:00PM 설정
+2. Add Scheduled Lock Zone> 강제열림 스케줄- 12:00PM~12:00AM 설정
+3. 경계가 되는 시간일 때 동작확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+11:59:59 PM 까지 Scheduled-Unlocked상태를 유지하다 12:00:00 PM에 Scheduled-Locked 상태로 변경되어야 한다.
+------------------------------------------------------------
+[Step 17]
+스텝 (Step)
+1. Door> Add Door> Door "A" 생성
+2. Zone> Add Zone> Scheduled Lock Zone> Door "A" 선택> 스케줄 설정> Zone 생성
+3. 스케줄에 설정된 시간에 Monitoring 진입
+4. Door Status> Door "A" 선택> Manual Unlock 버튼 선택
+5. Door Status 의 Door Status Type, Door Relay 확인
+6. Zone Status 의 Status 확인
+
+데이터 (Data)
+Door "A" 로 구성된 Schedule Lock Zone
+
+예상 결과 (Expected Result)
+> Door Status 의 Door Relay 는 Unlocked 로, Door Status Type 은 Schedule Lock,Operator Unlock으로 표시된다.
+> Zone Status 의 Status 는 Schedule Lock 으로 표시된다.
+> Door의 Status와 Zone의 Status는 별개로 동작 해야 함
+------------------------------------------------------------
+[Step 18]
+스텝 (Step)
+<스케줄 "A"에 휴일군 설정된 상태>
+1. Door> Add Door> Door "A" 생성
+2. Zone> Add Zone> Scheduled Lock Zone> Door "A" 선택> 스케줄 "A" 선택> Zone 생성
+3. 스케줄 "A"에 설정한 휴일군일 때 동작확인
+4. Master 장치를 Reboot
+5. 문열림 상태 확인
+
+데이터 (Data)
+Schedule
+> 휴일군에 Time Slot 미설정
+> 휴일군에 Time Slot 설정
+
+예상 결과 (Expected Result)
+> 휴일군에 설정한 스케줄대로 동작되어야 한다.
+> Lock Zone의 출입문 잠김 상태는 재부팅 후에도 유지되어야 한다.
+------------------------------------------------------------
+[Step 19]
+스텝 (Step)
+<Door, Scheduled Lock Zone 추가된 상태>
+1. Door Status : Open 동작(Door 내 설정한 Exit Button 및 Door Sensor 의 Input 접지)
+2. Scheduled Lock Zone 의 스케줄에 의한 Schedule Lock 동작
+3. Monitoring > Door Status 내 Manual Lock/Unlock, Release, Open, Clear Alarm 버튼 선택
+
+데이터 (Data)
+1. 조건
+Door Status : Opened 상태
+Scheduled Lock Zone 동작 중
+2. 동작
+Manual Lock, Manual Unlock, Release, Open, Clear Alarm 버튼 입력
+버튼 입력 후 Closed 설정(접지 해제)
+3. 결과 (각 Case 결과 확인)
+Opened 상태에서 버튼 입력 결과
+버튼 입력 후 Closed 설정(접지 해제) 결과
+
+예상 결과 (Expected Result)
+1. Manual Lock 선택시
+1) Manual Lock 버튼 입력 결과 : Success 팝업
+: Opened / Normal / Unlocked
+2) Manual Lock 버튼 입력 후 Closed 설정(접지 해제) 결과
+: Closed / Schedule Lock,Operator Lock / Locked
+3) 버튼 입력 없이 Closed 설정(접지 해제) 결과
+: Closed / Schedule Lock / Locked(공통)
+
+2. Manual Unlock 선택시
+1) Manual Unlock 버튼 입력 결과 : Success 팝업 발생
+: Opened / Operator Unlock / Unlocked
+2) Manual Unlock 버튼 입력 후 Closed 설정(접지 해제) 결과
+: Closed / Schedule Lock, Operator Unlock / Unlocked
+
+3. Release 선택시
+1) Release 버튼 입력 결과 : Success 팝업
+: Opened / Normal / Unlocked
+2) Release 버튼 입력 후 Closed 설정(접지 해제) 결과
+: Closed / Schedule Lock / Locked
+
+4. Open 선택시
+1) Open 버튼 입력 결과 : Success 팝업
+: Opened / Normal / Unlocked
+2). Open 버튼 입력 후 Closed 설정(접지 해제) 결과
+: Closed / Schedule Lock / Locked
+
+5. Clear Alarm 선택시
+1) Clear Alarm 버튼 입력 결과 : Success 팝업
+: Opened / Normal / Unlocked
+2) Clear Alarm 버튼 입력 후 Closed 설정(접지 해제) 결과
+: Closed / Schedule Lock / Locked]
+------------------------------------------------------------
+[Step 20]
+스텝 (Step)
+1. Scheduled Lock 동작
+2. Fire Alarm 동작
+3. Manual Lock 동작
+4. Manual Unlock 동작
+
+데이터 (Data)
+우선 순위 확인
+> Fire Alarm Zone
+> Manual Lock/Unlcok (Monitoring > Door Status)
+> Scheduled Lock Zone
+
+예상 결과 (Expected Result)
+> 최초 Scheduled Lock 에 의해 Locked 된다.
+> Fire Alarm 에 의해 Unlocked 된다. (Fire Alarm 이 Scheduled Lock 보다 우선순위가 높다)
+> Manual Lock 발생시 Unlocked 유지된다. (Manual Lock 이 Fire Alarm 보다 우선순위가 낮다)
+> Fire Alarm 해제 후 Manual Lock 발생시 Locked 된다. (Manual Lock 이 Scheduled Lock 보다 우선순위가 높다)
+> Fire Alarm 해제 후 Manual Unlock 발생시 Unlocked 된다. (Manual Unlock 이 Scheduled Lock 보다 우선순위가 높다)
+> Manual Lock/Unlock 해제 후 Scheduled Lock 에 의해 Locked 된다.
+------------------------------------------------------------

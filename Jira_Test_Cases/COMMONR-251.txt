@@ -1,0 +1,108 @@
+■ 이슈 키: COMMONR-251
+■ 제목: [BSPP-413] [Device User Enroll] 중복 지문/얼굴/카드 검사
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. User> Add User
+2. 기 등록된 Finger/Face/Card 입력 > Apply
+
+데이터 (Data)
+지문/카드/얼굴 등록 가능 장치
+> 1:N, 1:1 Full Enroll
+
+예상 결과 (Expected Result)
+1. 기 등록된 동일 사용자가 아닌 다른 사용자에 지문/얼굴/카드 등록 시 중복으로 등록 실패가 되어야 한다.
+||{color:#d04437}중복 지문, 얼굴, 카드 검사 기능{color}||{color:#8eb021}EN{color}||{color:#8eb021}KO{color}||
+|중복 표시 문구|Duplicate Fingerprint (User ID)
+ Duplicate Face (User ID)
+ Duplicate Card (User ID)|중복된 지문 (사용자 ID)
+ 중복된 얼굴 (사용자 ID)
+ 중복된 카드 (사용자 ID)| 
+2. 중복검사는 1:N 까지 지원한다.
+> 1:1 -> 1:N 까지 지원
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. User> Add User> Card
+2. Scan Card
+
+데이터 (Data)
+카드 등록 가능 장치
+> 1:N, 1:1 Full Enroll
+
+CSN Card
+> Mifare, EM, Felica
+Smart Card
+> Iclass/Mifare/Mobile
+Wiegand Card
+> HID 카드(Prox, iClass)
+
+예상 결과 (Expected Result)
+1. 동일 사용자에 기 등록된 카드 등록 시 기존 처럼  중복 카드 팝업으로 실패가 되고, 별도 로그 미생성된다.
+> Duplicate Card, Card is duplicated, Card is already enroll - 추후 정리
+2. 다른 사용자에 기 등록된 카드 등록 시 중복으로 실패가 되고, 로그 생성 된다.
+> Duplicate Card(User ID), 중복된 카드(사용자 ID)
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. User> Add User> Face
+2. Scan Face
+
+데이터 (Data)
+얼굴 등록 가능 장치
+> 1:N, 1:1 Full Enroll
+
+예상 결과 (Expected Result)
+1. 동일 사용자에 기 등록된 얼굴 등록 시 아래 처럼 등록이 된다.
+> FS2 - 5개
+> F2 - 2개
+2. 다른 사용자에 기 등록된 얼굴 등록 시 중복으로 실패가 되고, 로그 생성 된다.
+> Duplicate Face(User ID), 중복된 얼굴(사용자 ID)
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1.User > Add User
+2.Scan Finger
+
+데이터 (Data)
+지문 등록 가능 장치
+> 1:N, 1:1 Full Enroll
+
+예상 결과 (Expected Result)
+1. 동일 사용자에 기 등록된 지문 등록 시 기존 처럼 10개 까지 등록이 된다.
+2. 다른 사용자에 기 등록된 지문 등록 시 중복으로 실패가 되고, 로그 생성 된다.
+> Duplicate Finger(User ID), 중복된 지문(사용자 ID)
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+0. BioStar/SDK > User Enroll
+1. User> Add User
+2. 기 등록된 Finger/Face/Card 입력 > Apply
+
+데이터 (Data)
+1:N, 1:1 User Transfer
+> Finger, Face, Card
+> 1:N Max
+> 1:1 Max
+
+예상 결과 (Expected Result)
+1. 기 등록된 동일 사용자가 아닌 다른 사용자에 지문/얼굴/카드 등록 시 중복으로 등록 실패가 되어야 한다.
+> 1:N Max 초과 시 등록 실패는 기존 처럼 동작
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1. User> Add User
+2. 기 등록된 Finger/Face/Card 입력 > Apply
+
+데이터 (Data)
+1:N, 1:1 Full Enroll
+> Matching Timeout 무시
+> 1:N 수 만큼 중복 검사/1:1 시점에서는 중복 검사 안함
+
+예상 결과 (Expected Result)
+1. 중복 검사의 종료 시 동작은 아래와 같다.
+>  Matching TimeOut을 무시하고, 등록된 1:N 사용자에 대해서 모두 검사하고, 처음 매칭된 사용자의 지문/얼굴에 대해서 검색이 되면 중복 팝업 후 검사 중지
+------------------------------------------------------------

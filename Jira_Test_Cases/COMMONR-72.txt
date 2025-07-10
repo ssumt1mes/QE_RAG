@@ -1,0 +1,59 @@
+■ 이슈 키: COMMONR-72
+■ 제목: Reset
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. DEVICE> 장치상세정보창 진입
+2. Restore to default: All 선택
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Config 초기화되고, 장치 Reboot된다.
+> 사용자, 로그는 그대로 유지 하고, 설정에 대해서 일부 항목은 유지 및 기본값으로 초기화 된다.
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. DEVICE> 장치상세정보창 진입
+2. Restore to default: All 선택
+3. 초기화된 항목확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+기본값으로 복원한다.
+1. Wiegand Config
+2. Triggered Action Config
+3. 장치잠금/통신잠금
+4. User ID Type
+> Station: Number
+5. 스케줄 Config
+6. 출입문 Config
+7. 출입그룹 Config
+8. 구역정보 Config
+9. 그룹매칭 Config
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. DEVICE> 장치상세정보창 진입
+2. Restore to default: All 선택
+3. 초기화되지 않는 설정값 확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+일부 항목들은 기본값 복원시 이전 설정값을 그대로 유지한다.
+1. 시간처리(Time Zone) 
+2. 언어/리소스
+3. Blacklist
+4. User ID Type
+> Entry Device(XPASS/XPS2)
+5. 통신 보안
+6. Secure Tamper
+------------------------------------------------------------

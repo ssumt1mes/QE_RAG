@@ -1,0 +1,67 @@
+■ 이슈 키: COMMONR-321
+■ 제목: [FISF-2213] User Transfer 시 Warp Image Convert 이슈에 대한 재발방지대책
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+[Csase 1]
+1. FSF2_V1.x.x / BS3_V1.1.1 장치 연결
+2. FSF2 > Menu > USER > Add User > Visual Face User Enroll
+3. BioStar_V2.9.x >   
+DEVICE > FSF2_V1.x.x > Manage Users in Device > User Select & Upload
+4. BioStar_V2.9.x > 
+USER > User Select > User Transfer > BS3 V1.1.1
+5. 결과 확인
+
+데이터 (Data)
+BioStar V2.9.x
+> FSF2_V1.x.x_User Upload
+
+예상 결과 (Expected Result)
+1. BioStar_V2.9.x에서 FSF2_V1.x.x에 등록된 사용자를 업로드하여 BS3_V1.1.1에 전송 시 오동작 없이 정상 동작이 되어야 한다.
+> 장치 먹통 / 재부팅이 없는 지 확인
+> 사용자가 정상 등록이 되는 지 확인
+> 등록된 사용자로 인증이 되는 지 확인
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+[Csase 2]
+1. BS3_V1.1.1 장치 연결
+2. BioStar_V2.9.x > 
+USER > Add User > Visual Face > Upload Image > User Enroll
+3. BioStar_V2.9.x >
+USER > User Select > User Transfer > BS3 V1.1.1
+4. 결과 확인
+
+데이터 (Data)
+BioStar V2.9.x
+> Upload Image
+
+예상 결과 (Expected Result)
+1. BioStar_V2.9.x에 Image(사진)를 업로드하여 BS3_V1.1.1에 전송 시 오동작 없이 정상 동작이 되어야 한다.
+> 장치 먹통 / 재부팅이 없는 지 확인
+> 사용자가 정상 등록이 되는 지 확인
+> 등록된 사용자로 인증이 되는 지 확인
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+[Csase 3]
+1. FSF2_V1.x.x / BS3_V1.1.1 장치 연결
+2. BioStar_V2.9.x > 
+USER > Add User > Visual Face > FSF2_V1.x.x > Scan > User Enroll
+3. BioStar_V2.9.x >
+USER > User Select > User Transfer > BS3 V1.1.1
+4. 결과 확인
+
+데이터 (Data)
+BioStar V2.9.x
+> FSF2_V1.x.x Scan Face
+
+예상 결과 (Expected Result)
+1. Biostar_V2.9.x에서 FSF2_V1.x.x장치를 이용하여 등록된 사용자를 BS3_V1.1.1에 전송 시 오동작 없이 정상 동작이 되어야 한다.
+> 장치 먹통 / 재부팅이 없는 지 확인
+> 사용자가 정상 등록이 되는 지 확인
+> 등록된 사용자로 인증이 되는 지 확인
+------------------------------------------------------------

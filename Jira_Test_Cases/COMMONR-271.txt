@@ -1,0 +1,87 @@
+■ 이슈 키: COMMONR-271
+■ 제목: [FISF-1556] FW Upgrade 후 부팅이 이루어진 경우 통신이상 유무에 대한 재발방지 TestCase
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. 두 대의 장치를 이더넷으로 연결
+2. 최신 FW로 Upgrade
+3. 두 대의 장치를 RS485로 구성
+4. Master 장치 Reboot
+5. Master 부팅완료 후 통신상태 확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Master 부팅 후 Slave와의 통신에 이상이 없어야 한다.
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. 두 대의 장치를 이더넷으로 연결
+2. 최신 FW로 Upgrade
+3. 두 대의 장치를 RS485로 구성
+4. Slave 장치 Reboot
+5. Slave 부팅완료 후 통신상태 확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Slave 부팅 후 Master와의 통신에 이상이 없어야 한다.
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. 두 대의 장치를 이더넷으로 연결
+2. 최신 FW로 Upgrade
+3. 두 대의 장치를 RS485로 구성
+4. Master/Slave 장치 Reboot
+5. Master/Slave 부팅완료 후 통신상태 확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Master/Slave 부팅 후 RS485 통신에 이상이 없어야 한다.
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1. Master-Slave 연결
+2. Master/Slave FW Upgrade
+3. Master Reboot
+4. Master 부팅완료 후 통신상태 확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Master 부팅 후 Slave와의 통신에 이상이 없어야 한다.
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1. Master-Slave 연결
+2. Master/Slave FW Upgrade
+3. Slave Reboot
+4. Slave 부팅완료 후 통신상태 확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Slave 부팅 후 Master와의 통신에 이상이 없어야 한다.
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1. Master-Slave 연결
+2. Master/Slave FW Upgrade
+3. Master/Slave Reboot
+4. Master/Slave 부팅완료 후 통신상태 확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Master/Slave 부팅 후 RS485 통신에 이상이 없어야 한다.
+------------------------------------------------------------

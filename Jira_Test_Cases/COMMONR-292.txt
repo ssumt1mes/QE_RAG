@@ -1,0 +1,265 @@
+■ 이슈 키: COMMONR-292
+■ 제목: 카메라를 이용한 QR 인식 및 인증 지원 - 설정
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1.장치상세페이지> AUTHENTICATION> QR/Barcode
+2.Use QR/Barcode through Scanner: Enabled(default)
+3.Use QR/Barcode
+
+데이터 (Data)
+Q모델(QDPB/QAPB)
+
+예상 결과 (Expected Result)
+1. Enable,Disable 설정할 수 있다.
+(default: Disabled)
+2. 하위 메뉴로 Scanner Timeout이 노출된다.
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+[이하 CASE는 NoN-Q모델로 진행]
+1.장치상세페이지> AUTHENTICATION> QR/Barcode
+2. Use QR/Barcode through Scanner
+
+데이터 (Data)
+장치에 라이선스가 있는 경우
+
+예상 결과 (Expected Result)
+1. Enable,Disable 설정할 수 있다.
+(Default: Enable)
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1.장치상세페이지> AUTHENTICATION> QR/Barcode
+2. Use QR/Barcode through Scanner
+
+데이터 (Data)
+장치에 라이선스가 없는 경우
+
+예상 결과 (Expected Result)
+1. Enable,Disable 설정할 수 없다.
+(Default: Disable)
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1.장치상세페이지> AUTHENTICATION> QR/Barcode
+2.Use QR/Barcode through Scanner:Disable
+3.카메라 센서에 QR 입력
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+XS2
+1.하위 메뉴가 비활성화 된다.
+- Camera Timeout, Motion Sensor,Use QR as Card
+
+2. QR Preview 화면이 미노출된다.
+
+BS3
+1. Use QR as Card 비활성화
+2. QR 인증 되지 않음
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1.장치상세페이지> AUTHENTICATION> QR/Barcode
+2.Use QR/Barcode through Scanner:Enable
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+XS2
+1. 하위 메뉴가 활성화된다.
+- Camera Timeout, Motion Sensor,Use QR as Card (영문)
+- 카메라 대기 시간, 모션 센서 감도, 카드를 QR로 인증하기(국문)
+
+BS3
+1. Use QR as Card 활성화
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1.장치상세페이지> AUTHENTICATION> QR/Barcode
+2.Use QR/Barcode through Scanner:Enable
+3.Camera 센서에 QR입력
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Camera Preview 영역에 QR Preview 화면이 출력된다.
+- 상단 아이콘 영역: 메뉴 버튼,시계, X버튼
+- 카메라 프리뷰 영역(중앙): Camera QR 스캔 가이드 표시
+- 카메라 프리뷰 영역(하단): ID아이콘, 근태 아이콘 노출
+- 하단에 안내 문구 노출 확인:Input Fingerprint / Card / ID (EN) | 지문 / 카드 / ID를 입력하십시오. (KO)
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+1.장치상세페이지> AUTHENTICATION> QR/Barcode
+2.Use QR/Barcode through Scanner:Enable
+3. Camera Timeout 값 설정 > Apply
+4. Camera 센서에 모션 입력
+5. Preview 화면이 설정된 Scan Timeout만큼 출력 후 사라지는지 확인
+
+데이터 (Data)
+QR/Barcode Camera Timeout
+:3 ~ 20초(default:10초)
+
+예상 결과 (Expected Result)
+1. 설정한 Camera Timeout으로 동작한다.
+- Camera Preview 영역에 QR Preview 화면이 출력되고 이후 Timeout으로 동작
+------------------------------------------------------------
+[Step 8]
+스텝 (Step)
+1. 장치상세페이지> AUTHENTICATION> Use QR/Barcode through Scanner: Enable
+2. Motion Sensor:Low/Medium/High 선택
+3. Camera 센서에 QR 입력
+4. QR 입력
+
+데이터 (Data)
+Motion Sensor
+>Low/Medium/High
+(default:Medium)
+
+예상 결과 (Expected Result)
+1. 모션을 감지해서 QR Preview 화면이 출력된다.
+* 모션 설정이 High에 가까울수록 먼 거리에서 움직이는 물체에 대한 감지가 더 잘 됨
+
+2. 입력된 QR에 대한 인증 결과가 노출된다.
+------------------------------------------------------------
+[Step 9]
+스텝 (Step)
+1.장치상세페이지> AUTHENTICATION> QR/Barcode
+2. Use QR/Barcode through Scanner: Enable
+3. Use QR as Card
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Enable,Disable 설정할 수 있다.
+(Default: Disabled)
+------------------------------------------------------------
+[Step 10]
+스텝 (Step)
+1.장치상세페이지> AUTHENTICATION> QR/Barcode
+2. Use QR/Barcode through Scanner: Enable/Disable
+3. Use QR as Card: Enable/Disable
+4. Camera Timeout 값 설정
+5. Motion Sensor:Low/Medium/High 선택
+6. Apply
+7. 장치 Reboot
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 장치가 재부팅되어도 설정값은 유지된다.
+------------------------------------------------------------
+[Step 11]
+스텝 (Step)
+[QR -> CSN 등록]
+1. 메뉴>AUTHENTICATION>QR/Barcode Operation
+2. Use QR/Barcode: Enable
+3. Use QR as Card: Enable
+
+데이터 (Data)
+Card Type
+>CSN/Wiegand
+Card Format Type
+>Normal
+
+예상 결과 (Expected Result)
+1. 사용자에 등록된 CSN/Wiegand 카드 값과 QR값이 동일할 경우 인증이 허용된다.
+- 발급된 카드 ID(10진수값)와 동일하게 QR 생성 후 인증
+(ex: 등록된 Wiegnad 카드 51-235 -> 3342571로 QR 발급)
+------------------------------------------------------------
+[Step 12]
+스텝 (Step)
+[QR -> CSN 등록]
+1. 메뉴>AUTHENTICATION>QR/Barcode Operation
+2. Use QR/Barcode: Enable
+3. Use QR as Card: Disable
+
+데이터 (Data)
+Card Type
+>CSN/Wiegand
+Card Format Type
+>Normal
+
+예상 결과 (Expected Result)
+1. 사용자에 등록된 CSN/Wiegand 카드 값과 QR값이 동일할 경우 인증이 실패된다.
+- 발급된 카드 ID(10진수값)와 동일하게 QR 생성 후 인증
+(ex: 등록된 Wiegnad 카드 51-235 -> 3342571로 QR 발급)
+------------------------------------------------------------
+[Step 13]
+스텝 (Step)
+[QR/Barcode 등록]
+1. 메뉴>AUTHENTICATION>QR/Barcode Operation
+2. Use QR/Barcode: Enable
+3. Use QR as Card: Disable
+
+데이터 (Data)
+Card Format Type
+>Normal / Wiegand
+
+예상 결과 (Expected Result)
+1. 사용자에 등록된 QR값이 CSN/Wiegand와 동일할 경우 인증이 성공한다.
+-QR : 159753 
+>DIAG LOG: Normal(54104662947123]) / Wiegand(54104662947123)
+------------------------------------------------------------
+[Step 14]
+스텝 (Step)
+[QR/Barcode 등록]
+
+1. 메뉴>AUTHENTICATION>QR/Barcode Operation
+2. Use QR/Barcode: Enable
+3. Use QR as Card: Enable
+
+데이터 (Data)
+Card Format Type
+>Normal / Wiegand
+
+예상 결과 (Expected Result)
+1. 기존 QR card type 으로 등록된 카드의 경우 data 가 동일하다고 하여도 인증 실패로 처리
+*  type 이 다르므로 인증 실패로 처리
+------------------------------------------------------------
+[Step 15]
+스텝 (Step)
+[QR -> CSN 등록]
+1. 메뉴>AUTHENTICATION>QR/Barcode Operation
+2. Use QR/Barcode: Enable
+3. Use QR as Card: Enable
+
+데이터 (Data)
+Card Type
+>CSN/Wiegand
+Card Format Type
+>Wiegand / 26bit
+
+예상 결과 (Expected Result)
+1. 사용자에 등록된 CSN/Wiegand 카드 값과 QR값이 동일할 경우 인증이 성공한다.
+- 발급된 카드 ID(10진수값)와 동일하게 QR 생성 후 인증
+> 159753 -> 2-28681
+------------------------------------------------------------
+[Step 16]
+스텝 (Step)
+[QR -> CSN 등록]
+1. 메뉴>AUTHENTICATION>QR/Barcode Operation
+2. Use QR/Barcode: Enable
+3. Use QR as Card: Disable
+
+데이터 (Data)
+Card Type
+>CSN/Wiegand
+Card Format Type
+>Wiegand / 26bit
+
+예상 결과 (Expected Result)
+1. 사용자에 등록된 CSN/Wiegand 카드 값과 QR값이 동일할 경우 인증이 실패한다.
+- 발급된 카드 ID(10진수값)와 동일하게 QR 생성 후 인증
+> 159753 -> 2-28681
+------------------------------------------------------------

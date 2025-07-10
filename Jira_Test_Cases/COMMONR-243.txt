@@ -1,0 +1,47 @@
+■ 이슈 키: COMMONR-243
+■ 제목: [Max User Info] Manage Users in Device User_Credential Number(Face, Finger, Card Number) Display
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+<지원 장치>
+1. BioStar> Device> Manage Users in Device 선택
+
+데이터 (Data)
+기준(지문, 얼굴, 카드)
+> 1:N - 지문 1지, Face 1얼굴
+> 1:1 - 카드 1장
+
+예상 결과 (Expected Result)
+1. 장치에 저장된 사용자/지문/얼굴/카드 정보가 출력된다.
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+<지원 장치>
+1. BioStar> Device> Manage Users in Device 선택
+2. 사용자 선택 후 삭제
+3. 출력되는 사용자수 및 크리덴셜 정보 확인
+
+데이터 (Data)
+기준(지문, 얼굴, 카드)
+> 1:N - 지문 1지, Face 1얼굴
+> 1:1 - 카드 1장
+
+예상 결과 (Expected Result)
+1. 삭제후 장치에 존재하는 전체 사용자/얼굴/지문/카드 정보가 출력된다.
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+<미지원 장치>
+1. BioStar> Device> Manage Users in Device 선택
+
+데이터 (Data)
+기준(지문, 얼굴, 카드)
+> 1:N - 지문 1지, Face 1얼굴
+> 1:1 - 카드 1장
+
+예상 결과 (Expected Result)
+1. 상단에 전체 사용자 수가 출력 되지 않는다.
+------------------------------------------------------------

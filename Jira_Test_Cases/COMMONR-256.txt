@@ -1,0 +1,98 @@
+■ 이슈 키: COMMONR-256
+■ 제목: XPD2의 추가된 Device Type 지원
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. Master - D2 Revision 모델 RS485 연결
+2. Slave 검색 및 추가
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 검색이되고 추가된다.
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. Master - XPD2 RS485 추가된 상태
+2. D2 상세정보페이지 진입
+3. 장치정보 및 Config 확인
+4. Config 변경 후 저장
+5. 적용유무 확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 장치 정보 및 Config값이 정상표시된다.
+2. 변경한 Config에 대해서는 정상적으로 적용된다.
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. Master - D2 & D2 Revision 모델 RS485 연결
+2. Slave 검색 및 추가
+3. 장치정보 확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 연결된 모든 장치가 검색되고 추가된다.
+2. 추가된 장치의 정보가 정상적으로 표시된다.
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1. Master - D2 Revision 모델 RS485 연결
+2. Slave 검색 및 추가
+3. Micom FW Upgrade 시도
+
+데이터 (Data)
+Micom FW Upgrade
+> D2 FW
+
+예상 결과 (Expected Result)
+1. D2 FW로 Upgrade가 되지 않는다.
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1. Master - D2 Revision 모델 RS485 연결
+2. Slave 검색 및 추가
+3. Micom FW Upgrade 시도
+
+데이터 (Data)
+Micom FW Upgrade
+> D2 Rev FW
+
+예상 결과 (Expected Result)
+1. FW Upgrade가 정상적으로 이루어져야 한다.
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1. Master - D2 Revision 모델 RS485 연결
+2. Slave 검색 및 추가
+3. BLE FW Upgrade 시도
+
+데이터 (Data)
+BLE FW Upgrade
+> D2 BLE FW
+
+예상 결과 (Expected Result)
+1. D2 BLE FW로 Upgrade가 되지 않는다.
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+1. Master - D2 Revision 모델 RS485 연결
+2. Slave 검색 및 추가
+3. BLE FW Upgrade 시도
+
+데이터 (Data)
+BLE FW Upgrade
+> D2 Rev BLE FW
+
+예상 결과 (Expected Result)
+1. FW Upgrade가 정상적으로 이루어져야 한다.
+> BLE Upgrade 중 카드입력이 막힌다.
+------------------------------------------------------------

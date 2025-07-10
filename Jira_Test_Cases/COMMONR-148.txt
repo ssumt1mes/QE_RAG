@@ -1,0 +1,21 @@
+■ 이슈 키: COMMONR-148
+■ 제목: Stress Test - Wiegand In/Out 동작
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. Wiegand Out 장치에 카드연속인증 FW 를 업그레이드
+2. Wiegand Out 장치에 카드 부착
+3. Wiegand In/Out 동작 횟수 확인
+
+데이터 (Data)
+Mifare
+HID(Prox,iClass)
+EM
+Smart Card(AOC, SOC)
+
+예상 결과 (Expected Result)
+Out에서 입력된 인증횟수와 Wiegand In 동작횟수가 동일해야 한다.
+------------------------------------------------------------

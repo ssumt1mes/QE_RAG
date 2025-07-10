@@ -1,0 +1,20 @@
+■ 이슈 키: COMMONR-274
+■ 제목: [FISF-1471] 재발방지 TestCase
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. Android 제품군의 USB Port에 장치 부팅 후 USB KeyBoard/Mouse등을 연결하여 특정 Key 조합 입력
+
+데이터 (Data)
+장치 Security
+
+커널 USB Keyboard 제거(V1.0.1)
+HID, RNDIS, PTP, AUDIO, MIDI, USB Serial(V1.0.2 모두 제거)
+
+예상 결과 (Expected Result)
+1. Android 제품군의 USB Port에 장치 부팅 후 USB KeyBoard/Mouse등을 연결하여 특정 Key 조합으로 설정 화면으로 진입 못하는 지 확인 한다.
+> 개발자 검증으로 대체
+------------------------------------------------------------

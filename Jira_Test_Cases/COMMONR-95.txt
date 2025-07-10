@@ -1,0 +1,266 @@
+■ 이슈 키: COMMONR-95
+■ 제목: Monitoring - Door Status
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+<장치간 RS485 연결>
+1. Door> Add Door> Door 생성
+2. Monitoring> Door Status> Open 버튼 클릭
+3. Open time대로 동작되는지 확인
+
+데이터 (Data)
+Door 생성시 Open Time 확인
+: 3초/5초/10초/15초/30초/1분/3분/5분/10분/15분
+
+예상 결과 (Expected Result)
+Open 클릭시 Unlocked으로 동작되어야 하고, 설정된 Open time이 지나면 다시 Locked으로 동작되어야 한다.
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+[Door 생성]
+1. Monitoring> Door Status> Open 버튼 클릭
+2. Biostar2 Log 확인
+
+데이터 (Data)
+[BDP-518]
+
+예상 결과 (Expected Result)
+1. Door에 설정된 Open Time 만큼 Unlocked 으로 동작된다.
+> 국문: 관리자에 의한 출입문 개방요청
+> 영문: Door open request by operator
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. Door> Add Door> Door 생성
+2. Monitoring> Door Status> Manual Unlock 버튼 클릭> Door 상태 확인(Unlock)
+3. Release 버튼 클릭> Door 상태확인(Lock)
+4. 장치 Reboot
+5. 부팅완료 후 Door 상태확인
+
+데이터 (Data)
+Door 생성
+> 단일장치
+> RS485 연결장치
+> Master-Wiegand Reader 연결장치
+> Master-Slave/DM20-Wiegand Reader 연결장치
+
+예상 결과 (Expected Result)
+부팅완료 후 Lock 상태를 유지해야 한다.
+> 로그확인 및 부팅시  Relay 미발생 확인
+> Door unlock request by operator / Door unlocked
+> Door release request by operator / Door locked
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1. Door> Add Door> Door 생성
+2. Monitoring> Door Status> Manual Lock 버튼 클릭> Door 상태 확인(Lock)
+3. Release 버튼 클릭> Door 상태확인
+4. 장치 Reboot
+5. 부팅완료 후 Door 상태확인
+
+데이터 (Data)
+Door 생성
+> 단일장치
+> RS485 연결장치
+> Master-Wiegand Reader 연결장치
+> Master-Slave/DM20-Wiegand Reader 연결장치
+
+예상 결과 (Expected Result)
+부팅완료 후 인증시 Unlock으로 동작후 Open Time이 지나면 Lock으로 동작되어야 한다.
+> 로그확인 및 부팅시 Relay 미발생, 인증 시 Relay 발생 확인
+> Manual Lock/Unlock시 Door Status Type이 Operator Lock/Unlock으로 표시되어야 한다.
+> Door lock request by operator / Door locked
+> Door release request by operator / Door locked
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1. Door> Add Door> Door 생성
+2. Monitoring> Door Status> Manual Unlock 버튼 클릭> Door 상태 확인(Unlock)
+
+데이터 (Data)
+Door 생성
+> 단일장치
+> RS485 연결장치
+> Master-Wiegand Reader 연결장치
+> Master-Slave/DM20-Wiegand Reader 연결장치
+
+예상 결과 (Expected Result)
+1. Door가 Unlock 상태를 유지해야한다.
+2. Unlock 로그만 발생한다.
+> Manual Lock/Unlock시 Door Status Type이 Operator Lock/Unlock 으로 표시되어야 한다.
+3. 로그 확인
+> Door unlock request by operator / Door unlocked
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1. Door> Add Door> Door 생성
+2. Monitoring> Door Status> Manual Lock 버튼 클릭> Door 상태 확인
+
+데이터 (Data)
+Door 생성
+> 단일장치
+> RS485 연결장치
+> Master-Wiegand Reader 연결장치
+> Master-Slave/DM20-Wiegand Reader 연결장치
+
+예상 결과 (Expected Result)
+1. Door가 Lock 상태를 유지해야한다.
+2. Lock 로그만 발생한다.
+> Manual Lock/Unlock시 Door Status Type이 Operator Lock/Unlock으로 표시되어야 한다.
+> Door lock request by operator / Door locked
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+[사용자 인증에 의한 시작: 비활성화]
+1. Schedule Unlock으로 동작중
+2. Manual Lock
+3. Master Reboot
+4. Door Status> 상태확인 및 동작확인
+
+데이터 (Data)
+사용자 인증에 의한 시작
+Zone > Add Zone > Scheduled Unlock > Started by User Authentication
+
+예상 결과 (Expected Result)
+1. Manual Lock으로 동작된다.
+> 로그상 Schedule Unlock, Manual Lock으로 표시
+2. 로그 확인
+> Scheduled unlock zone started(Door)
+> Door unlock request by schedule
+> Door unlocked
+------------------------------------------------------------
+[Step 8]
+스텝 (Step)
+[사용자 인증에 의한 시작: 비활성화]
+1. Schedule Unlock으로 동작중
+2. Manual Lock
+3. Master Reboot
+4. Door Status> 해제
+5. 동작확인
+
+데이터 (Data)
+사용자 인증에 의한 시작
+Zone > Add Zone > Scheduled Unlock > Started by User Authentication
+
+예상 결과 (Expected Result)
+1. Schedule Unlock으로 동작된다.
+------------------------------------------------------------
+[Step 9]
+스텝 (Step)
+[사용자 인증에 의한 시작: 활성화]
+1. Schedule Unlock으로 동작중
+2. Manual Lock
+3. Master Reboot
+4. Door Status> 상태확인 및 동작확인
+
+데이터 (Data)
+사용자 인증에 의한 시작
+Zone > Add Zone > Scheduled Unlock > Started by User Authentication
+
+예상 결과 (Expected Result)
+1. Manual Lock으로 동작된다.
+> 로그상 Manual Lock으로 표시
+------------------------------------------------------------
+[Step 10]
+스텝 (Step)
+[사용자 인증에 의한 시작: 활성화]
+1. Schedule Unlock으로 동작중
+2. Manual Lock
+3. Master Reboot
+4. Door Status> 해제
+5. 동작확인
+
+데이터 (Data)
+사용자 인증에 의한 시작
+Zone > Add Zone > Scheduled Unlock > Started by User Authentication
+
+예상 결과 (Expected Result)
+1. Relay Off로 유지된다.
+> 로그상 Normal로 표시
+------------------------------------------------------------
+[Step 11]
+스텝 (Step)
+[사용자 인증에 의한 시작: 활성화]
+1. Schedule Unlock으로 동작중
+2. Manual Lock
+3. Master Reboot
+4. Door Status> 해제
+5. 인증 후 동작확인
+
+데이터 (Data)
+인증
+> Schedule Unlock Zone의 Access Group에 속하지 않은 사용자
+
+예상 결과 (Expected Result)
+1. Open Time만큼 Relay On되었다가 Relay Off로 동작한다.
+------------------------------------------------------------
+[Step 12]
+스텝 (Step)
+[사용자 인증에 의한 시작: 활성화]
+1. Schedule Unlock으로 동작중
+2. Manual Lock
+3. Master Reboot
+4. Door Status> 해제
+5. 인증 후 동작확인
+
+데이터 (Data)
+인증
+> Schedule Unlock Zone의 Access Group에 속한 사용자
+
+예상 결과 (Expected Result)
+1. Unlock을 유지한다.
+------------------------------------------------------------
+[Step 13]
+스텝 (Step)
+1. Schedule Lock으로 동작중
+2. Manual Unlock
+3. Master Reboot
+4. Door Status> 상태확인 및 동작확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Manual Unlock으로 동작된다.
+ > 로그상 Schedule Lock, Manual Unlock으로 표시
+ > 인증 시 Schedule Lock에 의해 Alarm 발생
+ 2. 로그 확인
+ > Scheduled lock zone started
+ > Door lock request by schedule
+ > Door locked
+------------------------------------------------------------
+[Step 14]
+스텝 (Step)
+1. Schedule Lock으로 동작중
+2. Manual Unlock
+3. Master Reboot
+4. Door Status> 해제
+5. 동작확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Schedule Lock으로 동작된다.
+------------------------------------------------------------
+[Step 15]
+스텝 (Step)
+1. Door> Add Door> Door 생성
+2. Monitoring> Door Status> Manual Unlock 버튼 클릭> Door 상태 확인(Unlock)
+3. Master Reboot
+4. Door Status 확인 및 인증 후 동작 확인
+
+데이터 (Data)
+Door 생성 - Relay(Master)
+> 단일장치
+> RS 485 연결 장치
+
+예상 결과 (Expected Result)
+1. Door가 Unlock 상태를 유지해야한다.
+2. Unlock 로그만 발생한다.
+> Manual Lock/Unlock시 Door Status Type이 Operator Lock/Unlock으로 표시되어야 한다.
+> 경광등 연결하여 Relay On 동작 확인
+------------------------------------------------------------

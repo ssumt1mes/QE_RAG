@@ -1,0 +1,118 @@
+■ 이슈 키: COMMONR-156
+■ 제목: 출입문 - Device Sound Outoput(AutoTest Tool용)
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. Door> 장치선택> Door Relay/ExitButton/DoorSensor 설정
+2. Forced Open Alarm> 장치ID & Index 입력
+3. ActionType: Relay 선택> Stop Flag: Door Closed 선택
+4. Relay 항목 설정 후 Add> 확인
+5. 해당 Config를 장치로 전송
+6. Forced Open을 발생시켜 동작확인
+
+데이터 (Data)
+RS485 구성한 상태에서 모두 확인
+> Master
+> Slave(장치)
+> DM20
+> SIO2
+
+예상 결과 (Expected Result)
+1. Forced Open Alarm 이 발생하게 되면 Relay(=Output Signal)가 설정한대로 동작한다.
+2. Alarm이 발생하는 도중 Door Closed시 Alarm Clear가 된다.
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. Door> 장치선택> Door Relay/ExitButton/DoorSensor 설정
+2. Forced Open Alarm> 장치ID & Index 입력
+3. ActionType: LED 선택> Stop Flag: Door Closed 선택
+4. LED 항목 설정 후 Add> 확인
+5. 해당 Config를 장치로 전송
+6. Forced Open을 발생시켜 동작확인
+
+데이터 (Data)
+RS485 구성한 상태에서 모두 확인
+> Master
+> Slave(장치)
+
+예상 결과 (Expected Result)
+1. Forced Open Alarm 이 발생하게 되면 LED가 설정한대로 동작한다.
+2. Alarm이 발생하는 도중 Door Closed시 Alarm Clear가 된다.
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. Door> 장치선택> Door Relay/ExitButton/DoorSensor 설정
+2. Forced Open Alarm> 장치ID & Index 입력
+3. ActionType: Buzzer 선택> Stop Flag: Door Closed 선택
+4. Buzzer 항목 설정 후 Add> 확인
+5. 해당 Config를 장치로 전송
+6. Forced Open을 발생시켜 동작확인
+
+데이터 (Data)
+RS485 구성한 상태에서 모두 확인
+> Master
+> Slave(장치)
+
+예상 결과 (Expected Result)
+1. Forced Open Alarm 이 발생하게 되면 Buzzer가 설정한대로 동작한다.
+2. Alarm이 발생하는 도중 Door Closed시 Alarm Clear가 된다.
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1. Door> 장치선택> Door Relay/ExitButton/DoorSensor 설정
+2. Held Open Alarm> 장치ID & Index 입력
+3. ActionType: Relay 선택> Stop Flag: Door Closed 선택
+4. Relay 항목 설정 후 Add> 확인
+5. 해당 Config를 장치로 전송
+6. Held Open을 발생시켜 동작확인
+
+데이터 (Data)
+RS485 구성한 상태에서 모두 확인
+> Master
+> Slave(장치)
+> DM20
+> SIO2
+
+예상 결과 (Expected Result)
+1. Held Open Alarm 이 발생하게 되면 Relay(=Output Signal)가 설정한대로 동작한다.
+2. Alarm이 발생하는 도중 Door Closed시 Alarm Clear가 된다.
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1. Door> 장치선택> Door Relay/ExitButton/DoorSensor 설정
+2. Held Open Alarm> 장치ID & Index 입력
+3. ActionType: LED 선택> Stop Flag: Door Closed 선택
+4. LED 항목 설정 후 Add> 확인
+5. 해당 Config를 장치로 전송
+6. Held Open을 발생시켜 동작확인
+
+데이터 (Data)
+RS485 구성한 상태에서 모두 확인
+> Master
+> Slave(장치)
+
+예상 결과 (Expected Result)
+1. Held Open Alarm 이 발생하게 되면 LED가 설정한대로 동작한다.
+2. Alarm이 발생하는 도중 Door Closed시 Alarm Clear가 된다.
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1. Door> 장치선택> Door Relay/ExitButton/DoorSensor 설정
+2. Held Open Alarm> 장치ID & Index 입력
+3. ActionType: Buzzer 선택> Stop Flag: Door Closed 선택
+4. Buzzer 항목 설정 후 Add> 확인
+5. 해당 Config를 장치로 전송
+6. Held Open을 발생시켜 동작확인
+
+데이터 (Data)
+RS485 구성한 상태에서 모두 확인
+> Master
+> Slave(장치)
+
+예상 결과 (Expected Result)
+1. Held Open Alarm 이 발생하게 되면 Buzzer가 설정한대로 동작한다.
+2. Alarm이 발생하는 도중 Door Closed시 Alarm Clear가 된다.
+------------------------------------------------------------

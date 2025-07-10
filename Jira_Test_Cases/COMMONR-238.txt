@@ -1,0 +1,91 @@
+■ 이슈 키: COMMONR-238
+■ 제목: Ethernet Zone - Fire Alarm Zone
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. SDK의 BSDemo.exe 실행
+2. SSL 설치 여부 설정> No
+> 기능 동작 확인으로 SSL 미설치
+3. 검증용 Device 연결 화면 표시> 2 선택
+> 장치의 IP/Port 입력
+
+데이터 (Data)
+BioStar 
+> User, Door, Access Group 사전 생성 및 장치 전송 완료
+
+예상 결과 (Expected Result)
+1. SDK 연동으로 검증용 Device 연결이 된다.
+> 미지원하는 장치는 연결 후 설정 시 'Can't connect to device(errorCode : BS_SDK_ERROR_CANNOT_FIND_DEVICE)' 발생함
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. Device 연결 완료
+2. Ethernet Zone Master Config 설정 화면 표시> 2 선택
+> Ethernet Zone Master 입력
+
+데이터 (Data)
+BioStar 
+> User, Door, Access Group 사전 생성 및 장치 전송 완료
+
+예상 결과 (Expected Result)
+1. Device Zone Master Config를 설정한다.
+2. Device Zone Master Config 설정 유무 및 정보 확인은 1번을 선택한다.
+> Enable : 1
+Default : 0 (Disable)
+> Listen Port : 51214
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. Device 연결 완료
+2. Ethernet Zone Config 설정 화면 표시> 4 선택
+> Fire Alarm Zone 입력
+
+데이터 (Data)
+BioStar 
+> User, Door, Access Group 사전 생성 및 장치 전송 완료
+
+예상 결과 (Expected Result)
+1. Device Zone Config를 설정한다.
+> Fire Alarm Zone
+2. 각 항목 입력 및 선택 한다.
+> 동일 장치 ID로 Master/Member 설정 가능
+3. Device Zone Fire Alarm Zone 설정 유무 및 정보 확인은 3번을 선택한다.
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+<장치간 RS485 연결/TCP 연결 => Door 구성>
+1. Device Zone> Fire Alarm Zone
+2. 각각의 항목 설정 후 저장
+3. Member의 Fire Alarm Input Sensor 접지> Fire Alarm 발생
+4. Master 장치 Reboot 시도> Reboot 후 동작 확인
+
+데이터 (Data)
+BioStar 
+> User, Door, Access Group 사전 생성 및 장치 전송 완료
+
+예상 결과 (Expected Result)
+1. FireAlarm이 발생된 경우, FireAlarm Zone에 설정된 출입문들에 대해 Unlocked 상태로 동작되어야 한다.
+> Event - Fire Alarm, Alarm, Unlocked
+2. Master가 재부팅 되는 경우, Fire Alarm은 유지 되어야 한다.
+> 발생되고 있는 Alarm Action 유지
+> Unlock 유지
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+<장치간 RS485 연결/TCP 연결 => Door 구성>
+1. Device Zone> Fire Alarm Zone
+2. 각각의 항목 설정 후 저장
+3. Member의 Fire Alarm Input Sensor 접지> Fire Alarm 발생
+4. Clear Alarm 시도
+
+데이터 (Data)
+BioStar 
+> User, Door, Access Group 사전 생성 및 장치 전송 완료
+
+예상 결과 (Expected Result)
+1. Fire Alarm이 해제되어야 하고, Locked 상태로 동작되어야 한다.
+> Event - Clear Alarm, Locked
+------------------------------------------------------------

@@ -1,0 +1,30 @@
+■ 이슈 키: COMMONR-3
+■ 제목: BioStar Server PC와의 시간 동기화
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+서버와 장치 시간을 다르게 변경한다.
+1. Device > 임의의 장치 선택 > Information > Time Synchronization with Server 체크 > Apply
+동작확인 한다.
+
+데이터 (Data)
+Time Zone 변경
+Display Date 변경 - 날짜, 시간
+Time Synchronization with Server - Check
+
+(off) DHCP Client Discovery TimeOut과는 별개
+LAN 연결 후 100초간 DHCP IP 할당 실패 시
+> 169.254.0.1 동작 확인
+3분 주기 재시도 시(장치 재부팅)
+> DHCP IP 할당 확인
+
+예상 결과 (Expected Result)
+BioStar Server 시간과 장치의 시간이 동기화 된다.
+ > 시간 차 : 3초 
+ > 주기 : Keep Alive 시간(30초)
+  : 최대 3분 이상(사용자 전송 시에는 시간 차가 더 많이 발생함)
+ > Time Zone : 동기화 대상 아님(Config 재설정)
+------------------------------------------------------------

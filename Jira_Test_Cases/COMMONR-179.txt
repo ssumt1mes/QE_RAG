@@ -1,0 +1,75 @@
+■ 이슈 키: COMMONR-179
+■ 제목: 사용자 - 개인정보 암호화 키 변경(수행X)
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. USER > ADD USER
+2. Information, Credential 입력 > Apply
+3. 장치로 사용자 전송
+
+데이터 (Data)
+[BioStar]- ADD NEW USER
+1. ID 유효 범위
+> Station : 1~32자 (FwAutoTest Tool 로 확인)
+> Entry : 1~4294967294
+> 숫자만 입력 가능
+2. Name 유효 범위 
+> Max : 48자
+> 한글, 영문, 숫자, 특문 입력 가능
+3. Period 유효 범위
+> 2001/01/01, 00:00 ~ 2030/12/31, 23:59
+4. Status 설정
+> Active/Inactive
+5. Access Group 설정
+> 17개 이상의 Access Group 생성된 상태
+> Access Group 생성은 출입그룹 Test Case 를 통해 확인
+6. PIN 유효 범위
+> 1~16자 입력 가능
+> Min : 4자 이상
+> ***** 표시
+7. Auth Mode 설정
+> Private Mode/Device Default
+8. Private Mode 설정 
+> 지문 : 지문, 지문+PIN
+> 카드 : 카드, 카드+지문, 카드+PIN, 카드+지문/PIN, 카드+지문+PIN
+> ID : ID+지문, ID+PIN, ID+지문/PIN, ID+지문+PIN
+9. Credential 관련 설정
+> Fingerprint : Max 10지
+> Card : Max 8장
+= CSN (Mifare/EM/ISO15693/FeliCa/B Card), Wiegand (HID Prox/iClass/iClass SE/iClass SEOS), Access On Card, Secure Credential Card
+10. 1:1 Security Level 관련 설정
+> Device Default, Lowest, Low, Normal, High, Highest
+
+예상 결과 (Expected Result)
+1. 장치에서 BioStar 를 통해 입력한 Information, Credential이 정상적으로 표시되어야 한다.
+>  각 장치별로 개인 정보 암호화 키에 의해 암호화/복호화 이루어짐
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. Menu > User > 추가(+) / ADD User
+2. Credential 입력 > Apply
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 장치를 통해 입력한 Information, Credential이 정상적으로 표시되어야 한다.
+>  각 장치별로 개인 정보 암호화 키에 의해 암호화/복호화 이루어짐
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. Menu > Device > USB Memory
+2. Import > User 선택 > 확인
+3. 파일 선택 > 확인
+
+데이터 (Data)
+1. USB Memory 삽입된 상태
+2. USB Memory 에 Export 한 사용자(50만명) 존재
+
+예상 결과 (Expected Result)
+USB Memory 의 사용자가 이상없이 장치로 Import 된다.
+> 각 장치별로 개인 정보 암호화 키에 의해 암호화/복호화 이루어짐
+------------------------------------------------------------

@@ -1,0 +1,162 @@
+■ 이슈 키: COMMONR-58
+■ 제목: 장치 - Template Format
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. BioStar> Device> 단일 장치추가
+2. Setting> Server
+3. Fingerprint Template Format> Template Format 변경
+4. 사용자 정보 확인
+
+데이터 (Data)
+[BioStar]
+1. Automatic User Synchronization : OFF
+2. Template Format
+> Suprema(Default)
+> ISO 19794-2
+> ANSI-378
+
+예상 결과 (Expected Result)
+1. BioStar에 저장된 사용자의 지문정보만 삭제된다.
+2. 장치의 사용자 모두 삭제된다.
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. BioStar> Device> 단일 장치추가
+2. Setting> Server
+3. Fingerprint Template Format> Template Format 변경
+
+데이터 (Data)
+[BioStar]
+Template Format
+> Suprema
+> ISO 19794-2
+> ANSI-378
+
+예상 결과 (Expected Result)
+1. 장치의 Template Format이 변경되어야 한다.
+> BioStar와 Template Format이 다른 경우 상관 없음
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. BioStar> Device> Master/Slave 장치추가
+2. Setting> Server
+3. Fingerprint Template Format> Template Format 변경
+
+데이터 (Data)
+[BioStar]
+Template Format
+> Suprema
+> ISO 19794-2
+> ANSI-378
+
+예상 결과 (Expected Result)
+1. 연결된 모든 단말기 Template Format이 설정한대로 변경된다.
+> Master/Slave 모두
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+<BioStar의 Template Format과 장치 Template Format이 다른경우>
+1. BioStar> Device> Master/Slave 장치추가
+2. 장치의 상세정보창 진입
+
+데이터 (Data)
+[BioStar]
+Template Format
+> Suprema
+> ISO 19794-2
+> ANSI-378
+
+예상 결과 (Expected Result)
+1. 장치상세정보창 진입시 에러팝업 발생한다.
+> 덮어쓸 시 장치의 Template Format 변경되면서 사용자가 삭제된다.
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1. 장치의 지문이 있는 사용자를 BioStar 로 가져온다.
+
+데이터 (Data)
+[BioStar]
+1. 장치의 사용자와 BioStar 의 사용자가 다른 지문 템플릿인 경우
+2. Template Format
+> Suprema
+> ISO 19794-2
+> ANSI-378
+
+예상 결과 (Expected Result)
+1. 지문 정보를 제외한 정보만 가져온다.
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1. 장치의 지문이 없는 사용자를 BioStar 로 가져온다.
+
+데이터 (Data)
+[BioStar]
+1. 장치의 사용자와 BioStar 의 사용자가 다른 지문 템플릿인 경우
+2. Template Format
+> Suprema
+> ISO 19794-2
+> ANSI-378
+
+예상 결과 (Expected Result)
+1. 정상적으로 정보를 가져온다.
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+1. BioStar 의 지문이 있는 사용자를 장치로 내보낸다.
+
+데이터 (Data)
+[BioStar]
+1. 장치의 사용자와 BioStar 의 사용자가 다른 지문 템플릿인 경우
+2. Template Format
+> Suprema
+> ISO 19794-2
+> ANSI-378
+
+예상 결과 (Expected Result)
+1. 전송 실패가 발생한다.
+------------------------------------------------------------
+[Step 8]
+스텝 (Step)
+1. BioStar 의 지문이 없는 사용자를 장치로 내보낸다.
+
+데이터 (Data)
+[BioStar]
+1. 장치의 사용자와 BioStar 의 사용자가 다른 지문 템플릿인 경우
+2. Template Format
+> Suprema
+> ISO 19794-2
+> ANSI-378
+
+예상 결과 (Expected Result)
+1. 정상적으로 전송 및 등록이 된다.
+------------------------------------------------------------
+[Step 9]
+스텝 (Step)
+1. BioStar 에서 지문 템플릿이 다른 장치를 선택한다.
+
+데이터 (Data)
+[BioStar]
+1. 장치와 BioStar 의 지문 템플릿이 다른 경우
+
+예상 결과 (Expected Result)
+1. 템플릿 오류 팝업이 1회 발생한다.
+(팝업 내용 : Fingerprint template does not match. Existing fingerprint template data will be erased. Continue??)
+2. 장치에 사용자 존재 시 팝업이 1회 발생하고, 장치의 사용자(Finger Template) 삭제 및 BioStar의 Template Format으로 변경된다.
+------------------------------------------------------------
+[Step 10]
+스텝 (Step)
+1. BioStar 에서 지문 템플릿이 다른 장치를 선택한다.
+2. 지문이 다른 장치를 이용하여 사용자에 지문 등록을 한다.
+
+데이터 (Data)
+[BioStar]
+1. 장치와 BioStar 의 지문 템플릿이 다른 경우
+
+예상 결과 (Expected Result)
+1. 사용자 지문 등록 시 1st, 2nd 입력 후 Error가 발생하면서 등록이 실패한다.
+> Failed to verify fingerprint. (1015)
+------------------------------------------------------------

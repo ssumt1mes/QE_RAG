@@ -1,0 +1,319 @@
+■ 이슈 키: COMMONR-75
+■ 제목: 통신 - TCP/IP
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. DEVICE > Device List > Device 선택 > Device 상세 정보 > Network > TCP/IP
+
+데이터 (Data)
+BioStar 연결된 상태 - 고정, 유동
+1. Use DHCP
+2. IP Address
+3. Subnet Mask
+4. Gateway
+5. Device Port
+
+예상 결과 (Expected Result)
+1. DHCP Check 시 IP Address, Subnet Mask, Gateway가 비활성화된 상태에서 표시된다.
+2. DHCP Uncheck 시 IP Address, Subnet Mask, Gateway가 활성화된 상태에서 표시된다.
+3. Device Port는 항시 활성화된 상태로 표시가 된다.
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. DEVICE > Device List > Device 선택 > Device 상세 정보 > Network > TCP/IP > Use DHCP : Check > Apply
+
+데이터 (Data)
+1. FIX(Static) Connection
+> DHCP 로 변경시 Static IP 와 다른 IP 를 할당받는 경우
+> DHCP 로 변경시 Static IP 와 동일한 IP 를 할당받는 경우 (DHCP 에서 자동으로 할당받은 IP 를 Static IP 에 입력, 이와 같은 경우 DHCP 로 변경시 동일한 IP 를 받아오는 설정을 할 수 있음)
+
+예상 결과 (Expected Result)
+1. Static IP 와 다른 IP 를 할당받은 경우 Device가 연결이 끊어진다.
+2. Static IP 와 동일한 IP 를 할당받은 경우 Device가 연결이 끊어지고 잠시 뒤 자동으로 연결이 되어 DHCP로 동작이 된다.
+> Device에 설정된 정보와 비교
+3. Device Port는 항상 활성화된 상태로 표시가 된다.
+> TCP, Ethernet, DHCP 로그가 남는다.
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. DEVICE > Device List > Device 선택 > Device 상세 정보 > Network > TCP/IP > Use DHCP : Check > Apply
+2. 장치에서 Lan Cable 탈착 > 장착
+3. 장치 전원 OFF > ON
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Lan Cable 탈착 후 장착시 정상적으로 IP 할당받아 연결되어야 한다.
+> 3분 이내에 IP 할당받아 연결되는지 확인
+2. 전원 OFF 후 ON 시 정상적으로 IP 할당받아 연결되어야 한다.
+> 3분 이내에 IP 할당받아 연결되는지 확인
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1. DEVICE > Device List > Device 선택 > Device 상세 정보 > Network > TCP/IP > Use DHCP : Uncheck
+2. IP Address, Gateway, Subnet Mask, Device Port 입력 > Apply
+
+데이터 (Data)
+1. DHCP Connection
+
+예상 결과 (Expected Result)
+1. Deivce가 연결이 끊어지고 잠시 뒤 자동으로 연결되어 Static으로 동작이 된다.
+> 자동 연결이 안된 경우 Reconnected 동작 확인
+2. 직접 입력한 IP Address, Gateway, Subnet Mask, Device Port, DNS Server Address 가 표시된다.
+= Device에 설정된 정보와 비교
+> TCP, Ethernet 로그가 남는다.
+> DNS 입력 후 BioStar 와 정상적으로 연결되는지 확인
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1. DEVICE > Device List > Device 선택 > Device 상세 정보 > Network > TCP/IP
+2. Support 100 BASE-T 설정 > Apply
+
+데이터 (Data)
+[Entry 계열]
+1. Support 100 BASE-T
+> Use
+> Not Use
+
+예상 결과 (Expected Result)
+1. 설정값이 바로 적용되어야 한다.
+2. Use 설정시 100 BASE-T 속도로 이더넷 네트워크에 연결한다.
+3. Not Use 설정시 10 BASE-T 속도로 이더넷 네트워크에 연결한다.
+[확인방법]
+보유중인 Switch Hub 에서 확인한다.
+> DS-2400, 10/100Mbps 24port Fast Ethernet Switch
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1. DEVICE > Device List > Device 선택 > Device 상세 정보 > Network > WLAN
+
+데이터 (Data)
+BioStar 연결된 상태 - 고정, 유동
+1. Use
+2. Operation Mode
+3. SSID
+4. Authorization Type
+5. Encryption Type
+6. Authorization Key
+
+예상 결과 (Expected Result)
+1. WLAN 사용 시 Use에 Check가 된 상태로 Operation Mode, SSID, Authorization Type, Encryption Type, Authorization Key가 비활성화된 상태로 표시된다.
+= TCP/IP에 AP로 받은 IP가 표시되는 지 Devcie와 비교
+2. WLAN 미사용 시 Use에 Uncheck가 된 상태로 Operation Mode, SSID, Authorization Type, Encryption Type, Authorization Key가 비활성화된 상태로 표시된다.
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+1. DEVICE > Device List > Device 선택 > Device 상세 정보 > Network > WLAN
+
+데이터 (Data)
+1. 장치의 Network 가 WiFi 연결되어 추가된 상태
+2. BioStar 는 WLAN ReadOnly
+
+예상 결과 (Expected Result)
+1. WLAN 사용 시 Use에 Check가 된 상태이다.
+2. Operation Mode, SSID, Authorization Type, Encryption Type, Authorization Key가 비활성화된 상태로 표시된다.
+= AP로 부터 부여 받은 정보가 표시됨
+3. TCP/IP 는 장치와 동일한 정보가 표시된다.
+=Device와 비교
+------------------------------------------------------------
+[Step 8]
+스텝 (Step)
+1. DEVICE > Device List > Device 선택 > Device 상세 정보 > Network > WLAN
+
+데이터 (Data)
+1. 장치의 Network 가 Lan cable 연결되어 추가된 상태
+2. BioStar 는 WLAN ReadOnly
+
+예상 결과 (Expected Result)
+1. WLAN 미사용 시 Use에 Uncheck가 된 상태이다.
+2. Operation Mode, SSID, Authorization Type, Encryption Type, Authorization Key가 비활성화된 상태로 표시된다.
+------------------------------------------------------------
+[Step 9]
+스텝 (Step)
+1. BioStar> 장치검색> 장치추가
+2. 장치에 전송시도
+2. 전송이 완료되지 않은 상태에서 BioStar 서버 종료
+3. 장치상태확인
+
+데이터 (Data)
+전송항목
+> 사용자 전송 or 동기화
+
+예상 결과 (Expected Result)
+1. 서버종료 전까지 사용자 전송 및 동기화가 이루어져야 한다.
+2. 서버 종료 이후에 장치Reboot이 발생되지 않아야 한다.
+------------------------------------------------------------
+[Step 10]
+스텝 (Step)
+1. BioStar에서 A 장치연결
+2. B 장치의 IP Address를 A 장치와 동일한 IP로 설정 후 유지
+3. 장치상태확인
+
+데이터 (Data)
+A 연결장치
+> 고정IP 설정
+
+예상 결과 (Expected Result)
+1. IP 충돌이 되지만 장치Reboot이 발생되지 않아야 한다.
+------------------------------------------------------------
+[Step 11]
+스텝 (Step)
+1. BioStar> 장치검색> 장치추가
+2. BioStar Setting 실행
+3. BioStar Server Stop/Start 10회 이상 On/Off 시도
+4. 장치상태 확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Reboot되지 않아야 한다.
+------------------------------------------------------------
+[Step 12]
+스텝 (Step)
+<BioStar에 장치연결된 상태>
+1. DHCP 서버로 연결된 외부 네트워크선 연결해제
+2. 20초~30초 후 네트워크선 재연결
+3. IP 할당 및 BioStar와의 연결확인
+
+데이터 (Data)
+연결된 장치 - DHCP 설정
+
+예상 결과 (Expected Result)
+1. DHCP로 IP를 받아와야 한다.
+2. BioStar와의 연결이 정상적으로 이루어져야 한다.
+> Ping 확인
+> BioStar와의 연결상태 확인
+------------------------------------------------------------
+[Step 13]
+스텝 (Step)
+1. 허브에 PC와 장치 연결
+2. 허브에 DHCP 서버로 연결된 외부 네트워크선을 연결
+3. BioStar에서 검색 및 추가 후 연결확인
+
+데이터 (Data)
+장치 - DHCP 설정
+
+예상 결과 (Expected Result)
+1. DHCP로 IP를 받아와야 한다.
+2. 검색 및 추가가 정상적으로 이루어져야 한다.
+3. 추가 후 Connected 상태를 유지해야 한다.
+------------------------------------------------------------
+[Step 14]
+스텝 (Step)
+1. BioStar 설치 PC 와 장치 연결
+2. 장치의 네트워크를 DHCP에서 FIX로 변경하고 BioStar에 통신이 가능한 IP 입력
+3. BioStar에서 검색 및 추가 후 연결확인
+
+데이터 (Data)
+BioStar - No DHCP Server 
+장치 - FIX 설정
+
+예상 결과 (Expected Result)
+1. FIX로 입력한 IP, GateWay, Subnetmask가 정상적으로 입력된다.
+> Lan Cable 연결 유무 상관 없이 동작
+2. 검색 및 추가가 정상적으로 이루어져야 한다.
+3. 추가 후 Connected 상태를 유지해야 한다.
+------------------------------------------------------------
+[Step 15]
+스텝 (Step)
+1. 외부LAN선을 스위치에 연결
+2. 스위치와 AP지원 IPTIME 공유기간 LAN선 연결
+3. AP지원 IPTIME 공유기에 PC, 장치 LAN선 연결
+4. 외부IP에 PING 시도
+
+데이터 (Data)
+외부IP
+ex) ping -c 2 106.10.108.146(아모텍)(시리얼포트 연결)
+
+163.44.196.104 - 태국 업체
+
+예상 결과 (Expected Result)
+1. PING이 정상적으로 나간다.
+   > 외부네트워크와의 통신 확인
+※ FISF-557 참고
+------------------------------------------------------------
+[Step 16]
+스텝 (Step)
+[wi-fi - Nomal 상태에서 장치재부팅]
+1. 장치 wifi 연결
+2. 장치 재부팅
+3. wi-fi 연결 유지 확인
+
+데이터 (Data)
+use DHCP: ON/OFF
+
+예상 결과 (Expected Result)
+1. 장치가 부팅 완료 후 일정 시간이 지나고 wifi 재연결된다.
+>홈화면 wifi 아이콘 표시
+------------------------------------------------------------
+[Step 17]
+스텝 (Step)
+[wi-fi - 장치재부팅 완료 전 공유기 연결]
+1.장치 wifi 연결
+2.장치 OFF
+3.공유기 OFF > ON
+4.장치 ON
+5.Wi-fi 연결 유지 확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 장치가 부팅 완료 후 일정 시간이 지나고 wifi 재연결된다.
+>홈화면 wifi 아이콘 표시
+------------------------------------------------------------
+[Step 18]
+스텝 (Step)
+[wi-fi - 장치재부팅 완료 후 공유기 연결]
+1.장치 wifi 연결
+2. 장치 OFF
+3. 공유기 OFF
+4. 장치 ON(재부팅 완료)
+5. 공유기 ON 
+6. Wi-fi 연결 유지확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 공유기,장치가 부팅 완료 후 일정 시간이 지나고 wifi 재연결된다.
+>홈화면 wifi 아이콘 표시
+------------------------------------------------------------
+[Step 19]
+스텝 (Step)
+[wi-fi - 장치 재부팅 후 공유기 전원 Off / ON]
+1.장치 wifi 연결
+2. 장치재부팅(재부팅 완료)
+3. 공유기 OFF
+4. 와이파이 연결 끊어짐, 홈화면 wi-fi 아이콘 사라짐 확인
+5. 공유기 ON
+6. Wi-fi 연결 유지확인
+
+데이터 (Data)
+use DHCP: ON/OFF
+
+예상 결과 (Expected Result)
+1. 공유기,장치가 부팅 완료 후 일정 시간이 지나고 wifi 재연결된다.
+>홈화면 wifi 아이콘 표시
+------------------------------------------------------------
+[Step 20]
+스텝 (Step)
+[wi-fi - Normal 상태에서 공유기 전원 Off/ON]
+1.장치 wifi 연결
+2.공유기 OFF/ON
+4. 와이파이 연결 끊어짐, 홈화면 wi-fi 아이콘 사라짐 확인
+5. 공유기 ON
+6. Wi-fi 연결 유지확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 공유기,장치가 부팅 완료 후 일정 시간이 지나고 wifi 재연결된다.
+>홈화면 wifi 아이콘 표시
+------------------------------------------------------------
