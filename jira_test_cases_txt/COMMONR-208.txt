@@ -1,0 +1,157 @@
+■ 이슈 키: COMMONR-208
+■ 제목: Wiegand Out제어, Slave 지문등록, Slave 상태정보 표시관련
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. Wiegand Reader 선택> Device Func> Wiegand Device> Buzzer 및 LED 설정
+2. 인증성공이 되도록 인증시도
+3. 인증실패가 되도록 인증시도
+
+데이터 (Data)
+Master(=진행모델)-DM20-3rd Party Reader 연결된 상태
+> 3rd Party Reader의 Buzzer/LED Cable을 DM20의 TTL Out Port에 연결
+
+예상 결과 (Expected Result)
+1. 인증성공시 3rd Party Reader의 LED가 녹색으로 1초간 출력된다.
+2. 인증실패시 부저 설정한 Out Port에서 부저음이 발생된다.
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. 사용자에 지문등록시 Slave로 연결된 지문장치 선택해 등록시도
+
+데이터 (Data)
+Master
+> Entry Device
+
+예상 결과 (Expected Result)
+1. Entry V2장치가 Master로 설정된 경우 Master Version에 따라 Slave로 일반지문등록 지원 및 미지원으로 동작 한다.
+> Entry에서도 Master(Xpass 제외) Version에 따라 Slave에서 일반 지문 등록 지원 
+> ENTRYIIDII-477
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. 사용자에 지문등록시 Slave로 연결된 지문장치 선택해 등록시도
+
+데이터 (Data)
+Slave로 연결된 지문장치
+> BS2 1.4 이상버전
+> BSA2 1.3 이상버전
+> L2 1.2.2 이상버전
+> W2 1.1.2 이상버전
+> FS2 1.0.0 이상버전
+> CS-40 1.0.0 이상버전
+> BSP2 1.0.0 이상버전
+
+예상 결과 (Expected Result)
+1. Slave일 때 일반지문 등록을 지원한다.
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1. Master 장치 선택> Device Func> FingerPrint
+2. Slave 장치 선택> Advanced Enrollment 설정> 장치적용
+3. UserInfo> Slave 장치 선택
+4. 지문추가> Quality: Low(20)로 설정> 캡쳐> 지문을 양옆으로 치우쳐 등록 시도
+
+데이터 (Data)
+Advanced Enrollment: 사용
+
+예상 결과 (Expected Result)
+1. 설정된 Scan Timeout동안 일정 품질이상의 지문 Scan될때까지 계속 스캔을 시도한다.
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1. Master 장치 선택> Device Func> FingerPrint
+2. Slave 장치 선택> Advanced Enrollment 설정> 장치적용
+3. UserInfo> Slave 장치 선택
+4. 지문추가> Quality: Low(20)로 설정> 캡쳐> 지문을 양옆으로 치우쳐 등록 시도
+
+데이터 (Data)
+Advanced Enrollment: 사용안함
+
+예상 결과 (Expected Result)
+1. 입력받은 지문에 대해 등록이 된다.
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1. BioStar2> Device> CS40추가> Slave 추가
+2. 서버와 Master/Slave 장치의 전원 모두 OFF
+3. 장치전원 ON> 장치 부팅 후 서버 ON
+4. Client 실행> 장치연결상태 확인
+
+데이터 (Data)
+장치전원ON: Master/Slave 일부 장치(Slave로 연결된 일부 장치는 전원OFF 유지)
+
+예상 결과 (Expected Result)
+1. 연결된 Slave 장치 상태정보가 정상적으로 올라와야 한다.
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+1. BioStar2> Setting> Server> Log Upload 설정
+2. Master 장치에서 Direct모드 설정
+3. Device> CS40 추가> Slave 추가
+4. 추가된 Slave 장치 연결상태 확인
+
+데이터 (Data)
+Log Upload: Automatic
+
+예상 결과 (Expected Result)
+1. 연결된 Slave 장치 상태정보가 정상적으로 올라와야 한다.
+------------------------------------------------------------
+[Step 8]
+스텝 (Step)
+1. BioStar2> Setting> Server> Log Upload 설정
+2. Master 장치에서 Direct모드 설정
+3. Device> CS40 추가> Slave 추가
+4. 추가된 Slave 장치 연결상태 확인
+
+데이터 (Data)
+Log Upload: Manual
+
+예상 결과 (Expected Result)
+1. 연결된 Slave 장치 상태정보가 정상적으로 올라와야 한다.
+------------------------------------------------------------
+[Step 9]
+스텝 (Step)
+1. BioStar2> Setting> Server> Log Upload 설정
+2. Master 장치에서 Server모드 설정
+3. Client 실행> Device> Waiting Device에 표시된 Master 장치 추가> Slave 추가
+4. 추가된 Slave 장치의 연결상태 확인
+
+데이터 (Data)
+Log Upload: Automatic
+
+예상 결과 (Expected Result)
+1. 연결된 Slave 장치 상태정보가 정상적으로 올라와야 한다.
+------------------------------------------------------------
+[Step 10]
+스텝 (Step)
+1. BioStar2> Setting> Server> Log Upload 설정
+2. Master 장치에서 Server모드 설정
+3. Client 실행> Device> Waiting Device에 표시된 Master 장치 추가> Slave 추가
+4. 추가된 Slave 장치의 연결상태 확인
+
+데이터 (Data)
+Log Upload: Manual
+
+예상 결과 (Expected Result)
+1. 연결된 Slave 장치 상태정보가 정상적으로 올라와야 한다.
+------------------------------------------------------------
+[Step 11]
+스텝 (Step)
+1. AutoTest Tool 실행
+2. 각 항목에 대해 유효하지 않은 값에 대해 설정
+3. 설정된 값 확인
+
+데이터 (Data)
+확인항목(Master/Slave/Wiegand)
+: Msg.Timeout
+: Scan Timeout
+: Auth Timeout
+: Matching Timeout
+
+예상 결과 (Expected Result)
+1. 유효하지 않은 값이 저장시도된 경우 기본값으로 설정되어야 한다.
+------------------------------------------------------------

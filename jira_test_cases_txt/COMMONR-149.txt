@@ -1,0 +1,27 @@
+■ 이슈 키: COMMONR-149
+■ 제목: Stress Test - Relay 동작
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1) A/B장치 Door Sensor 설정
+2) A장치의 Relay Com 단자 + B장치의 Switch GND 단자 접지
+3) A장치의 Relay No 단자 + B장치의 Exit Button에서 설정한 Switch 단자 접지
+4) A 장치에 연속으로 카드입력되도록 설정(Diagtool 이용)
+> 5일 ~ 10일
+5) B 장치의 로그에 Unlock/Lock 로그 출력확인
+
+>> Door Sensor에 연결 시 Forced Open door, Door Open, Closed가 발생함
+
+데이터 (Data)
+Diagtool Tool 이용
+> Repeat 3000 => 3초마다 카드입력됨
+
+7일이상 Stress Test 진행
+> 최소 150,000회 이상 동작확인
+
+예상 결과 (Expected Result)
+Relay 동작횟수가 카드입력횟수와 동일해야 한다.
+------------------------------------------------------------

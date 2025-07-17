@@ -1,0 +1,23 @@
+■ 이슈 키: COMMONR-4
+■ 제목:  HID Prox Card By Wiegand Format Check
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. Setting> Card Format> Wiegand
+2. Custom Wiegand Format 생성
+3. Device> Wiegand Format> HID Prox 카드가 지원하는 포맷설정
+4. 카드Read
+
+데이터 (Data)
+HID Prox 카드 63장
+: FSK1~FSK63
+
+Custom Wiegand Format
+: HID Prox 카드의 Format으로 생성
+
+예상 결과 (Expected Result)
+카드의 Raw Data 값이 읽힌다.
+------------------------------------------------------------

@@ -1,0 +1,69 @@
+■ 이슈 키: COMMONR-234
+■ 제목: 네트워크 설정을 제외한 리셋 지원
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. RS485 구성으로 통신중인 상태
+2. Master 장치> 상세정보창 진입
+3. Restore to default: Without Network 실행
+
+데이터 (Data)
+Master 장치의 네트워크 설정 변경
+> DHCP/통신모드/Baudrate/RS485 Key
+
+1) Master/Slave 장치가 Door/Zone에 속한 경우
+
+예상 결과 (Expected Result)
+1. (Door/Zone 설정에 의해) 에러팝업이 발생된다.
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. RS485 구성으로 통신중인 상태
+2. Master 장치> 상세정보창 진입
+3. Restore to default: Without Network 실행
+4. Slave와의 연결상태 확인
+
+데이터 (Data)
+Master 장치의 네트워크 설정 변경
+> DHCP/통신모드/Baudrate/RS485 Key
+
+예상 결과 (Expected Result)
+1. Master 장치의 Config 초기화 후 재부팅이 발생한다.
+2. Network 설정은 유지된다.
+3. Slave, Wiegand Reader의 연결상태를 유지한다.
+=> DiagLog로 확인 가능
+※  BioStar2 에서는 Slave/Wiegand Reader 리스트가 삭제됨.(차후 수정필요)
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+[Hash Key 설정된 바이오 스타에 연결]
+1. RS485 구성으로 통신중인 상태
+2. Master 장치> 상세정보창 진입
+3. Restore to default: Without Network 실행
+4. Hash Key 초기화 유무 확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Hash Key는 초기화되지 않고 유지된다.
+2. Network 설정을 유지한다.
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+[SSL 인증서 설정된 바이오 스타에 연결]
+1. RS485 구성으로 통신중인 상태
+2. Master 장치> 상세정보창 진입
+3. Restore to default: Without Network 실행
+4. SSL 인증서 초기화 유무 확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. SSL 인증서 및 Key는 초기화되지 않고 유지된다.
+2. Network 설정을 유지한다.
+------------------------------------------------------------

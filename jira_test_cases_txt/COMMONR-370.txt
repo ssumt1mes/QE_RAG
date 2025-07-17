@@ -1,0 +1,319 @@
+■ 이슈 키: COMMONR-370
+■ 제목: [BDP-1067]Mifare Plus EV1 SL1, SL3, SL1SL3 Mix Mode 지원[PFE 281]
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1) BioStar> Settings> Card Format
+2) Smart Card> Add Smart Card
+3) Smart Card Type: Suprema
+4) Mifare Tab> Encryption Type 확인
+
+데이터 (Data)
+Encryption Type
+> Crypto-1(Default)
+> AES-128
+
+예상 결과 (Expected Result)
+1. 기본값은 Crypto-1로 Crypto-1이 Enable 처리되어 있으며 Crypto-1 <-> AES-128 옵션을 토글키로 지원
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1) Step 1 수행
+2) Key 및 Layout 설정 후 저장
+3) Device> 장치선택> Suprema Smart Card 설정 후 저장
+4) 기 발급된 Mifare Classic 카드 Read
+
+데이터 (Data)
+설정한 Encryption Type
+> Crypto-1 Enable 상태
+
+예상 결과 (Expected Result)
+1. 인증성공으로 동작되면서 발급된 정보로 리드된다.
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1) Step 2의 1)~3) 수행
+2) 기 발급된 Mifare Classic 카드 Read
+
+데이터 (Data)
+설정한 Encryption Type
+> AES-128 Enable 상태
+
+예상 결과 (Expected Result)
+1. 인증실패로 동작되면서 CSN으로 리드된다.
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1) Step 2의 1)~3) 수행
+2) 기 발급된 Mifare Plus 카드 Read
+
+데이터 (Data)
+설정한 Encryption Type
+> Crypto-1 Enable 상태
+
+기 발급된 Mifare Plus Key
+> 6byte + FFFFFF... 발급
+
+예상 결과 (Expected Result)
+1. 인증성공으로 동작되면서 발급된 정보로 리드된다.
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1) Step 2의 1)~3) 수행
+2) 기 발급된 Mifare Plus 카드 Read
+
+데이터 (Data)
+설정한 Encryption Type
+> AES-128 Enable 상태
+=> 6byte + FFFFFF... 로 설정
+
+기 발급된 Mifare Plus Key
+> 6byte + FFFFFF... 발급
+
+예상 결과 (Expected Result)
+1. 인증성공으로 동작되면서 발급된 정보로 리드된다.
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1) Step 2의 1)~3) 수행
+2) 기 발급된 Mifare Plus 카드 Read
+
+데이터 (Data)
+설정한 Encryption Type
+> AES-128 Enable 상태
+=> 6byte 만 설정
+
+기 발급된 Mifare Plus Key
+> 6byte + FFFFFF... 발급
+
+예상 결과 (Expected Result)
+1. 인증성공으로 동작되면서 발급된 정보로 리드된다.
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+1) Step 1의 1)~3) 수행
+2) Encryption Type: Crypto-1 Enable 설정
+3) Key 및 Layout 설정 후 저장
+3) Device> 장치선택> Suprema Smart Card 설정 후 저장
+4) User> User 선택> Card> Card Type: Read Card> Device 선택> Format
+5) Card Type: Smart Card> Device 선택> Mifare Classic 카드 발급
+
+데이터 (Data)
+Primary Key 및 Layout 설정
+> Case 1 - Default Key 
+> Case 2 - 임의키(ex.1234)
+
+예상 결과 (Expected Result)
+1. 설정된 Key로 카드 발급이 된다.
+
+※ 발급하려고 하는 카드에 키가 존재할 경우 Secondary Key 항목에 기존 키 설정 후 진행
+------------------------------------------------------------
+[Step 8]
+스텝 (Step)
+1) Step 7 수행
+2) Device> BDP-1067 지원 장치선택> Suprema Smart Card 설정 후 저장
+3) Step 7에서 발급한 Mifare Classic 카드 리드
+
+데이터 (Data)
+Primary Key 및 Layout 설정
+> Case 1 - Default Key 
+> Case 2 - 임의키(ex.1234)
+
+예상 결과 (Expected Result)
+1. 인증성공으로 동작되면서 발급된 정보로 리드된다.
+------------------------------------------------------------
+[Step 9]
+스텝 (Step)
+1) Step 7 수행
+2) Device> BDP-1067 미지원 장치선택> Suprema Smart Card 설정 후 저장
+3) Step 7에서 발급한 Mifare Classic 카드 리드
+
+데이터 (Data)
+Primary Key 및 Layout 설정
+> Case 1 - Default Key 
+> Case 2 - 임의키(ex.1234)
+
+예상 결과 (Expected Result)
+1. 인증성공으로 동작되면서 발급된 정보로 리드된다.
+------------------------------------------------------------
+[Step 10]
+스텝 (Step)
+1) Step 1의 1)~3) 수행
+2) Encryption Type: AES-128 Enable 설정
+3) Key 및 Layout 설정 후 저장
+3) Device> 장치선택> Suprema Smart Card 설정 후 저장
+4) User> User 선택> Card> Card Type: Read Card> Device 선택> Format
+5) Card Type: Smart Card> Device 선택> Mifare Plus 카드 발급
+
+데이터 (Data)
+Primary Key 및 Layout 설정
+> Case 1 - Default Key 
+> Case 2 - 임의키(ex.1234)
+> Case 3 - 임의키(ex.16byte 설정)
+
+예상 결과 (Expected Result)
+1. 설정된 Key로 카드 발급이 된다.
+
+※ 발급하려고 하는 카드에 키가 존재할 경우 Secondary Key 항목에 기존 키 설정 후 진행
+------------------------------------------------------------
+[Step 11]
+스텝 (Step)
+1) Step 10 수행
+2) Device> BDP-1067 지원 장치선택> Suprema Smart Card 설정 후 저장
+3) Step 10에서 발급한 Mifare Plus 카드 리드
+
+데이터 (Data)
+Primary Key 및 Layout 설정
+> Case 1 - Default Key 
+> Case 2 - 임의키(ex.1234)
+> Case 3 - 임의키(ex.16byte 설정)
+
+예상 결과 (Expected Result)
+1. 인증성공으로 동작되면서 발급된 정보로 리드된다.
+------------------------------------------------------------
+[Step 12]
+스텝 (Step)
+1) Step 10 수행
+2) Device> BDP-1067 미지원 장치선택> Suprema Smart Card 설정 후 저장
+3) Step 10에서 발급한 Mifare Plus 카드 리드
+
+데이터 (Data)
+Primary Key 및 Layout 설정
+> Case 1 - Default Key 
+> Case 2 - 임의키(ex.1234)
+> Case 3 - 임의키(ex.16byte 설정)
+
+예상 결과 (Expected Result)
+1. 인증성공으로 동작되면서 발급된 정보로 리드된다.
+2. 카드 발급시 키를 16byte 모두 설정한 상태에서 발급을 한 경우 인증실패로 동작되면서 CSN으로 리드된다.
+------------------------------------------------------------
+[Step 13]
+스텝 (Step)
+1) BioStar> Settings> Card Format
+2) Smart Card> Add Smart Card
+3) Smart Card Type: Custom 
+4) Mifare Tab> Encryption Type 확인
+
+데이터 (Data)
+Encryption Type
+> Crypto-1(Default)
+> AES-128
+
+예상 결과 (Expected Result)
+1. 기본값은 Crypto-1로 Crypto-1 토글은 Disable 처리되어 있어야한다.
+------------------------------------------------------------
+[Step 14]
+스텝 (Step)
+1) Step 13 수행
+2) Key 및 Layout 설정 후 저장
+3) Device> 장치선택> Custom Smart Card 설정 후 저장
+4) 커스텀 스마트 카드 Read
+
+데이터 (Data)
+설정한 Encryption Type
+> Crypto-1 Enable 상태
+
+예상 결과 (Expected Result)
+1. 인증성공으로 동작되면서 발급된 정보로 리드된다.
+------------------------------------------------------------
+[Step 15]
+스텝 (Step)
+1) Step 14의 1)~3) 수행
+2) UID 7Byte인 커스텀 스마트 카드 Read
+
+데이터 (Data)
+설정한 Encryption Type
+> Crypto-1 Enable 상태4
+
+예상 결과 (Expected Result)
+1. 인증실패로 동작되면서 CSN으로 리드된다.
+------------------------------------------------------------
+[Step 16]
+스텝 (Step)
+1) Step 14의 1)~3) 수행
+2)  UID 7Byte인 커스텀 스마트 카드 Read
+
+데이터 (Data)
+설정한 Encryption Type
+> AES-128 Enable 상태4
+
+예상 결과 (Expected Result)
+1. 인증성공으로 동작되면서 발급된 정보로 리드된다.
+------------------------------------------------------------
+[Step 17]
+스텝 (Step)
+1) BDP-1067 미지원 버전 장치에 기 Mifare Layout 설정된 상태
+2) BDP-1067 지원 FW로 Upgrade
+3) Mifare Classic/Plus 스마트 카드 리드
+
+데이터 (Data)
+기 Smart Card Layout(Mifare 탭)
+> Key - Default
+
+예상 결과 (Expected Result)
+1. 인증성공으로 동작되면서 발급된 정보로 리드된다.
+------------------------------------------------------------
+[Step 18]
+스텝 (Step)
+[BDP-1067 적용 바이오스타에 연결]
+1) BDP-1067 미지원 버전 장치에 기 Mifare Layout 설정된 상태
+2) BDP-1067 지원 FW로 Upgrade
+3) Smart Card Layout에서 변경없이 Apply
+4) Mifare Classic/Plus 스마트 카드 리드
+
+데이터 (Data)
+기 Smart Card Layout(Mifare 탭)
+> Key - Default
+
+예상 결과 (Expected Result)
+1. 인증성공으로 동작되면서 발급된 정보로 리드된다.
+------------------------------------------------------------
+[Step 19]
+스텝 (Step)
+[BDP-1067 적용 바이오스타에 연결]
+1) BDP-1067 미지원 버전 장치에 기 Mifare Layout 설정된 상태
+2) BDP-1067 지원 FW로 Upgrade
+3) Smart Card Layout에서 AES-128로 변경 후 Apply
+4) Mifare Classic/Plus 스마트 카드 리드
+
+데이터 (Data)
+기 Smart Card Layout(Mifare 탭)
+> Key - Default
+
+예상 결과 (Expected Result)
+1. 인증성공으로 동작되면서 발급된 정보로 리드된다.
+------------------------------------------------------------
+[Step 20]
+스텝 (Step)
+[BDP-1067 적용 바이오스타에 연결]
+1) BDP-1067 미지원 버전 장치에 기 Mifare Layout 설정된 상태
+2) BDP-1067 지원 FW로 Upgrade
+3) Smart Card Layout에서 AES-128로 변경 후 Apply
+4) Mifare Classic/Plus 스마트 카드 리드
+
+데이터 (Data)
+기 Smart Card Layout(Mifare 탭)
+> Key - 123456
+
+예상 결과 (Expected Result)
+1. Classic 카드는 인증실패로 동작되면서 CSN으로 리드된다.
+2. Mifare Plus는 인증성공으로 동작되면서 발급된 정보로 리드된다.
+------------------------------------------------------------
+[Step 21]
+스텝 (Step)
+(XPASSII-594->SL1(Crytpo1) 인증시 Seconday Key 인증이 실패 이슈)
+1. 설정 > 카드 형식 > Custom Card Layout 
+2. 카드 Key 정보 SecondaryKey로 입력
+3. 장치 Reboot
+4. 장치 > SecondaryKey로 설정한 Layout 설정
+5. 카드 리드
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 발급된 카드 정보로 리드된다.
+------------------------------------------------------------

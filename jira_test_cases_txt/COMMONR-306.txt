@@ -1,0 +1,224 @@
+■ 이슈 키: COMMONR-306
+■ 제목: [BDP-726] Support UZ Wireless door lock (Door, Zone)
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. Door > Add Door > Entry Device 설정
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+CS40에 연결 되고 OSDP Module에 연결된 무선 도어락을 선택 할 수있다.
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. Door > Add Door > Exit Device 설정
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+CS40에 연결 되고 OSDP Module에 연결된 무선 도어락을 선택 할 수있다.
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. Door > Add Door > Entry Device 설정
+2. 무선 도어락 선택
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+Exit Device 에서 다른 타입의 장치를 선택할 수 없고 무선 도어락만 선택 가능
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1. Door > Add Door > Entry Device 설정
+2. 무선 도어락이 아닌 장치 선택
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+Exit Device 에서 무선 도어락이 표시는 되나 무선 도어락 선택 불가
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1. Door > Add Door > Entry Device, Exit Device 설정
+2. 무선 도어락 선택
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+Entry Device, Exit Device 로 무선 도어락이 선택된 경우에는 Door Relay 출력되지 않는다.
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1. Door 생성
+2. 무선 도어락으로 Door 구성
+3. 무선 도어락에 인증 시도
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 인증성공시 무선 도어락이 동작한다.
+2. 로그 발생
+: door lock
+> 1:1 authentication succeeded (Card)
+: CS40
+> Door open request sent
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+1. Door 생성
+2. 무선 도어락으로 Door 구성
+3. Open Time 설정
+4. 무선 도어락에 인증 시도
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 설정된 Open Time 으로 동작한다.
+------------------------------------------------------------
+[Step 8]
+스텝 (Step)
+1. Door 생성
+2. 무선 도어락으로 Door 구성
+3. Open Time 길게 설정
+4. 무선 도어락에 인증 시도
+5. 도어락 열린 상태에서 무선 도어락 Inactive로 변경
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 인증성공시 무선 도어락이 열리고, Open Time 에 맞게 동작한다.
+------------------------------------------------------------
+[Step 9]
+스텝 (Step)
+1. Zone> Add Zone> APB Zone 생성
+2. 무선 도어락으로 Zone 구성
+3. 무선 도어락에 동일사용자로 2회 이상 인증해 APB 위반 발생
+
+데이터 (Data)
+모드
+> Local
+> Global
+
+APB 설정
+> Soft APB
+> Hard APB
+
+예상 결과 (Expected Result)
+1. Soft APB시 인증성공 및 무선 도어락 동작한다.
+2. Hard APB시 인증실패 및 무선 도어락 동작하지 않는다.
+------------------------------------------------------------
+[Step 10]
+스텝 (Step)
+1. Zone> Add Zone> APB Zone 생성
+2. 무선 도어락으로 Zone 구성
+3. APB 예외 그룹 설정
+4. APB 예외 그룹에 포함된 사용자로 인증시도
+
+데이터 (Data)
+APB 예외그룹
+> 최대16개까지 설정가능
+
+예상 결과 (Expected Result)
+APB 예외그룹에 속한 사용자로 인증시 APB에 영향을 받지 않아야한다.
+------------------------------------------------------------
+[Step 11]
+스텝 (Step)
+1. Zone> Add Zone> APB Zone 생성
+2. 무선 도어락으로 Zone 구성
+3. APB Alarm 설정
+
+데이터 (Data)
+Disable Device
+
+예상 결과 (Expected Result)
+APB 위반이 발생하면 설정한 Alarm 이 발생해야 한다.
+------------------------------------------------------------
+[Step 12]
+스텝 (Step)
+<APB Alarm이 발생되는 상태>
+1. Monitoring> Zone Status
+2. APB Zone 선택
+3. Clear Alarm 및 Clear APB 클릭
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+APB Alarm 해제되어야 하고, APB 위반도 해제되어야 한다.
+------------------------------------------------------------
+[Step 13]
+스텝 (Step)
+1. Door> Add Door> Door 생성
+2. Monitoring> Door Status> Open 버튼 클릭> Door 상태 확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Open 클릭시 Unlocked으로 동작되어야 하고, 설정된 Open time이 지나면 다시 Locked으로 동작되어야 한다.
+2. 이벤트 로그 발생
+: door lock
+> Door open requested by operator
+: CS40 
+> Door open request sent
+------------------------------------------------------------
+[Step 14]
+스텝 (Step)
+1. Door> Add Door> Door 생성
+2. Monitoring> Door Status> Manual Unlock 버튼 클릭> Door 상태 확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Door가 Unlock 상태를 유지해야한다.
+2. 이벤트 로그 발생
+: door lock
+> Door unlock requested by operator
+: CS40 
+> Door unlock request sent
+------------------------------------------------------------
+[Step 15]
+스텝 (Step)
+1. Door> Add Door> Door 생성
+2. Monitoring> Door Status> Manual lock 버튼 클릭> Door 상태 확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Door가 Lock 상태를 유지해야한다.
+2. 이벤트 로그 발생
+: door lock
+> Door lock requested by operator
+: CS40 
+> Door lock request sent
+------------------------------------------------------------
+[Step 16]
+스텝 (Step)
+1. Door> Add Door> Door 생성
+2. Monitoring> Door Status> Release 버튼 클릭> Door 상태 확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 이벤트 로그 발생
+: door lock
+> Door release requested by operator
+: CS40 
+> Door release request sent
+------------------------------------------------------------

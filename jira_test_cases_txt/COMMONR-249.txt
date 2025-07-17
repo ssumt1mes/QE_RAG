@@ -1,0 +1,145 @@
+■ 이슈 키: COMMONR-249
+■ 제목: [BSPP-407] 사용자별 APB Reset 기능
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. Door> APB 설정> 다수의 사용자에 대해 APB Violation 발생
+2. Monitoring> Door Status> Door 선택> APB 초기화 클릭
+3. 모든사용자 선택 후 확인
+4. APB Violation 된 다수의 사용자에 대해 인증시도
+
+데이터 (Data)
+APB 타입
+> Soft APB
+> Hard APB
+
+예상 결과 (Expected Result)
+1. 모든 사용자에 대해 APB 초기화된다.
+> APB 초기화 로그 미출력(차후 버전에서 지원예정)
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. Door> APB 설정> 다수의 APB Violation 발생
+2. Monitoring> Door Status> Door 선택> APB 초기화 클릭
+3. 특정사용자 선택 후 확인
+4. APB Violation된 사용자에 대해 인증시도
+
+데이터 (Data)
+APB 타입
+> Soft APB
+> Hard APB
+
+특정사용자
+> 단일선택
+> 복수선택
+
+예상 결과 (Expected Result)
+1. 특정 사용자에 대해서만 APB 초기화된다.
+> APB 초기화 로그 미출력(차후 버전에서 지원예정)
+
+2. 선택되지 않은 사용자에 대해서는 APB Violation 상태로 동작된다.
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. Zone> APB Zone 설정> 다수의 사용자에 대해 APB Violation 발생
+2. Monitoring> Zone Status> Zone 선택> APB 초기화 클릭
+3. 모든사용자 선택 후 확인
+4. APB Violation 된 다수의 사용자에 대해 인증시도
+
+데이터 (Data)
+모드
+> Local
+
+APB 타입
+> Soft APB
+> Hard APB
+
+예상 결과 (Expected Result)
+1. 모든 사용자에 대해 APB 초기화된다.
+> APB 초기화 로그 미출력(차후 버전에서 지원예정)
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1. Zone> APB Zone 설정> 다수의 사용자에 대해 APB Violation 발생
+2. Monitoring> Zone Status> Zone 선택> APB 초기화 클릭
+3. 특정사용자 선택 후 확인
+4. APB Violation 된 다수의 사용자에 대해 인증시도
+
+데이터 (Data)
+모드
+> Local
+
+APB 타입
+> Soft APB
+> Hard APB
+
+특정사용자
+> 단일선택
+> 복수선택
+
+예상 결과 (Expected Result)
+1. 특정 사용자에 대해서만 APB 초기화된다.
+> APB 초기화 로그 미출력(차후 버전에서 지원예정)
+
+2. 선택되지 않은 사용자에 대해서는 APB Violation 상태로 동작된다.
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1. Zone> APB Zone 설정> 다수의 사용자에 대해 APB Violation 발생
+2. Monitoring> Zone Status> Zone 선택> APB 초기화 클릭
+3. 모든사용자 선택 후 확인
+4. APB Violation 된 다수의 사용자에 대해 인증시도
+
+데이터 (Data)
+모드
+> Global
+
+APB 타입
+> Soft APB
+> Hard APB
+
+예상 결과 (Expected Result)
+1. 모든 사용자에 대해 APB 초기화된다.
+> APB 초기화 로그 미출력(차후 버전에서 지원예정)
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1. Zone> APB Zone 설정> 다수의 사용자에 대해 APB Violation 발생
+2. Monitoring> Zone Status> Zone 선택> APB 초기화 클릭
+3. 특정사용자 선택 후 확인
+4. APB Violation 된 다수의 사용자에 대해 인증시도
+
+데이터 (Data)
+모드
+> Global
+
+APB 타입
+> Soft APB
+> Hard APB
+
+특정사용자
+> 단일선택
+> 복수선택
+
+예상 결과 (Expected Result)
+1. 특정 사용자에 대해서만 APB 초기화된다.
+> APB 초기화 로그 미출력(차후 버전에서 지원예정)
+
+2. 선택되지 않은 사용자에 대해서는 APB Violation 상태로 동작된다.
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+1. APB Zone 추가> 다수의 사용자에 대해 APB Violation 발생
+2. APB Zone 비활성화
+3. APB Violation 되었던 다수의 사용자에 대해 인증시도
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. APB 비활성화되어 인증 성공 된다.
+> APB Alarm 상태 유지
+------------------------------------------------------------

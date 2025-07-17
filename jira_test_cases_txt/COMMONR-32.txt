@@ -1,0 +1,392 @@
+■ 이슈 키: COMMONR-32
+■ 제목: 인증 - 개인인증(기본 & 확장)
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+<장치인증모드-Default 상태>
+
+1. User> Add User> 카드,PIN,지문,얼굴 등록
+2. 개인인증모드 설정
+3. 등록한 사용자로 인증시도
+
+데이터 (Data)
+Master, Slave 확인
+개인인증모드
+> 기기설정따름
+
+예상 결과 (Expected Result)
+장치인증모드로 동작되어야 한다.
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+<장치인증모드-Default 상태>
+
+1. User> Add User> 카드,PIN,지문,얼굴 등록
+2. 개인인증모드 설정
+3. Include Device Default Authentication Mode 설정
+4. 등록한 사용자로 인증시도
+
+데이터 (Data)
+Master, Slave 확인
+개인인증모드-지문/얼굴
+> 지문(얼굴) 모드
+> 지문(얼굴)+PIN 모드
+
+인증
+> 카드/지문(얼굴)/ID
+
+예상 결과 (Expected Result)
+1. 설정한 개인인증모드로 동작되어야 한다.
+2 카드/ID 인증의 경우 장치인증모드로 동작되어야 한다.
+※ 확장 인증 모드를 지원하는 장치의 경우에는 장치 인증 모드로 동작한다 (F2, W3, BS3)
+> Slave(FS2) 장치의 경우 - 미지원
+ : Private Message
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+<장치인증모드-Default 상태>
+
+1. User> Add User> 카드,PIN,지문,얼굴 등록
+2. 개인인증모드 설정
+3. Include Device Default Authentication Mode 설정
+4. 등록한 사용자로 인증시도
+
+데이터 (Data)
+Master, Slave 확인
+개인인증모드-카드
+> 카드 모드
+> 카드+지문(얼굴) 모드
+> 카드+PIN 모드
+> 카드+지문(얼굴)/PIN 모드
+> 카드+지문(얼굴)+PIN 모드
+
+인증
+> 카드/지문(얼굴)/ID
+
+예상 결과 (Expected Result)
+1. 설정한 개인인증모드로 동작되어야 한다.
+2. 지문(얼굴)/ID 인증의 경우 장치인증모드로 동작되어야 한다.
+※ 확장 인증 모드를 지원하는 장치의 경우에는 장치 인증 모드로 동작한다 (F2, W3, BS3)
+> Slave(FS2) 장치의 경우 - 미지원
+ : Private Message
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+<장치인증모드-Default 상태>
+
+1. User> Add User> 카드,PIN,지문,얼굴 등록
+2. 개인인증모드 설정
+3. Include Device Default Authentication Mode 설정
+4. 등록한 사용자로 인증시도
+
+데이터 (Data)
+Master, Slave 확인
+개인인증모드-ID
+> ID+지문(얼굴) 모드
+> ID+PIN 모드
+> ID+지문(얼굴)/PIN 모드
+> ID+지문(얼굴)+PIN 모드
+
+인증
+> 카드/지문(얼굴)/ID
+
+예상 결과 (Expected Result)
+1. 설정한 개인인증모드로 동작되어야 한다.
+2. 지문(얼굴)/카드 인증의 경우 장치인증모드로 동작되어야 한다.
+※ 확장 인증 모드를 지원하는 장치의 경우에는 장치 인증 모드로 동작한다 (F2, W3, BS3)
+> Slave(FS2) 장치의 경우 - 미지원
+ : Private Message
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+<장치인증모드-Default 상태>
+
+1. User> Add User> 카드,PIN,지문,얼굴 등록
+2. 개인인증모드 설정
+3. Exclude Device Default Authentication Mode 설정
+4. 등록한 사용자로 인증시도
+
+데이터 (Data)
+Master, Slave 확인
+개인인증모드-지문/얼굴
+> 지문(얼굴) 모드
+> 지문(얼굴)+PIN 모드
+
+인증
+> 카드/지문(얼굴)/ID
+
+예상 결과 (Expected Result)
+1. 설정한 개인인증모드로 동작되어야 한다.
+2. 카드/ID 인증의 경우 인증실패된다.
+> Authentication Failed(Invalid Credential)
+※ 확장 인증 모드를 지원하는 장치의 경우에는 장치 인증 모드로 동작한다 (F2, W3, BS3)
+> Slave(FS2) 장치의 경우 - 미지원
+ : Private Message
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+<장치인증모드-Default 상태>
+
+1. User> Add User> 카드,PIN,지문,얼굴 등록
+2. 개인인증모드 설정
+3. Exclude Device Default Authentication Mode 설정
+4. 등록한 사용자로 인증시도
+
+데이터 (Data)
+Master, Slave 확인
+개인인증모드-카드
+> 카드 모드
+> 카드+지문(얼굴) 모드
+> 카드+PIN 모드
+> 카드+지문(얼굴)/PIN 모드
+> 카드+지문(얼굴)+PIN 모드
+
+인증
+> 카드/지문(얼굴)/ID
+
+예상 결과 (Expected Result)
+1. 설정한 개인인증모드로 동작되어야 한다.
+2. 지문(얼굴)/ID 인증의 경우 인증실패된다.
+> Authentication Failed(Invalid Credential)
+
+> Slave(FS2) 장치의 경우 - 미지원
+ : Private Message
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+<장치인증모드-Default 상태>
+
+1. User> Add User> 카드,PIN,지문,얼굴 등록
+2. 개인인증모드 설정
+3. Exclude Device Default Authentication Mode 설정
+4. 등록한 사용자로 인증시도
+
+데이터 (Data)
+Master, Slave 확인
+개인인증모드-ID
+> ID+지문(얼굴) 모드
+> ID+PIN 모드
+> ID+지문(얼굴)/PIN 모드
+> ID+지문(얼굴)+PIN 모드
+
+인증
+> 카드/지문(얼굴)/ID
+
+예상 결과 (Expected Result)
+1. 설정한 개인인증모드로 동작되어야 한다.
+2. 지문(얼굴)/카드 인증의 경우 인증실패된다.
+> Authentication Failed(Invalid Credential)
+
+> Slave(FS2) 장치의 경우 - 미지원
+ : Private Message
+------------------------------------------------------------
+[Step 8]
+스텝 (Step)
+1. User> Add User> 카드,PIN,지문,얼굴 등록
+2. 개인인증모드 설정 : 확장형 개인 인증 모드 사용 선택 및 설정
+3. Include Device Default Authentication Mode 설정
+4. 등록한 사용자로 인증시도
+
+데이터 (Data)
+Master, Slave 확인
+개인인증모드-지문/얼굴/카드/ID
+> Face
+> Face + FP
+> Face + PIN
+> Face + FP/PIN
+> Face + FP+PIN
+> Card
+> Card + Face
+> Card + FP
+> Card + PIN
+> Card + Face/FP
+> Card + Face/PIN
+> Card + FP/PIN
+> Card + Face/FP/PIN
+> Card + Face+FP
+> Card + Face+PIN
+> Card + FP+Face
+> Card + FP+PIN
+> Card + Face/FP+PIN
+> Card + Face + FP/PIN
+> Card + FP+Face/PIN
+> FP
+> FP + Face
+> FP + PIN
+> FP + Face/PIN
+> FP + Face+PIN
+> ID + Face
+> ID + FP
+> ID + PIN
+> ID + Face/FP
+> ID + Face/PIN
+> ID + FP/PIN
+> ID + Face/FP/PIN
+> ID + Face+FP
+> ID + Face+PIN
+> ID + FP+Face
+> ID + FP+PIN
+> ID + Face/FP+PIN
+> ID + Face+FP/PIN
+> ID + FP+Face/PIN
+
+인증
+> 카드/지문/얼굴/ID
+
+예상 결과 (Expected Result)
+1. 설정한 개인인증모드로 동작되어야 한다.
+> F2 - 확장형 동작
+> FS2/FL - 기본형 동작
+2  설정한 개인인증 모드 이외의 경우 장치인증모드로 동작되어야 한다.
+
+> Slave(FS2) 장치의 경우 - 미지원
+ : Private Message
+------------------------------------------------------------
+[Step 9]
+스텝 (Step)
+1. User> Add User> 카드,PIN,지문,얼굴 등록
+2. 개인인증모드 설정 : 확장형 개인 인증 모드 사용 선택 및 설정
+3. Exclude Device Default Authentication Mode 설정
+4. 등록한 사용자로 인증시도
+
+데이터 (Data)
+Master, Slave 확인
+개인인증모드-지문/얼굴/카드/ID
+> Face
+> Face + FP
+> Face + PIN
+> Face + FP/PIN
+> Face + FP+PIN
+> Card
+> Card + Face
+> Card + FP
+> Card + PIN
+> Card + Face/FP
+> Card + Face/PIN
+> Card + FP/PIN
+> Card + Face/FP/PIN
+> Card + Face+FP
+> Card + Face+PIN
+> Card + FP+Face
+> Card + FP+PIN
+> Card + Face/FP+PIN
+> Card + Face + FP/PIN
+> Card + FP+Face/PIN
+> FP
+> FP + Face
+> FP + PIN
+> FP + Face/PIN
+> FP + Face+PIN
+> ID + Face
+> ID + FP
+> ID + PIN
+> ID + Face/FP
+> ID + Face/PIN
+> ID + FP/PIN
+> ID + Face/FP/PIN
+> ID + Face+FP
+> ID + Face+PIN
+> ID + FP+Face
+> ID + FP+PIN
+> ID + Face/FP+PIN
+> ID + Face+FP/PIN
+> ID + FP+Face/PIN
+
+
+인증
+> 카드/지문/얼굴/ID
+
+예상 결과 (Expected Result)
+1. 설정한 개인인증모드로 동작되어야 한다.
+> F2 - 확장형 동작
+> FS2/FL - 기본형 동작
+2. 설정한 개인인등 모드 이외의 인증의 경우 인증실패된다.
+> Authentication Failed(Invalid Credential)
+
+> Slave(FS2) 장치의 경우 - 미지원
+ : Private Message
+------------------------------------------------------------
+[Step 10]
+스텝 (Step)
+1. User> Add User> 카드,PIN,지문,얼굴 등록
+2. 개인인증모드 설정 : 확장형/기본형 개인 인증 모드 사용 선택 및 설정
+3. Include & Exclude Device Default Authentication Mode 설정
+4. 등록한 사용자로 인증시도
+
+데이터 (Data)
+Master, Slave 확인
+ : Master장치(Station,Entry계열)
+ : Slave 장치(Station,Entry계열)
+
+
+ 개인인증모드-지문/얼굴/카드/ID
+ > Face
+ > Face + FP
+ > Face + PIN
+ > Face + FP/PIN
+ > Face + FP+PIN
+
+
+ > Card
+ > Card + Face
+ > Card + FP
+ > Card + PIN
+ > Card + Face/FP
+ > Card + Face/PIN
+ > Card + FP/PIN
+ > Card + Face/FP/PIN
+ > Card + Face+FP
+ > Card + Face+PIN
+ > Card + FP+Face
+ > Card + FP+PIN
+ > Card + Face/FP+PIN
+ > Card + Face + FP/PIN
+ > Card + FP+Face/PIN
+
+
+ > FP
+ > FP + Face
+ > FP + PIN
+ > FP + Face/PIN
+ > FP + Face+PIN
+
+
+ > ID + Face
+ > ID + FP
+ > ID + PIN
+ > ID + Face/FP
+ > ID + Face/PIN
+ > ID + FP/PIN
+ > ID + Face/FP/PIN
+ > ID + Face+FP
+ > ID + Face+PIN
+ > ID + FP+Face
+ > ID + FP+PIN
+ > ID + Face/FP+PIN
+ > ID + Face+FP/PIN
+ > ID + FP+Face/PIN
+
+예상 결과 (Expected Result)
+1. 설정한 개인인증모드로 동작되어야 한다.
+> 확장형 : F2에서만 사용 가능
+2. 설정한 개인인등 모드 이외의 인증의 경우 인증실패/성공 된다.
+> Authentication Failed(Invalid Credential)
+
+> Slave(FS2) 장치의 경우 - 미지원
+ : Private Message
+------------------------------------------------------------
+[Step 11]
+스텝 (Step)
+1. A 사용자에 개인인증모드 설정 : 카드+지문
+2. Wiegand Reader에 A 사용자에 등록한 카드로 인증시도
+
+데이터 (Data)
+Master-Wiegand Reader 연결된 상태
+
+예상 결과 (Expected Result)
+'인증모드 오류'로 동작되어야 한다.
+> 카드만 지원하는 장치의 경우 결과가 동일
+------------------------------------------------------------

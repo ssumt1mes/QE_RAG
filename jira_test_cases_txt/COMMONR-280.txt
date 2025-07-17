@@ -1,0 +1,389 @@
+■ 이슈 키: COMMONR-280
+■ 제목: [Intelligent Slave] Output Info : User ID 사용(User ID Type : Alphanumeric)
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. HID OSDP Tool에 연결
+2. 사용자에 CSN Card로 인증
+3. 출력되는 데이터 확인
+
+데이터 (Data)
+ex. 인증한 사용자의 User ID: 2013
+
+예상 결과 (Expected Result)
+1. 인증한 카드가 등록된 User ID가 출력된다.
+> 2013 -> hex. 3230 3133에 해당하는 값으로 출력
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. HID OSDP Tool에 연결
+2. 사용자에 Wiegand Format으로 CSN Card 등록
+3. 등록된 CSN Card 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+ex. 인증한 사용자의 User ID: 2013
+
+예상 결과 (Expected Result)
+1. 인증한 카드가 등록된 User ID가 출력된다.
+> 2013 -> hex. 3230 3133에 해당하는 값으로 출력
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. HID OSDP Tool에 연결
+2. 사용자에 Wiegand Card 등록
+3. 등록된 Wiegand Card로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+ex. 인증한 사용자의 User ID: 2014
+
+예상 결과 (Expected Result)
+1. 인증한 카드가 등록된 User ID가 출력된다.
+> 2014 -> hex. 3230 3134에 해당하는 값으로 출력
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1. HID OSDP Tool에 연결
+2. 사용자에 Smart Card 발급
+3. Smart Card로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+Smart Card(AOC)
+> Mifare/DesFire
+
+ex. AOC(ID - 숫자)
+> User ID: 200001 / Card ID: 200001
+
+예상 결과 (Expected Result)
+1. 발급된 카드ID가 등록된 User ID가 출력된다.
+> 200001 -> hex. 3230 3030 3031에 해당하는 값으로 출력
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1. HID OSDP Tool에 연결
+2. 사용자에 Smart Card 발급
+3. Smart Card로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+Smart Card(AOC)
+> Mifare/DesFire
+
+ex. AOC(ID - 영숫자)
+> User ID: sykim / Card ID: sykim
+
+예상 결과 (Expected Result)
+1. 발급된 카드ID가 등록된 User ID가 출력된다.
+> sykim -> 0x73 0x79 0x6B 0x69 0x6D 에 해당하는 값으로 출력
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1. HID OSDP Tool에 연결
+2. 사용자에 Smart Card 발급
+3. Smart Card로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+Smart Card(SCC)
+> Mifare/DesFire
+
+ex. SCC
+> User ID: 20201009 / Card ID: 20201099
+
+예상 결과 (Expected Result)
+1. 발급된 카드가 등록된 User ID가 출력된다.
+> 20201009 -> hex. 3230 3230 3130 3039에 해당하는 값으로 출력
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+1. HID OSDP Tool에 연결
+2. 사용자에 Smart Card 발급
+3. Smart Card로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+Smart Card(AOC)
+> iCLASS/SEOS
+
+ex. AOC(ID - 숫자)
+> User ID: 200002 / Card ID: 200002
+
+예상 결과 (Expected Result)
+1. 발급된 카드ID가 등록된 User ID가 출력된다.
+> 200002 -> hex. 3230 3030 3032에 해당하는 값으로 출력
+------------------------------------------------------------
+[Step 8]
+스텝 (Step)
+1. HID OSDP Tool에 연결
+2. 사용자에 Smart Card 발급
+3. Smart Card로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+Smart Card(AOC)
+> iCLASS/SEOS
+
+ex. AOC(ID - 영숫자)
+> User ID: sykim / Card ID: sykim
+
+예상 결과 (Expected Result)
+1. 발급된 카드ID가 등록된 User ID가 출력된다.
+> sykim -> 0x73 0x79 0x6B 0x69 0x6D 에 해당하는 값으로 출력
+------------------------------------------------------------
+[Step 9]
+스텝 (Step)
+1. HID OSDP Tool에 연결
+2. 사용자에 Smart Card 발급
+3. Smart Card로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+Smart Card(SCC)
+> iCLASS/SEOS
+
+ex. SCC
+> User ID: 20201010 / Card ID: 20200202
+
+예상 결과 (Expected Result)
+1. 발급된 카드가 등록된 User ID가 출력된다.
+> 20201010 -> hex. 3230 3230 3130 3130에 해당하는 값으로 출력
+------------------------------------------------------------
+[Step 10]
+스텝 (Step)
+1. HID OSDP Tool에 연결
+2. 사용자에 Mobile Access Card 발급
+3. Mobile Access Card로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+Mobile Access Card
+> NFC, BLE
+
+> User ID: 20201111 / Card ID: 12345
+
+예상 결과 (Expected Result)
+1. 발급된 카드가 등록된 User ID가 출력된다.
+> 20201111 -> hex. 3230 3230 3131 3131에 해당하는 값으로 출력
+------------------------------------------------------------
+[Step 11]
+스텝 (Step)
+1. HID OSDP Tool에 연결
+2. 미등록된 카드로 인증
+3. 출력되는 데이터 확인
+
+데이터 (Data)
+Exception Code
+> 사용안함
+
+예상 결과 (Expected Result)
+1. 출력되는 카드데이터가 없다.
+------------------------------------------------------------
+[Step 12]
+스텝 (Step)
+1. HID OSDP Tool에 연결
+2. Exception Code 설정
+3. 미등록된 카드로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+Exception Code
+> 1(Default) - BioStar2 UI
+> 직접입력(0xFF...FF(8Byte))
+
+예상 결과 (Expected Result)
+1. Exception Code에 해당하는 데이터가  출력된다.
+> Default - 01로 출력
+> 직접입력 - 설정한 값이 그대로 출력되며 최대 8Byte까지 지원
+------------------------------------------------------------
+[Step 13]
+스텝 (Step)
+1. HID OSDP Tool에 연결
+2. Blacklist로 설정된 카드로 인증
+3. 출력되는 데이터 확인
+
+데이터 (Data)
+Exception Code
+> 사용안함
+
+예상 결과 (Expected Result)
+1. 출력되는 카드데이터가 없다.
+------------------------------------------------------------
+[Step 14]
+스텝 (Step)
+1. HID OSDP Tool에 연결
+2. Exception Code 설정
+3. Blacklist로 설정된 카드로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+Exception Code
+> 1(Default) - BioStar2 UI
+> 직접입력(0xFF...FF(8Byte))
+
+예상 결과 (Expected Result)
+1. Exception Code에 해당하는 데이터가  출력된다.
+> Default - 01로 출력
+> 직접입력 - 설정한 값이 그대로 출력되며 최대 8Byte까지 지원
+------------------------------------------------------------
+[Step 15]
+스텝 (Step)
+1. HID OSDP Tool에 연결
+2. 유효기간을 벗어난 사용자의 카드로 인증
+3. 출력되는 데이터 확인
+
+데이터 (Data)
+Exception Code
+> 사용안함
+
+예상 결과 (Expected Result)
+1. 출력되는 카드데이터가 없다.
+------------------------------------------------------------
+[Step 16]
+스텝 (Step)
+1. HID OSDP Tool에 연결
+2. Exception Code 설정
+3. 유효기간을 벗어난 사용자의 카드로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+Exception Code
+> 1(Default) - BioStar2 UI
+> 직접입력(0xFF...FF(8Byte))
+
+예상 결과 (Expected Result)
+1. Exception Code에 해당하는 데이터가  출력된다.
+> Default - 01로 출력
+> 직접입력 - 설정한 값이 그대로 출력되며 최대 8Byte까지 지원
+------------------------------------------------------------
+[Step 17]
+스텝 (Step)
+1. HID OSDP Tool에 연결
+2. 비활성화된 사용자의 카드로 인증
+3. 출력되는 데이터 확인
+
+데이터 (Data)
+Exception Code
+> 사용안함
+
+예상 결과 (Expected Result)
+1. 출력되는 카드데이터가 없다.
+------------------------------------------------------------
+[Step 18]
+스텝 (Step)
+1. HID OSDP Tool에 연결
+2. Exception Code 설정
+3. 비활성화된 사용자의 카드로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+Exception Code
+> 1(Default) - BioStar2 UI
+> 직접입력(0xFF...FF(8Byte))
+
+예상 결과 (Expected Result)
+1. Exception Code에 해당하는 데이터가  출력된다.
+> Default - 01로 출력
+> 직접입력 - 설정한 값이 그대로 출력되며 최대 8Byte까지 지원
+------------------------------------------------------------
+[Step 19]
+스텝 (Step)
+1. HID OSDP Tool과 연결
+2. Exception Code 설정
+3. 미등록 지문(얼굴)/ID로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+Exception Code
+> 1(Default) - BioStar2 UI
+> 직접입력(0xFF...FF(8Byte))
+
+예상 결과 (Expected Result)
+1. Exception Code에 해당하는 데이터가  출력된다.
+> Default - 01로 출력
+> 직접입력 - 설정한 값이 그대로 출력되며 최대 8Byte까지 지원
+------------------------------------------------------------
+[Step 20]
+스텝 (Step)
+1. HID OSDP Tool과 연결
+2. Exception Code 설정
+3. 미등록 지문(얼굴)/ID로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+Exception Code
+> 사용안함
+
+예상 결과 (Expected Result)
+1. 출력되는 카드데이터가 없다.
+------------------------------------------------------------
+[Step 21]
+스텝 (Step)
+1. HID OSDP Tool과 연결
+2. Exception Code 설정
+3. 출입그룹이 맞지 않는 사용자로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+1. 출입그룹을 설정하고 출입그룹에 속하지 않은 사용자를 생성
+2. Exception Code
+> 1(Default) - BioStar2 UI
+> 직접입력(0xFF...FF(8Byte))
+
+예상 결과 (Expected Result)
+1. Exception Code에 해당하는 데이터가  출력된다.
+> Default - 01로 출력
+> 직접입력 - 설정한 값이 그대로 출력되며 최대 8Byte까지 지원
+------------------------------------------------------------
+[Step 22]
+스텝 (Step)
+1. HID OSDP Tool과 연결
+2. Exception Code 설정
+3. 출입그룹이 맞지 않는 사용자로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+1. 출입그룹을 설정하고 출입그룹에 속하지 않은 사용자를 생성
+2. Exception Code
+> 사용안함
+
+예상 결과 (Expected Result)
+1. 출력되는 카드데이터가 없다.
+------------------------------------------------------------
+[Step 23]
+스텝 (Step)
+1. HID OSDP Tool과 연결
+2. Exception Code 설정
+3. 이중인증에 실패하는 인증을 시도
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+1. Door에서 이중인증 설정
+2. Exception Code
+> 1(Default) - BioStar2 UI
+> 직접입력(0xFF...FF(8Byte))
+
+예상 결과 (Expected Result)
+1. Exception Code에 해당하는 데이터가  출력된다.
+> Default - 01로 출력
+> 직접입력 - 설정한 값이 그대로 출력되며 최대 8Byte까지 지원
+------------------------------------------------------------
+[Step 24]
+스텝 (Step)
+1. HID OSDP Tool과 연결
+2. Exception Code 설정
+3. 이중인증에 실패하는 인증을 시도
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+1. Door에서 이중인증 설정
+2. Exception Code
+> 사용안함
+
+예상 결과 (Expected Result)
+1. 출력되는 카드데이터가 없다.
+------------------------------------------------------------

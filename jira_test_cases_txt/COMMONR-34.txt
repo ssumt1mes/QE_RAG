@@ -1,0 +1,198 @@
+■ 이슈 키: COMMONR-34
+■ 제목: 출입문 - 옵션
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. Door > Add Door > Open Time 설정 > Apply
+2. 인증 & Exit 버튼으로 Open Time 확인(최소/중간/최대)
+
+데이터 (Data)
+Open Time
+> 1s, 3s(Default), 5s, 10s, 15s, 30s, 1m, 3m, 5m, 10m, 15m
+
+예상 결과 (Expected Result)
+1. 설정한값이 저장된다.
+2. 인증성공 혹은 Exit 버튼에 의해 설정된 Open Time으로 동작한다.
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. Door > Add Door > Door Sensor 설정 > Apply
+2. Option > Use Automatic Door 및 Lock When door is closed UI 확인
+
+데이터 (Data)
+Lock When door is closed(닫힘 시 잠금)
+> Off(Default)/On
+Use Automatic Door(자동문 사용)
+> Off(Default)/On
+
+예상 결과 (Expected Result)
+1. Door Sensor 미사용 시 해당 옵션은 미표시된다.
+2. 두 옵션은 동시에 사용할 수 없다.
+> Use Automatic Door: ON 시 Lock When door is closed는 OFF로 동작
+> Lock When door is closed: ON 시 Use Automatic Door UI 미표시
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. Door> Use Automatic Door 설정
+2. Exit Button & Door Sensor 접지
+3. Relay 발생 후 Door Open
+4. Door Open된 상태에서의 Relay 동작 확인
+
+데이터 (Data)
+Open Time: 5sec
+
+Use Automatic Door : On
+
+예상 결과 (Expected Result)
+1. 문열림 상태 상관없이 Open Time이 지나면 Relay Off로 동작한다.
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1. Door> Use Automatic Door 설정
+2. Exit Button & Door Sensor 접지
+3. Relay 발생 후 Door Open
+4. Door Open된 상태에서의 Relay 동작 확인
+
+데이터 (Data)
+Open Time: 5sec
+
+> Use Automatic Door : Off
+
+예상 결과 (Expected Result)
+1. 문열림 상태에서는 Open Time이 지나더라도 Relay On을 유지한다.
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1. Door> Lock when door is closed 설정
+2. Exit Button & Door Sensor 접지
+3. Door Open된 상태에서의 Open Timeout 전 Door Sensor 접지해제
+4. Relay 동작확인
+
+데이터 (Data)
+Open Time: 30sec
+
+Lock when door is closed: On
+
+예상 결과 (Expected Result)
+1. Lock 되면서 Relay Off로 동작한다.
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1. Door> Lock when door is closed 설정
+2. Exit Button & Door Sensor 접지
+3. Door Open 상태에서 Door Sensor 접지/해제 반복
+4. Relay 동작확인
+
+데이터 (Data)
+Open Time: 30sec
+
+Lock when door is closed: Off
+
+예상 결과 (Expected Result)
+1. Open Time 동안 문열고 닫기를 여러번 반복할 수 있다.
+2. Open Time이 지난 후 Lock된다.
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+1. Door> Add Door> Exit Button 설정
+2. Exit Button 설정에 따른 UI 표시유무 확인
+
+데이터 (Data)
+[BDP-523]
+
+예상 결과 (Expected Result)
+1. Exit Button 설정시 "Does not activate relay" 옵션 표시된다.
+> Exit Button 미설정시 해당옵션 미표시
+2. "Does not activate relay" 옵션의 Default 값은 "OFF"이다.
+------------------------------------------------------------
+[Step 8]
+스텝 (Step)
+1. Door> Exit Button 설정
+2. Does not activate relay 설정
+3. Exit Button 접지
+
+데이터 (Data)
+Does not activate relay: OFF
+
+예상 결과 (Expected Result)
+1. Exit Button 에 입력시 Open Tiem 만큼 relay 가 동작된다.
+국문 : 퇴실 버튼에 의한 출입문 개방 요청 
+영문 : Door open request by exit button 
+2. 이후 설정된 Open Time이 지나면 Door Locked 로그가 남는다.
+------------------------------------------------------------
+[Step 9]
+스텝 (Step)
+1. Door> Exit Button 설정
+2. Does not activate relay 설정
+3. Exit Button 접지
+4. 동작 및 로그 확인
+
+데이터 (Data)
+Does not activate relay: ON
+
+예상 결과 (Expected Result)
+1. Exit Button 에 입력이 감지되어도 relay 는 동작하지 않지만 출입문 개방에 대한 로그는 남는다.
+> Door open request by exit button (Relay does not activate) & Door Unlocked 로그 출력
+※ 국문 - 퇴실 버튼 입력에 의한 출입문 개방 요청
+2. 이후 설정된 Open Time이 지나면 Door Locked 로그가 남는다.
+
+※UZ Door의 경우  Unlock - Lock 이 아닌 Timer로 unlock - lock을 요청했다는 로그 하나로 하기 때문에 로그를 남기지 않음
+------------------------------------------------------------
+[Step 10]
+스텝 (Step)
+1. Door> Exit button 설정 
+2. Does not activate relay 설정
+3. Exit Button & Door Sensor 접지
+4. 동작 및 로그 확인
+
+데이터 (Data)
+Does not activate relay: ON
+
+예상 결과 (Expected Result)
+1. 옵션이 ON된 상태에서 Exit Button 후 Door Sensor 접지시 Forced Door Open 으로 동작하지 않는다.
+> Door Open request by exit button & Door Unlocked & Door Opened 로그가 남는다.
+------------------------------------------------------------
+[Step 11]
+스텝 (Step)
+1. Door> Exit button 설정
+2. Does not activate relay 설정
+3. Held Open Time 설정
+4. Exit Button 접지 후 Held Open Time 만큼 Door Sensor 접지유지
+5. 동작 및 로그 확인
+
+데이터 (Data)
+Does not activate relay: ON
+
+Held Open Time : 임의설정
+
+예상 결과 (Expected Result)
+1. Held Door Opened 로 동작된다.
+> Door Open request by exit button & Door Unlocked & Door Opened & Held Door Opened 로그가 남는다.
+2. 접지 해제시 Door Locked & Door Closed 로그가 남는다.
+------------------------------------------------------------
+[Step 12]
+스텝 (Step)
+1. Door> Exit button 설정
+2. Door > Does not activate relay 설정 
+3. Door > Add Door > Alarm > Held Open Time을 설정
+4. Door > Add Door > Alarm : Held Open의 Action 설정
+5. Exit Button & Door Sensor 접지
+
+데이터 (Data)
+1. Does not activate relay : On
+2. Held Open Time : 5sec
+3. Action - Ouput/Alert Sound
+
+* Action Device
+1. Master 장치 선택
+2. Slave 장치 선택
+3. SIO2 선택
+4. DM20 선택
+
+예상 결과 (Expected Result)
+1. Output 설정한 장치에서 Action 이 발생한다.
+2. Alert sound 가 발생하는 도중 Door Closed시 Alarm Clear가 된다.
+------------------------------------------------------------

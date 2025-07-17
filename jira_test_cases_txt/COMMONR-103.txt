@@ -1,0 +1,21 @@
+■ 이슈 키: COMMONR-103
+■ 제목: Stress Test - 연속 인증을 통한 장치 동작(RS 485_Master/Slave)
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. 장시간 연속 인증
+
+데이터 (Data)
+> RS485 구성에 대한 카드/지문
+ -: Smart Card(AOC, SOC)
+ -: Normal Card(CSN...)
+
+예상 결과 (Expected Result)
+1. Date, Time이 임의로 변경 되지 않아야 한다.
+System Reset이 발생하더라도 재부팅이 되어 정상 동작이 되어야 한다.
+> Master/Slave - 3초 이내 인증 결과 표시
+2.방치 시 RS 485 Connected/Disconnected, LED 표시 유무, Relay 동작 유무 확인 한다.
+------------------------------------------------------------

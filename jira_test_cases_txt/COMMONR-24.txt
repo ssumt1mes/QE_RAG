@@ -1,0 +1,34 @@
+■ 이슈 키: COMMONR-24
+■ 제목: 사용자 - 삭제
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. DEVICE > Device List > Device 선택 > Manage Users in Device[기능 버튼내에서 선택]
+2. 로드된 사용자 선택 > 삭제
+
+데이터 (Data)
+[BioStar]
+1. 1명 선택
+2. 2명 이상 선택
+3. 전체 선택
+
+예상 결과 (Expected Result)
+1. 선택한 사용자가 삭제되어야 한다.
+> 장치에서 사용자 삭제 확인
+>  User : Delete Form Device와 동일함
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. USER > User List > User 선택 > Delete User
+
+데이터 (Data)
+[BioStar]
+= Automatic User Synchronization : All Devices[사용]
+
+예상 결과 (Expected Result)
+1. Biostar에 연결된 모든 장치의 사용자가 삭제되어야 한다.
+2. 삭제간 장치 Reboot이 발생되지 않아야 한다.
+------------------------------------------------------------

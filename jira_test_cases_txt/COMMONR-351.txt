@@ -1,0 +1,157 @@
+■ 이슈 키: COMMONR-351
+■ 제목: [BDP-830] BioStation 3에서 TCP 로 SIP(Intercom) 기능 지원
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1.장치 상세페이지에 진입하여 SIP 계정 정보 입력
+2.SIP Server Transport : UDP(기본값) 설정 후 저장
+3. 장치 화면에서 Call 버튼 선택 후 PC의 MicroSIP 계정에 연결 시도
+
+데이터 (Data)
+: 사전조건에서 생성한 SIP 계정
+: FreePBX 서버 UDP만 설정 상태
+
+예상 결과 (Expected Result)
+정상적으로 연결되어 Video및 Audio가 출력 됨
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1.장치 상세페이지에 진입하여 SIP 계정 정보 입력
+2.SIP Server Transport : UDP(기본값) 설정 후 저장
+3. 장치 화면에서 Call 버튼 선택 후 PC의 MicroSIP 계정에 연결 시도
+
+데이터 (Data)
+FreePBX 서버에서 TCP only만 설정
+
+예상 결과 (Expected Result)
+Call 버튼 비활성화되며 통화 되지 않는다.
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1.장치 상세페이지에 진입하여 SIP 계정 정보 입력
+2.SIP Server Transport : UDP(기본값) 설정 후 저장
+3. 장치 화면에서 Call 버튼 선택 후 PC의 MicroSIP 계정에 연결 시도
+
+데이터 (Data)
+FreePBX 서버에서 SSL만 설정
+
+>SSL의 경우, 서버의 포트와 장치의 포트가 일치해야 함
+(ex: 5061)
+
+예상 결과 (Expected Result)
+Call 버튼 비활성화되며 통화 되지 않는다.
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1.장치 상세페이지에 진입하여 SIP 계정 정보 입력
+2.SIP Server Transport : TCP 설정 후 저장
+3. 장치 화면에서 Call 버튼 선택 후 PC의 MicroSIP 계정에 연결 시도
+
+데이터 (Data)
+FreePBX 서버에서 UDP만 설정
+
+예상 결과 (Expected Result)
+Call 버튼 비활성화되며 통화 되지 않는다.
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1.장치 상세페이지에 진입하여 SIP 계정 정보 입력
+2.SIP Server Transport : TCP 설정 후 저장
+3. 장치 화면에서 Call 버튼 선택 후 PC의 MicroSIP 계정에 연결 시도
+
+데이터 (Data)
+FreePBX 서버에서 SSL만 설정
+
+>SSL의 경우, 서버의 포트와 장치의 포트가 일치해야 함
+(ex: 5061)
+
+예상 결과 (Expected Result)
+Call 버튼 비활성화되며 통화 되지 않는다.
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1.장치 상세페이지에 진입하여 SIP 계정 정보 입력
+2.SIP Server Transport : TCP 설정 후 저장
+3. 장치 화면에서 Call 버튼 선택 후 PC의 MicroSIP 계정에 연결 시도
+
+데이터 (Data)
+FreePBX 서버에서 TCP only만 설정
+
+예상 결과 (Expected Result)
+정상적으로 연결되어 Video및 Audio가 출력 됨
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+1.장치 상세페이지에 진입하여 SIP 계정 정보 입력
+2.SIP Server Transport : SSL 설정 후 저장
+3. 장치 화면에서 Call 버튼 선택 후 PC의 MicroSIP 계정에 연결 시도
+
+데이터 (Data)
+FreePBX 서버에서 TCP only만 설정
+
+예상 결과 (Expected Result)
+Call 버튼 비활성화되며 통화 되지 않는다.
+------------------------------------------------------------
+[Step 8]
+스텝 (Step)
+1.장치 상세페이지에 진입하여 SIP 계정 정보 입력
+2.SIP Server Transport : SSL 설정 후 저장
+3. 장치 화면에서 Call 버튼 선택 후 PC의 MicroSIP 계정에 연결 시도
+
+데이터 (Data)
+FreePBX 서버에서 UDP만 설정
+
+예상 결과 (Expected Result)
+Call 버튼 비활성화되며 통화 되지 않는다.
+------------------------------------------------------------
+[Step 9]
+스텝 (Step)
+1.장치 상세페이지에 진입하여 SIP 계정 정보 입력
+2.SIP Server Transport : SSL 설정 후 저장
+3. 장치 화면에서 Call 버튼 선택 후 PC의 MicroSIP 계정에 연결 시도
+
+데이터 (Data)
+FreePBX 서버에서 SSL만 설정
+
+예상 결과 (Expected Result)
+정상적으로 연결되어 Video및 Audio가 출력 됨
+------------------------------------------------------------
+[Step 10]
+스텝 (Step)
+1.장치 상세페이지에 진입하여 SIP 계정 정보 입력
+2.SIP Server Transport : UDP(기본값) 설정 후 저장
+3. 장치 화면에서 Call 버튼 선택 후 PC의 MicroSIP 계정에 연결 시도
+
+데이터 (Data)
+FreePBX 서버에서 UDP,TCP,SSL 모두설정
+
+예상 결과 (Expected Result)
+정상적으로 연결되어 Video및 Audio가 출력 됨
+------------------------------------------------------------
+[Step 11]
+스텝 (Step)
+1.장치 상세페이지에 진입하여 SIP 계정 정보 입력
+2.SIP Server Transport : TCP 설정 후 저장
+3. 장치 화면에서 Call 버튼 선택 후 PC의 MicroSIP 계정에 연결 시도
+
+데이터 (Data)
+FreePBX 서버에서 UDP,TCP,SSL 모두설정
+
+예상 결과 (Expected Result)
+정상적으로 연결되어 Video및 Audio가 출력 됨
+------------------------------------------------------------
+[Step 12]
+스텝 (Step)
+1.장치 상세페이지에 진입하여 SIP 계정 정보 입력
+2.SIP Server Transport : SSL 설정 후 저장
+3. 장치 화면에서 Call 버튼 선택 후 PC의 MicroSIP 계정에 연결 시도
+
+데이터 (Data)
+FreePBX 서버에서 UDP,TCP,SSL 모두설정
+
+예상 결과 (Expected Result)
+정상적으로 연결되어 Video및 Audio가 출력 됨
+------------------------------------------------------------

@@ -1,0 +1,204 @@
+■ 이슈 키: COMMONR-253
+■ 제목: [BSPP-415] Input 신호를 활용한 Anti-Tailgating 지원
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. Door 추가> Anti-Tailgating 설정
+2. Switch Type으로 Sensor 접지 후 인증시도
+
+데이터 (Data)
+Anti-Tailgating
+> Input Sensor - Master
+> Switch Type - N/O, N/C
+
+예상 결과 (Expected Result)
+1. 설정한 스위치 타입으로 동작되어 인증시 출입거부로 동작된다.
+> 출입거부(Anti-Tailgating) 로그 출력
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. Door 추가> Anti-Tailgating 설정
+2. Switch Type으로 Sensor 접지 후 인증시도
+
+데이터 (Data)
+Anti-Tailgating
+> Input Sensor - Slave
+> Switch Type - N/O, N/C
+
+예상 결과 (Expected Result)
+1. 설정한 스위치 타입으로 동작되어 인증시 출입거부로 동작된다.
+> 출입거부(Anti-Tailgating) 로그 출력
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. Door 추가> Anti-Tailgating 설정
+2. Switch Type으로 Sensor 접지 후 인증시도
+
+데이터 (Data)
+Anti-Tailgating
+> Input Sensor - I/O Device의 Input
+> Switch Type - N/O, N/C
+
+예상 결과 (Expected Result)
+1. 설정한 스위치 타입으로 동작되어 인증시 출입거부로 동작된다.
+> 출입거부(Anti-Tailgating) 로그 출력
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1. Door 추가> Anti-Tailgating 설정
+2. Switch Type으로 Sensor 접지 후 인증시도
+
+데이터 (Data)
+Anti-Tailgating
+> Input Sensor - I/O Device의 Supervised Input
+> Switch Type - N/O, N/C
+
+예상 결과 (Expected Result)
+1. 설정한 스위치 타입으로 동작되어 인증시 출입거부로 동작된다.
+> 출입거부(Anti-Tailgating) 로그 출력
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1. Door 추가> Anti-Tailgating 설정
+2. Switch Type으로 Sensor 접지 후 인증시도
+
+데이터 (Data)
+Group Matching 설정
+Anti-Tailgating
+> Input Sensor - Master/Slave
+> Switch Type - N/O, N/C
+
+예상 결과 (Expected Result)
+1. 설정한 스위치 타입으로 동작되어 Group Matching으로 인증시 출입거부로 동작된다.
+> 출입거부(Anti-Tailgating) 로그 출력
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1. Door에 Anti-Tailgating 설정
+2. Trigger&Action 설정
+3. Anti-Tailgating 발생
+4. Trigger&Action 유무 확인
+
+데이터 (Data)
+Trigger&Action 설정
+> Event: Anti-Tailgating(Master)
+> Action: Output Signal(Master, Slave,I/O Device)
+
+예상 결과 (Expected Result)
+1. Anti-Tailgating 이벤트 발생시 설정한 Action대로 동작된다.
+
+2. 발생된 Action에 대해서는 Mornitoring의 Device Status에서 장치선택해 해제 가능하다.
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+1. Door에 Anti-Tailgating 설정
+2. Trigger&Action 설정
+3. Anti-Tailgating 발생
+4. Trigger&Action 유무 확인
+
+데이터 (Data)
+Trigger&Action 설정
+> Event: Anti-Tailgating(Master)
+> Action: Sound(Master, Slave)
+
+예상 결과 (Expected Result)
+1. Anti-Tailgating 이벤트 발생시 설정한 Action대로 동작된다.
+> Master로 설정한 경우 인증실패음과 Sound의 우선순위가 같기 때문에 인증실패음만 발생됨
+
+2. 발생된 Action에 대해서는 Mornitoring의 Device Status에서 장치선택해 해제 가능하다.
+------------------------------------------------------------
+[Step 8]
+스텝 (Step)
+1. Door에 Anti-Tailgating 설정
+2. Trigger&Action 설정
+3. Anti-Tailgating 발생
+4. Trigger&Action 유무 확인
+
+데이터 (Data)
+Trigger&Action 설정
+> Event: Anti-Tailgating(Master)
+> Action: Device Locked(Master, Slave, I/O Device)
+
+* BLNIIFW-259 참고
+> Develop branch 사용장치 - io device 에 대해 장치잠금 로그 발생
+> releaseAC branch 사용장치 - io device에 대해 장치잠금 로그 미발생
+
+예상 결과 (Expected Result)
+1. Anti-Tailgating 이벤트 발생시 설정한 Action대로 동작된다.
+> I/O Device의 경우 무시된다(로그 발생(Master, Biostar 생성)
+
+2. 발생된 Action에 대해서는 Device에서 장치선택해 Unlock 시 해제 가능하다.
+------------------------------------------------------------
+[Step 9]
+스텝 (Step)
+1. Door에 Anti-Tailgating 설정
+2. Trigger&Action 설정
+3. Anti-Tailgating 발생
+4. Trigger&Action 유무 확인
+
+데이터 (Data)
+Trigger&Action 설정
+> Event: Anti-Tailgating(Slave)
+> Action: Output Signal(Master, Slave,I/O Device)
+
+예상 결과 (Expected Result)
+1. Anti-Tailgating 이벤트 발생시 설정한 Action대로 동작된다.
+
+2. 발생된 Action에 대해서는 Mornitoring의 Device Status에서 장치선택해 해제 가능하다.
+------------------------------------------------------------
+[Step 10]
+스텝 (Step)
+1. Door에 Anti-Tailgating 설정
+2. Trigger&Action 설정
+3. Anti-Tailgating 발생
+4. Trigger&Action 유무 확인
+
+데이터 (Data)
+Trigger&Action 설정
+> Event: Anti-Tailgating(Slave)
+> Action: Sound(Master, Slave)
+
+예상 결과 (Expected Result)
+1. Anti-Tailgating 이벤트 발생시 설정한 Action대로 동작된다.
+> Master로 설정한 경우 인증실패음과 Sound의 우선순위가 같기 때문에 인증실패음만 발생됨
+
+2. 발생된 Action에 대해서는 Mornitoring의 Device Status에서 장치선택해 해제 가능하다.
+------------------------------------------------------------
+[Step 11]
+스텝 (Step)
+1. Door에 Anti-Tailgating 설정
+2. Trigger&Action 설정
+3. Anti-Tailgating 발생
+4. Trigger&Action 유무 확인
+
+데이터 (Data)
+Trigger&Action 설정
+> Event: Anti-Tailgating(Slave)
+> Action: Device Locked(Master, Slave, I/O Device)
+
+* BLNIIFW-259 참고
+> Develop branch 사용장치 - io device 에 대해 장치잠금 로그 발생
+> releaseAC branch 사용장치 - io device에 대해 장치잠금 로그 미발생
+
+예상 결과 (Expected Result)
+1. Anti-Tailgating 이벤트 발생시 설정한 Action대로 동작된다.
+> I/O Device의 경우 무시된다(로그 발생(Master, Biostar 생성)
+
+2. 발생된 Action에 대해서는 Device에서 장치선택해 Unlock 시 해제 가능하다.
+------------------------------------------------------------
+[Step 12]
+스텝 (Step)
+1. Door 추가> Anti-Tailgating 설정
+2. Sensor 접지 후 인증시도
+3. Anti-Tailgating 설정 삭제 후 저장
+4. 삭제 전 설정한 Sensor 접지 후 인증시도
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 인증성공으로 동작된다.
+------------------------------------------------------------

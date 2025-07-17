@@ -1,0 +1,58 @@
+■ 이슈 키: COMMONR-242
+■ 제목: 단말 Reset 될 때 단말 init 완료 전 인증발생시 Lock 관련한 검증 Case
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. Monitoring> Door Status> Door 선택 후 Manual Unlock
+2. 장치 전원재인가> Reset 중 인증시도(지문 or 카드)
+
+데이터 (Data)
+단일장치로 Door 설정(경광등 연결)
+> Relay와 경광등 연결시 Fail Safe Lock으로 연결
+
+예상 결과 (Expected Result)
+1. Reboot 전 상태로 동작되어야 한다.
+> Relay Off로 동작
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. Monitoring> Door Status> Door 선택 후 Manual Unlock
+2. 장치 전원재인가> Reset 중 인증시도(지문 or 카드)
+
+데이터 (Data)
+단일장치로 Door 설정(경광등 연결)
+> Relay와 경광등 연결시 Fail Secure Lock으로 연결
+
+예상 결과 (Expected Result)
+1. Reboot 전 상태로 동작되어야 한다.
+> Relay On으로 동작
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. Monitoring> Door Status> Door 선택 후 Manual Unlock
+2. 장치> 장치상세정보창> Wiegand Config변경 후 저장
+3. Relay 상태확인
+
+데이터 (Data)
+단일장치로 Door 설정(경광등 연결)
+> Relay와 경광등 연결시 Fail Safe Lock으로 연결
+
+예상 결과 (Expected Result)
+1. Relay Off 상태를 유지한다.
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1. Monitoring> Door Status> Door 선택 후 Manual Unlock
+2. 장치> 장치상세정보창> Wiegand Config변경 후 저장
+3. Relay 상태확인
+
+데이터 (Data)
+단일장치로 Door 설정(경광등 연결)
+> Relay와 경광등 연결시 Fail Secure Lock으로 연결
+
+예상 결과 (Expected Result)
+1. Relay On 상태를 유지한다.
+------------------------------------------------------------

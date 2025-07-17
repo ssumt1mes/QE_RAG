@@ -1,0 +1,212 @@
+■ 이슈 키: COMMONR-42
+■ 제목: 출입문 - Alarm
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. Door > Add Door > Anti PassBack Type 설정
+
+데이터 (Data)
+[BioStar]
+# Anti PassBack - Type
+> 기본값 : None
+> Soft APB 
+> Hard APB
+
+예상 결과 (Expected Result)
+1. Entry Device만 설정되어 있을때는 Anti PassBack 비활성화 되어 있음을 확인할 수 있다.
+2. APB Type을 Soft/Hard로 설정할 수 있다.
+ > Soft일 경우, APB가 발생하더라도 Alarm만 발생할뿐 인증 및 출입에는 제한이 없다.
+ >  Hard일 경우, APB가 발생하면 인증 및 출입에 모두 제한이 된다.
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. Door > Add Door > Anti PassBack Type 설정 > APB Reset Time을 설정
+
+데이터 (Data)
+[BioStar]
+1. 기본값 : 24시간
+2. 입력 범위
+ > 0, 5m, 10m, 30m, 1h, 3h, 10h, 24h, 3d, 7d
+: 0~10080 범위 숫자만 입력 가능 
+
+(off) Timeout이 긴 경우
+> 장치 시간 변경으로 확인 불가
+
+예상 결과 (Expected Result)
+1. APB Reset Duration을 입력 범위만큼 설정할 수 있다.
+2. 설정한 시간대로 APB 위반 상태가 유지된다.
+3. 0 입력 시 APB 초기화 X
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. Door > Add Door > Anti PassBack Type 설정 > APB Reset Time을 설정 > Alarm에 Anti PassBack의 Action을 Output으로 설정
+(*) Output 설정시 Door 의 Relay 와 중복되지 않게 설정
+
+데이터 (Data)
+[BioStar]
+# Action Device
+1. Master 장치 선택
+2. Slave 장치 선택
+3. SIO2 선택
+4. DM20 선택
+
+예상 결과 (Expected Result)
+1. Output 설정한 장치에서 Signal이 발생한다.
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1. Door > Add Door > Anti PassBack Type 설정 > APB Reset Time을 설정 > Alarm에 Anti PassBack의 Action을 Release All Alarm으로 설정
+
+데이터 (Data)
+[BioStar]
+# Action Device
+1. Master 장치 선택
+2. Slave 장치 선택
+3. SIO2 선택
+4. DM20 선택
+
+예상 결과 (Expected Result)
+1. 설정한 장치에서 Release All Alarm이 된다.
+2. Output Alarm에 대해서만 Release 된다.
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1. Door > Add Door > Anti PassBack Type 설정 > APB Reset Time을 설정 > Alarm에 Anti PassBack의 Action을 Reboot Device으로 설정
+
+데이터 (Data)
+[BioStar]
+# Action Device
+1. Master 장치 선택
+2. Slave 장치 선택
+
+예상 결과 (Expected Result)
+1. Reboot Device 설정한 장치 Reboot 발생한다.
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1. Door > Add Door > Anti PassBack Type 설정 > APB Reset Time을 설정 > Alarm에 Anti PassBack의 Action을 Disable Device으로 설정
+
+데이터 (Data)
+[BioStar]
+# Action Device
+1. Master 장치 선택
+2. Slave 장치 선택
+
+예상 결과 (Expected Result)
+Disable Device로 설정한 장치가 잠긴다.
+> 메뉴 진입은 가능하다. (Master 장치만)
+> 모든 인증모드에서 인증이 불가하다.(ID / Card / Finger/Face)
+> 사용자의 Credential 등록이 불가하다.(Card/Finger/Face)
+(on) Admin Menu로 접근 시 장치 상에서는 등록 가능
+> LED는 Red-Magenta 로 2초 간격으로 점멸된다.
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+1. Door > Add Door > Configuration > Door Sensor 설정
+1. Alarm > Held Open Time을 설정
+
+데이터 (Data)
+[BioStar]
+1. 기본값 : 3초
+2. 입력 범위
+ > 1s, 3s, 5s, 10s, 15s, 30s, 1m, 3m, 5m, 10m, 15m
+
+예상 결과 (Expected Result)
+1. Held Open Duration을 입력 범위만큼 설정할 수 있다.
+2. 설정한 시간 이후 장시간 문열림이 발생한다.
+------------------------------------------------------------
+[Step 8]
+스텝 (Step)
+1. Door > Add Door > Option > Open Time 설정
+2. Alarm > Held Open Time : Open Time 보다 적은 시간으로 설정
+> Ex. Open Time : 60초, Held Open Time : 30초 설정
+
+데이터 (Data)
+[BioStar]
+Open Time / Held Open Time
+1. 기본값 : 3초
+2. 입력 범위
+ > 1s, 3s, 5s, 10s, 15s, 30s, 1m, 3m, 5m, 10m, 15m
+
+예상 결과 (Expected Result)
+1. Held Open Time 에 설정한 시간 이후 장시간 문열림이 발생한다.
+------------------------------------------------------------
+[Step 9]
+스텝 (Step)
+1. Door > Add Door > Alarm : Held Open의 Action을 Output으로 설정
+
+데이터 (Data)
+[BioStar]
+# Action Device
+1. Master 장치 선택
+2. Slave 장치 선택
+3. SIO2 선택
+4. DM20 선택
+
+예상 결과 (Expected Result)
+1. Output 설정한 장치에서 Signal이 발생한다.
+------------------------------------------------------------
+[Step 10]
+스텝 (Step)
+1. Door > Add Door > Alarm : Held Open의 Action을 Alert Sound로 설정
+
+데이터 (Data)
+[BioStar]
+# Action Device
+1. Master 장치 선택
+2. Slave 장치 선택
+
+예상 결과 (Expected Result)
+1. Alert Sound 설정한 장치에서 Buzzer Volume/Alert Sound Type이 발생한다.
+2. Alarm이 발생하는 도중 Door Closed시 Alarm Clear가 된다.
+------------------------------------------------------------
+[Step 11]
+스텝 (Step)
+1. Door > Add Door > Alarm : Forced Open의 Action을 Output으로 설정
+
+데이터 (Data)
+[BioStar]
+# Action Device
+1. Master 장치 선택
+2. Slave 장치 선택
+3. SIO2 선택
+4. DM20 선택
+
+예상 결과 (Expected Result)
+1. Output 설정한 장치에서 Signal이 발생한다.
+------------------------------------------------------------
+[Step 12]
+스텝 (Step)
+1. Door > Add Door > Alarm : Forced Open의 Action을 Alert Sound로 설정
+
+데이터 (Data)
+[BioStar]
+# Action Device
+1. Master 장치 선택
+2. Slave 장치 선택
+
+예상 결과 (Expected Result)
+1. Alert Sound 설정한 장치에서 Buzzer Volume/Alert Sound Type이 발생한다.
+2. Alarm이 발생하는 도중 Door Closed시 Alarm Clear가 된다.
+------------------------------------------------------------
+[Step 13]
+스텝 (Step)
+<Master-Slave(Device/DM20/SIO2) 연결>
+1. Door> Add Door> Door 구성
+2. Alarm : Held Open & Forced Open 설정
+3. Door Sensor 및 Exit Button 이용해 문열림 발생
+
+데이터 (Data)
+[BioStar]
+# Door Configuration Relay, Exit Button, Door Sensor
+> SIO2
+> DM20
+> Device
+
+예상 결과 (Expected Result)
+1. Unlock 후 Open 되어야 한다.
+2. Held Open 시간만큼 문열림이 발생되면 Held Open Alarm이 발생되어야 한다.
+------------------------------------------------------------

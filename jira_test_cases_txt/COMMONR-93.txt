@@ -1,0 +1,118 @@
+■ 이슈 키: COMMONR-93
+■ 제목: Triggered & Action - ACU 제어 기능(AutoTest Tool용)
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+[FwAutoTest]
+1. Device Func > TriggerAction > 장치 ID 입력 > Trigger Input port Index 0 설정 > 임의의 Duration 설정 > Switch Type : Normally Open 설정 > 임의의 Schedule 설정 > Action > 장치 ID 입력 > Action Type : LED 설정 > 임의의 Count 설정 > Signal 1,2,3 설정 > 임의의 Duration 설정 > 임의의 Delay 설정 > 확인 > Add > 장치 적용
+
+데이터 (Data)
+[FwAutoTest]
+1. Trigger Input Port : O 설정
+2. Switch Type : Normally Open 설정
+3. Action : LED 선택
+
+예상 결과 (Expected Result)
+1. Input O을 Normally Open으로 접지시 설정한 LED의 색깔이 나타나야 한다.
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+[FwAutoTest]
+1. Device Func > TriggerAction > 장치 ID 입력 > Trigger Input port Index 1 설정 > 임의의 Duration 설정 > Switch Type : Normally Open 설정 > 임의의 Schedule 설정 > Action > 장치 ID 입력 > Action Type : LED 설정 > 임의의 Count 설정 > Signal 1,2,3 설정 > 임의의 Duration 설정 > 임의의 Delay 설정 > 확인 > Add > 장치 적용
+
+데이터 (Data)
+[FwAutoTest]
+1. Trigger Input Port : 1 설정
+2. Switch Type : Normally Open 설정
+3. Action : LED 선택
+
+예상 결과 (Expected Result)
+1. Input 1을 Normally Open으로 접지시 설정한 LED의 색깔이 나타나야 한다.
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+[FwAutoTest]
+1. Device Func > TriggerAction > 장치 ID 입력 > Trigger Input port Index 0 설정 > 임의의 Duration 설정 > Switch Type : Normally Close 설정 > 임의의 Schedule 설정 > Action > 장치 ID 입력 > Action Type : LED 설정 > 임의의 Count 설정 > Signal 1,2,3 설정 > 임의의 Duration 설정 > 임의의 Delay 설정 > 확인 > Add > 장치 적용
+
+데이터 (Data)
+[FwAutoTest]
+1. Trigger Input Port : O 설정
+2. Switch Type : Normally Close 설정
+3. Action : LED 선택
+
+예상 결과 (Expected Result)
+1. Input O을 Normally Close으로 접지시 설정한 LED의 색깔이 나타나야 한다.
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+[FwAutoTest]
+1. Device Func > TriggerAction > 장치 ID 입력 > Trigger Input port Index 0 설정 > 임의의 Duration 설정 > Switch Type : Normally Close 설정 > 임의의 Schedule 설정 > Action > 장치 ID 입력 > Action Type : LED 설정 > 임의의 Count 설정 > Signal 1,2,3 설정 > 임의의 Duration 설정 > 임의의 Delay 설정 > 확인 > Add > 장치 적용
+
+데이터 (Data)
+[FwAutoTest]
+1. Trigger Input Port : 1 설정
+2. Switch Type : Normally Close 설정
+3. Action : LED 선택
+
+예상 결과 (Expected Result)
+1. Input 1을 Normally Close으로 접지시 설정한 LED의 색깔이 나타나야 한다.
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+[FwAutoTest]
+1. Device Func > TriggerAction > 장치 ID 입력 > Trigger Input port Index 0 설정 > 임의의 Duration 설정 > Switch Type : Normally Open 설정 > 임의의 Schedule 설정 > Action > 장치 ID 입력 > Action Type : Buzzer 설정 > 임의의 Count 설정 > Signal 1,2,3 설정 > 임의의 Duration 설정 > 임의의 Delay 설정 > 확인 > Add > 장치 적용
+
+데이터 (Data)
+[FwAutoTest]
+1. Trigger Input Port : O 설정
+2. Switch Type : Normally Open 설정
+3. Action : Buzzer 선택
+
+예상 결과 (Expected Result)
+1. Input O을 Normally Open으로 접지시 설정한 Buzzer의 Sound가 나타나야 한다.
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+[FwAutoTest]
+1. Device Func > TriggerAction > 장치 ID 입력 > Trigger Input port Index 1 설정 > 임의의 Duration 설정 > Switch Type : Normally Open 설정 > 임의의 Schedule 설정 > Action > 장치 ID 입력 > Action Type : Buzzer 설정 > 임의의 Count 설정 > Signal 1,2,3 설정 > 임의의 Duration 설정 > 임의의 Delay 설정 > 확인 > Add > 장치 적용
+
+데이터 (Data)
+[FwAutoTest]
+1. Trigger Input Port : 1 설정
+2. Switch Type : Normally Open 설정
+3. Action : Buzzer 선택
+
+예상 결과 (Expected Result)
+1. Input 1을 Normally Open으로 접지시 설정한 Buzzer의 Sound가 나타나야 한다.
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+[FwAutoTest]
+1. Device Func > TriggerAction > 장치 ID 입력 > Trigger Input port Index 0 설정 > 임의의 Duration 설정 > Switch Type : Normally Close 설정 > 임의의 Schedule 설정 > Action > 장치 ID 입력 > Action Type : Buzzer 설정 > 임의의 Count 설정 > Signal 1,2,3 설정 > 임의의 Duration 설정 > 임의의 Delay 설정 > 확인 > Add > 장치 적용
+
+데이터 (Data)
+[FwAutoTest]
+1. Trigger Input Port : O 설정
+2. Switch Type : Normally Close 설정
+3. Action : Buzzer 선택
+
+예상 결과 (Expected Result)
+1. Input O을 Normally Close으로 접지시 설정한 Buzzer의 Sound가 나타나야 한다.
+------------------------------------------------------------
+[Step 8]
+스텝 (Step)
+[FwAutoTest]
+1. Device Func > TriggerAction > 장치 ID 입력 > Trigger Input port Index 1 설정 > 임의의 Duration 설정 > Switch Type : Normally Close 설정 > 임의의 Schedule 설정 > Action > 장치 ID 입력 > Action Type : Buzzer 설정 > 임의의 Count 설정 > Signal 1,2,3 설정 > 임의의 Duration 설정 > 임의의 Delay 설정 > 확인 > Add > 장치 적용
+
+데이터 (Data)
+[FwAutoTest]
+1. Trigger Input Port : 1 설정
+2. Switch Type : Normally Close 설정
+3. Action : Buzzer 선택
+
+예상 결과 (Expected Result)
+1. Input 1을 Normally Close으로 접지시 설정한 Buzzer의 Sound가 나타나야 한다.
+------------------------------------------------------------

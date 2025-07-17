@@ -12,7 +12,7 @@ PROJECT_KEY = "COMMONR"
 ISSUE_TYPE_NAME = "Test"
 
 JQL_QUERY = f'project = "{PROJECT_KEY}" AND issuetype = "{ISSUE_TYPE_NAME}"'
-OUTPUT_FOLDER_NAME = "Jira_Test_Cases"
+OUTPUT_FOLDER_NAME = "jira_test_cases_txt"
 JIRA_AUTH = (JIRA_USERNAME, JIRA_PASSWORD)
 
 

@@ -1,0 +1,279 @@
+■ 이슈 키: COMMONR-245
+■ 제목: [BSPP-363] Wiegand Out(Ouput, In/Output) 설정과 장치 Trigger&Action에서 Input 및 Function 설정에 따른 인증동작
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. 장치에 Wiegand 설정
+   > Wiegand Out
+   > Bypass - Disable
+2. Trigger&Action 설정
+   > Input 및 Function
+3. 카드인증시도 후 결과 확인
+4. Trigger&Action의 Input 접지
+5. 결과확인
+6. 등록되지않은 카드인증시도> 실패에 대한 인증결과 확인
+
+데이터 (Data)
+카드인증
+> SmartCard - AOC, SCC
+> 일반카드
+
+예상 결과 (Expected Result)
+1. Step 3> 인증모드로 수행 후 Wiegand Out으로 동작된다.
+=> 인증결과는 화면에 미출력됨
+2. Step 5> Function의 Action이 출력된다.
+=> 화면표시 및 Sound 발생됨.
+3. Step 6> 화면에 인증결과가 출력된다.
+=> 인증실패 및 Sound 발생됨.
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. 장치에 Wiegand 설정
+   > Wiegand Out
+   > Bypass - Enable
+2. Trigger&Action 설정
+   > Input 및 Function
+3. 카드인증시도> 인증결과 확인
+4. Trigger&Action의 Input 접지
+5. 결과확인
+6. 장치에서 Bypass Disable로 변경
+7. 카드인증시도 후 결과확인
+8. Trigger&Action의 Input 접지
+9. 결과확인
+
+데이터 (Data)
+카드인증
+> SmartCard - AOC, SCC
+> 일반카드
+
+예상 결과 (Expected Result)
+1. Step 3> 카드 입력 후 바로 Bypass 로 Wiegand 출력된다.
+=> 인증결과는 화면에 미출력됨
+2. Step 7> 인증모드로 수행 후 Wiegand Out으로 동작된다.
+=> 인증결과는 화면에 미출력됨
+3. Step 5,9> Function의 Action이 출력된다.
+=> 화면표시 및 Sound 발생됨.
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. 장치에 Wiegand 설정
+   > Wiegand Out
+   > Bypass - Enable
+2. Trigger&Action 설정
+   > Input 및 Function
+3. 카드인증시도> 인증결과 확인
+4. Trigger&Action의 Input 접지
+5. 결과확인
+6. 장치에서 Bypass Disable로 변경
+7. 카드인증시도 후 결과확인
+8. Trigger&Action의 Input 접지
+9. 결과확인
+
+데이터 (Data)
+카드인증(= Blacklist Card)
+> SmartCard - AOC, SCC
+> 일반카드
+
+예상 결과 (Expected Result)
+1. Step 3> 카드 입력 후 바로 Bypass 로 Wiegand 출력된다.
+=> 인증결과는 화면에 미출력됨
+2. Step 7> Blacklist로 인증실패 처리되고 화면에 인증결과 출력된다.
+=> Wiegand Out되지 않음
+=> 인증실패 및 Sound 발생됨
+3. Step 5,9> Function의 Action이 출력된다.
+=> 화면표시 및 Sound 발생됨.
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1. 장치의 지문인증모드 설정  
+2. 장치에 Wiegand 설정
+   > Wiegand Out
+   > Bypass - Enable/Disable 무관
+3. Trigger&Action 설정
+   > Input 및 Function
+4. 등록된 지문인증시도> 성공에 대한 인증결과 확인
+5. Trigger&Action의 Input 접지
+6. 결과확인
+7. 등록되지않은 지문인증시도> 실패에 대한 인증결과 확인
+
+데이터 (Data)
+※ 보낼 데이터가 있는 경우 (CSN, SmartCard_SCC가 포함된 User)
+지문인증모드
+> 지문Only
+> 지문+PIN
+
+예상 결과 (Expected Result)
+1. Step 4> 인증모드로 수행 후 Wiegand Out으로 동작된다.
+=> 인증결과는 화면에 미출력됨
+2. Step 6> Function의 Action이 출력된다.
+=> 화면표시 및 Sound 발생됨.
+3. Step 7> 화면에 인증결과가 출력된다.
+=> 인증실패 및 Sound 발생됨.
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1. 장치의 지문인증모드 설정  
+2. 장치에 Wiegand 설정
+   > Wiegand Out
+   > Bypass - Enable/Disable 무관
+3. Trigger&Action 설정
+   > Input 및 Function
+4. 등록된 지문인증시도> 성공에 대한 인증결과 확인
+5. Trigger&Action의 Input 접지
+6. 결과확인
+7. 등록되지않은 지문인증시도> 실패에 대한 인증결과 확인
+
+데이터 (Data)
+※ 보낼 데이터가 없는 경우 (SmartCard_AoC, PIN만 등록된 User)
+지문인증모드
+> 지문Only
+> 지문+PIN
+
+예상 결과 (Expected Result)
+1. Step 4> 인증모드로 수행 후 Wiegand Out으로 동작된다.
+=> 인증결과는 화면에 출력됨
+2. Step 6> Function의 Action이 출력된다.
+=> 화면표시 및 Sound 발생됨.
+3. Step 7> 화면에 인증결과가 출력된다.
+=> 인증실패 및 Sound 발생됨.
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1. 장치의 ID인증모드 설정
+2. 장치에 Wiegand 설정
+   > Wiegand Out
+   > Bypass - Enable/Disable 무관
+3. Trigger&Action 설정
+   > Input 및 Function
+4. 등록된 ID 인증시도> 성공에 대한 인증결과 확인
+5. Trigger&Action의 Input 접지
+6. 결과확인
+7. 등록되지않은 ID 인증시도> 실패에 대한 인증결과 확인
+
+데이터 (Data)
+※ 보낼 데이터가 있는 경우 (CSN, SmartCard_SCC가 포함된 User)
+ID 인증모드
+> ID+지문
+> ID+PIN
+> ID+지문/PIN
+> ID+지문+PIN
+
+예상 결과 (Expected Result)
+1. Step 4> 인증모드로 수행 후 Wiegand Out으로 동작된다.
+=> 인증결과는 화면에 미출력됨
+2. Step 6> Function의 Action이 출력된다.
+=> 화면표시 및 Sound 발생됨.
+3. Step 7> 화면에 인증결과가 출력된다.
+=> 인증실패 및 Sound 발생됨.
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+1. 장치의 ID인증모드 설정
+2. 장치에 Wiegand 설정
+   > Wiegand Out
+   > Bypass - Enable/Disable 무관
+3. Trigger&Action 설정
+   > Input 및 Function
+4. 등록된 ID 인증시도> 성공에 대한 인증결과 확인
+5. Trigger&Action의 Input 접지
+6. 결과확인
+7. 등록되지않은 ID 인증시도> 실패에 대한 인증결과 확인
+
+데이터 (Data)
+※ 보낼 데이터가 없는 경우 (SmartCard_AoC or PIN만 등록된 User)
+ID 인증모드
+> ID+지문
+> ID+PIN
+> ID+지문/PIN
+> ID+지문+PIN
+
+예상 결과 (Expected Result)
+1. Step 4> 인증모드로 수행 후 Wiegand Out으로 동작된다.
+=> 인증결과는 화면에 출력됨
+2. Step 6> Function의 Action이 출력된다.
+=> 화면표시 및 Sound 발생됨.
+3. Step 7> 화면에 인증결과가 출력된다.
+=> 인증실패 및 Sound 발생됨.
+------------------------------------------------------------
+[Step 8]
+스텝 (Step)
+1. 장치에 Wiegand 설정
+   > Wiegand Out
+   > Bypass - Disable
+   > Fail Code - 설정
+2. Trigger&Action 설정
+   > Input 및 Function
+3. 등록되지 않은 카드인증시도 후 결과 확인
+4. Trigger&Action의 Input 접지
+5. 결과확인
+6. 등록된 카드인증시도> 실패에 대한 인증결과 확인
+
+데이터 (Data)
+카드인증
+> SmartCard - AOC, SCC
+> 일반카드
+
+예상 결과 (Expected Result)
+1. Step 3> 카드 입력 후 바로 Bypass Disable로 Wiegand 출력된다.
+=> 인증실패 및 Sound 발생됨.
+2. Step 5> Function의 Action이 출력된다.
+=> 화면표시 및 Sound 발생됨.
+3. Step 6> 인증모드로 수행 후 Wiegand Out으로 동작된다.
+=> 인증결과는 화면에 미출력됨
+------------------------------------------------------------
+[Step 9]
+스텝 (Step)
+1. 장치의 지문인증모드 설정
+2. 장치에 Wiegand 설정
+   > Wiegand Out
+   > Bypass - Enable
+3. Trigger&Action 설정
+   > Input 및 Function
+4. Private Auth(= 카드 + 지문) 설정되어 발급된 카드로 인증시도> 성공에 대한 인증결과 확인
+5. Trigger&Action의 Input 접지
+6. 결과확인
+
+데이터 (Data)
+카드인증
+> SmartCard - AOC(Private Auth 포함)
+=> Card+지문
+=> Card+PIN
+=> Card+지문/PIN
+=> Card+지문+PIN
+
+예상 결과 (Expected Result)
+1. Step 4> 카드 입력 후 바로 Bypass 로 Wiegand 출력된다.
+=> 인증결과는 화면에 미출력됨
+2. Step 5> Function의 Action이 출력된다.
+=> 화면표시 및 Sound 발생됨.
+------------------------------------------------------------
+[Step 10]
+스텝 (Step)
+1. 장치의 지문인증모드 설정
+2. 장치에 Wiegand 설정
+   > Wiegand Out
+   > Bypass - Enable
+3. Trigger&Action 설정
+   > Input 및 Function
+4. Private Auth(= 카드 + 지문) 설정되어 발급된 카드로 인증시도> 성공에 대한 인증결과 확인
+5. Trigger&Action의 Input 접지
+6. 결과확인
+
+데이터 (Data)
+카드인증
+> SmartCard - SCC
+> 일반카드
+=> Card+지문
+=> Card+PIN
+=> Card+지문/PIN
+=> Card+지문+PIN
+
+예상 결과 (Expected Result)
+1. Step 3> 카드 입력 후 바로 Bypass 로 Wiegand 출력된다.
+=> 인증결과는 화면에 미출력됨
+2. Step 5> Function의 Action이 출력된다.
+=> 화면표시 및 Sound 발생됨.
+------------------------------------------------------------

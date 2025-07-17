@@ -1,0 +1,54 @@
+■ 이슈 키: COMMONR-355
+■ 제목: [BioStar V2.9.0_Warped Image]BS3을 이용하거나, Image Upload를 이용하여 Visual Face 등록 시 Warped Image 추출 오류에 대한 검증 TC
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+[얼굴지원장치]
+1. USER > ADD USER > Credential
+2. Visual Face > Face 1 / Face 2 > Scan Face, Image Upload
+3. 장치로 사용자 전송
+
+데이터 (Data)
+[Device]
+BioStation 3 개선 버전(QFaceEngine SDK  0.13.1 포함)
+[BioStar]
+1. 해당 기능 장치 선택
+2. 인당 등록 가능 Max 상이
+> 최대 5개 입력 가능 - FS2/FL
+> 최대 2개 입력 가능 - F2/BS3/W3
+
+예상 결과 (Expected Result)
+1. 장치에서 BioStar 를 통해 얼굴 등록 시 등록된 사용자의 눈이 중앙이 아닌 상태로 틀어지지 않는다.
+> 장치를 이용하여 등록 시 정상 등록 된다.
+> Image Upload를 이용하여 등록 시 정상 등록 된다.
+=> Black Boundary는 완전히 제거할 수 없다.
+2. 등록된 사용자에 대해서 인증 시 오인증 발생 없이 인증 성공/실패로 동작 한다.
+> 오인증 발생하는 상단에 얼굴 입력(눈아래)시 인증 유무 확인
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+[얼굴지원장치]
+1. USER / Operator > Enroll User > Credential
+2. FaceEX > Scan Face / Image Face > Apply
+3. 장치로 사용자 전송
+
+데이터 (Data)
+[Device]
+BioStation 3 개선 버전(QFaceEngine SDK  0.13.1 포함)
+[SDK]
+1. 해당 기능 장치 선택
+2. 인당 등록 가능 Max 상이
+> 최대 5개 입력 가능 - FS2/FL
+> 최대 2개 입력 가능 - F2/BS3/W3
+
+예상 결과 (Expected Result)
+1. 장치에서 BioStar 를 통해 얼굴 등록 시 등록된 사용자의 눈이 중앙이 아닌 상태로 틀어지지 않는다.
+> 장치를 이용하여 등록 시 정상 등록 된다.
+> Image Upload를 이용하여 등록 시 정상 등록 된다.
+=> Black Boundary는 완전히 제거할 수 없다.
+2. 등록된 사용자에 대해서 인증 시 오인증 발생 없이 인증 성공/실패로 동작 한다.
+> 오인증 발생하는 상단에 얼굴 입력(눈아래)시 인증 유무 확인
+------------------------------------------------------------

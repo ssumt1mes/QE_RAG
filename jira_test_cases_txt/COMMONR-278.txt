@@ -1,0 +1,594 @@
+■ 이슈 키: COMMONR-278
+■ 제목: [Intelligent Slave] Output Info : Card ID 사용
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. HID OSDP Tool에 연결
+2. 사용자에 등록된 CSN Card 인증
+3. 출력되는 데이터 확인
+
+데이터 (Data)
+CSN Card
+> Mifare / DesFire / Felica / EM / ISO-15693
+
+인증시 카드인증모드
+> Card Only
+> Card + Finger(Face)
+> Card + PIN
+> Card + Finger(Face)/PIN
+> Card + Finger(Face) + PIN
+
+예상 결과 (Expected Result)
+1. 인증된 카드ID가 출력된다.
+> 리드된 카드의 BitCount가 표시
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. HID OSDP Tool에 연결
+2. 사용자에 Wiegand Format으로 CSN Card 등록
+3. 등록된 CSN Card로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+CSN Wiegand Format
+> Wiegand Format 설정(none, 임의포맷)
+
+CSN Card
+> Mifare / DesFire / Felica / EM / ISO-15693
+
+인증시 카드인증모드
+> Card Only
+> Card + Finger(Face)
+> Card + PIN
+> Card + Finger(Face)/PIN
+> Card + Finger(Face) + PIN
+
+예상 결과 (Expected Result)
+1. Wiegand Format으로 저장된 카드ID가 출력된다.
+> 설정된 Wiegand Format으로 BitCount 표시
+
+※ 등록된 카드ID과 장치에 설정된 Wiegand Format이 상이한 상태에서 인증을 하게 될 경우 인증실패로 동작한다.
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. HID OSDP Tool에 연결
+2. 사용자에 Wiegand Card 등록
+3. 등록된 Wiegand Card로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+Wiegand Card
+> HID / iCLASS
+
+인증시 카드인증모드
+> Card Only
+> Card + Finger(Face)
+> Card + PIN
+> Card + Finger(Face)/PIN
+> Card + Finger(Face) + PIN
+
+예상 결과 (Expected Result)
+1. 인증된 카드ID가 출력된다.
+> 리드된 카드가 지원하는 포맷으로 BitCount가 표시
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1. HID OSDP Tool에 연결
+2. 사용자에 Smart Card 발급
+3. Smart Card로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+Smart Card(AOC, SCC)
+> Mifare/DesFire
+
+인증시 카드인증모드
+(AOC의 경우 개인인증모드 포함)
+> Card Only
+> Card + Finger(Face)
+> Card + PIN
+> Card + Finger(Face)/PIN
+> Card + Finger(Face) + PIN
+
+예상 결과 (Expected Result)
+1. 발급된 카드ID가 출력된다.
+> 발급된 카드ID만큼의 BitCount가 표시
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1. HID OSDP Tool에 연결
+2. 사용자에 Smart Card 발급
+3. Smart Card로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+Smart Card(AOC, SCC)
+> iCLASS/SEOS
+
+인증시 카드인증모드
+(AOC의 경우 개인인증모드 포함)
+> Card Only
+> Card + Finger(Face)
+> Card + PIN
+> Card + Finger(Face)/PIN
+> Card + Finger(Face) + PIN
+
+예상 결과 (Expected Result)
+1. PAC Data가 출력된다.
+> 리드된 카드가 지원하는 포맷으로 BitCount가 표시
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1. HID OSDP Tool에 연결
+2. 사용자에 Mobile Access Card 발급
+3. Mobile Access Card로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+Mobile Access Card
+> NFC, BLE
+
+인증시 카드인증모드
+> Card Only
+> Card + Finger(Face)
+> Card + PIN
+> Card + Finger(Face)/PIN
+> Card + Finger(Face) + PIN
+
+예상 결과 (Expected Result)
+1. 발급된 카드ID만큼의 BitCount가 표시
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+1. HID OSDP Tool과 연결
+2. 사용자에 카드, 지문, PIN 등록
+3. Byte Order 설정
+4. 등록된 크리덴셜로 인증
+5. 출력되는 데이터 확인
+
+데이터 (Data)
+Byte Order
+> MSB
+> LSB
+※Card Type: CSN Card
+
+예상 결과 (Expected Result)
+1. 크리덴셜을 발급했을 때 설정된 Byte Order에 맞게 Card ID가 출력되어야 한다.
+------------------------------------------------------------
+[Step 8]
+스텝 (Step)
+1. HID OSDP Tool과 연결
+2. 미등록된 카드로 인증
+3. 출력되는 데이터 확인
+
+데이터 (Data)
+Exception Code
+> 사용안함
+
+예상 결과 (Expected Result)
+1. 출력되는 카드데이터가 없다.
+------------------------------------------------------------
+[Step 9]
+스텝 (Step)
+1. HID OSDP Tool과 연결
+2. Exception Code 설정
+3. 미등록된 카드로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+Exception Code
+> 1(Default) - BioStar2 UI
+> 직접입력(0xFF...FF(8Byte))
+
+예상 결과 (Expected Result)
+1. Exception Code에 해당하는 데이터가  출력된다.
+> Default - 01로 출력
+> 직접입력 - 설정한 값이 그대로 출력되며 최대 8Byte까지 지원
+------------------------------------------------------------
+[Step 10]
+스텝 (Step)
+1. HID OSDP Tool과 연결
+2. Blackklist 카드로 인증
+3. 출력되는 데이터 확인
+
+데이터 (Data)
+Exception Code
+> 사용안함
+
+예상 결과 (Expected Result)
+1. 출력되는 카드데이터가 없다.
+------------------------------------------------------------
+[Step 11]
+스텝 (Step)
+1. HID OSDP Tool과 연결
+2. Exception Code 설정
+3. Blacklist 카드로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+Exception Code
+> 1(Default) - BioStar2 UI
+> 직접입력(0xFF...FF(8Byte))
+
+예상 결과 (Expected Result)
+1. Exception Code에 해당하는 데이터가  출력된다.
+> Default - 01로 출력
+> 직접입력 - 설정한 값이 그대로 출력되며 최대 8Byte까지 지원
+------------------------------------------------------------
+[Step 12]
+스텝 (Step)
+1. HID OSDP Tool과 연결
+2. 유효기간을 벗어난 사용자의 카드로 인증
+3. 출력되는 데이터 확인
+
+데이터 (Data)
+Exception Code
+> 사용안함
+
+예상 결과 (Expected Result)
+1. 출력되는 카드데이터가 없다.
+------------------------------------------------------------
+[Step 13]
+스텝 (Step)
+1. HID OSDP Tool과 연결
+2. Exception Code 설정
+3. 유효기간을 벗어난 사용자의 카드로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+Exception Code
+> 1(Default) - BioStar2 UI
+> 직접입력(0xFF...FF(8Byte))
+
+예상 결과 (Expected Result)
+1. Exception Code에 해당하는 데이터가  출력된다.
+> Default - 01로 출력
+> 직접입력 - 설정한 값이 그대로 출력되며 최대 8Byte까지 지원
+------------------------------------------------------------
+[Step 14]
+스텝 (Step)
+1. HID OSDP Tool과 연결
+2. 비활성화 된 사용자의 카드로 인증
+3. 출력되는 데이터 확인
+
+데이터 (Data)
+Exception Code
+> 사용안함
+
+예상 결과 (Expected Result)
+1. 출력되는 카드데이터가 없다.
+------------------------------------------------------------
+[Step 15]
+스텝 (Step)
+1. HID OSDP Tool과 연결
+2. Exception Code 설정
+3. 비활성화된 사용자의 카드로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+Exception Code
+> 1(Default) - BioStar2 UI
+> 직접입력(0xFF...FF(8Byte))
+
+예상 결과 (Expected Result)
+1. Exception Code에 해당하는 데이터가  출력된다.
+> Default - 01로 출력
+> 직접입력 - 설정한 값이 그대로 출력되며 최대 8Byte까지 지원
+------------------------------------------------------------
+[Step 16]
+스텝 (Step)
+1. HID OSDP Tool과 연결
+2. 사용자에 카드 미등록
+3. 카드 외 크리덴셜로 인증해 인증성공으로 동작
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+카드 외 크리덴셜
+> Finger(Face) / ID(추후 Keypad 지원 단말)
+
+예상 결과 (Expected Result)
+1. 출력되는 카드데이터가 없다.
+------------------------------------------------------------
+[Step 17]
+스텝 (Step)
+1. HID OSDP Tool과 연결 
+2. 사용자에 카드 미등록
+3. Exception Code 설정
+4. 카드 외 크리덴셜로 인증해 인증성공으로 동작
+5. 출력되는 데이터 확인
+
+데이터 (Data)
+Exception Code
+> 1(Default) - BioStar2 UI
+> 직접입력(0xFF...FF(8Byte))
+
+카드 외 크리덴셜
+> Finger(Face) / ID(추후 Keypad 지원 단말)
+
+예상 결과 (Expected Result)
+1. Exception Code에 해당하는 데이터가  출력된다.
+> Default - 01로 출력
+> 직접입력 - 설정한 값이 그대로 출력되며 최대 8Byte까지 지원
+------------------------------------------------------------
+[Step 18]
+스텝 (Step)
+1. HID OSDP Tool과 연결 
+2. 사용자의 첫번째 카드로 CSN 등록
+3. 카드 외 크리덴셜로 인증해 인증성공으로 동작
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+CSN Card Format
+> Normal
+
+카드 외 크리덴셜
+> Finger(Face) / ID(추후 Keypad 지원 단말)
+
+예상 결과 (Expected Result)
+1. 등록된 카드ID가 출력된다.
+------------------------------------------------------------
+[Step 19]
+스텝 (Step)
+1. HID OSDP Tool과 연결 
+2. 사용자의 첫번째 카드로 CSN Wiegand Format으로 등록
+3. 카드 외 크리덴셜로 인증해 인증성공으로 동작
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+CSN Card Format
+> Wiegand Format(등록된 위겐드포맷과 동일)
+
+카드 외 크리덴셜
+> Finger(Face) / ID(추후 Keypad 지원 단말)
+
+예상 결과 (Expected Result)
+1. 등록된 카드ID가 출력된다.
+> Parity bit 를 포함한 wiegand 카드의 전체 데이터 전송
+------------------------------------------------------------
+[Step 20]
+스텝 (Step)
+1. HID OSDP Tool과 연결 
+2. 사용자의 첫번째 카드로 위겐드 카드 등록
+3. 카드 외 크리덴셜로 인증해 인증성공으로 동작
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+Wiegand Card
+> HID/iCLASS
+
+카드 외 크리덴셜
+> Finger(Face) / ID(추후 Keypad 지원 단말)
+
+예상 결과 (Expected Result)
+1. 등록된 카드ID가 출력된다.
+> Parity bit 를 포함한 wiegand 카드의 전체 데이터를 전송한다.
+------------------------------------------------------------
+[Step 21]
+스텝 (Step)
+1. HID OSDP Tool과 연결 
+2. 사용자의 첫번째 카드로 AOC 카드 발급해 등록
+3. 카드 외 크리덴셜로 인증해 인증성공으로 동작
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+AOC 카드
+> Mifare/DesFire
+> iCLASS/SEOS
+
+Exception Code
+> 사용안함
+
+카드 외 크리덴셜
+> Finger(Face) / ID(추후 Keypad 지원 단말)
+
+예상 결과 (Expected Result)
+1. 출력되는 카드데이터가 없다.
+------------------------------------------------------------
+[Step 22]
+스텝 (Step)
+1. HID OSDP Tool과 연결 
+2. 사용자의 첫번째 카드로 AOC 카드 발급해 등록
+3. Exception Code 설정
+4. 카드 외 크리덴셜로 인증해 인증성공으로 동작
+5. 출력되는 데이터 확인
+
+데이터 (Data)
+AOC 카드
+> Mifare/DesFire
+> iCLASS/SEOS
+
+Exception Code
+> 1(Default) - BioStar2 UI
+> 직접입력(0xFF...FF(8Byte))
+
+카드 외 크리덴셜
+> Finger(Face) / ID(추후 Keypad 지원 단말)
+
+예상 결과 (Expected Result)
+1. Exception Code에 해당하는 데이터가  출력된다.
+> Default - 01로 출력
+> 직접입력 - 설정한 값이 그대로 출력되며 최대 8Byte까지 지원
+------------------------------------------------------------
+[Step 23]
+스텝 (Step)
+1. HID OSDP Tool과 연결 
+2. 사용자의 첫번째 카드로 AOC 카드, 두번째 카드로 SCC 카드 발급해 등록
+3. 카드 외 크리덴셜로 인증해 인증성공으로 동작
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+AOC/SCC 카드
+> Mifare/DesFire
+> iCLASS/SEOS
+
+Exception Code
+> 사용안함
+
+카드 외 크리덴셜
+> Finger(Face) / ID(추후 Keypad 지원 단말)
+
+예상 결과 (Expected Result)
+1. SCC로 발급한 카드ID가 출력된다.
+------------------------------------------------------------
+[Step 24]
+스텝 (Step)
+1. HID OSDP Tool과 연결 
+2. 사용자의 첫번째 카드로 SCC 카드 발급해 등록
+3. 카드 외 크리덴셜로 인증해 인증성공으로 동작
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+SCC 카드
+> Mifare/DesFire
+
+카드 외 크리덴셜
+> Finger(Face) / ID(추후 Keypad 지원 단말)
+
+예상 결과 (Expected Result)
+1. SCC로 발급한 카드ID가 출력된다.
+------------------------------------------------------------
+[Step 25]
+스텝 (Step)
+1. HID OSDP Tool과 연결 
+2. 사용자의 첫번째 카드로 SCC 카드 발급해 등록
+3. 카드 외 크리덴셜로 인증해 인증성공으로 동작
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+SCC 카드
+> iCLASS/SEOS
+
+카드 외 크리덴셜
+> Finger(Face) / ID(추후 Keypad 지원 단말)
+
+예상 결과 (Expected Result)
+1. SCC로 발급한 카드ID가 출력된다.
+------------------------------------------------------------
+[Step 26]
+스텝 (Step)
+1. HID OSDP Tool과 연결 
+2. 사용자의 첫번째 카드로 Mobile Access Card 발급해 등록
+3. 카드 외 크리덴셜로 인증해 인증성공으로 동작
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+카드 외 크리덴셜
+> Finger(Face) / ID(추후 Keypad 지원 단말)
+
+예상 결과 (Expected Result)
+1. 등록된 카드ID가 출력된다.
+------------------------------------------------------------
+[Step 27]
+스텝 (Step)
+1. HID OSDP Tool과 연결 
+2. 사용자의 첫번째 등록된 카드가 Blacklist 처리
+3. 카드 외 크리덴셜로 인증해 인증성공으로 동작
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+카드 외 크리덴셜
+> Finger(Face) / ID(추후 Keypad 지원 단말)
+
+예상 결과 (Expected Result)
+1. Blacklist로 처리된 카드ID가 출력된다.
+------------------------------------------------------------
+[Step 28]
+스텝 (Step)
+1. HID OSDP Tool과 연결
+2. Exception Code 설정
+3. 미등록 지문(얼굴)/ID로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+Exception Code
+> 1(Default) - BioStar2 UI
+> 직접입력(0xFF...FF(8Byte))
+
+예상 결과 (Expected Result)
+1. Exception Code에 해당하는 데이터가  출력된다.
+> Default - 01로 출력
+> 직접입력 - 설정한 값이 그대로 출력되며 최대 8Byte까지 지원
+------------------------------------------------------------
+[Step 29]
+스텝 (Step)
+1. HID OSDP Tool과 연결
+2. Exception Code 설정
+3. 미등록 지문(얼굴)/ID로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+Exception Code
+> 사용안함
+
+예상 결과 (Expected Result)
+1. 출력되는 카드데이터가 없다.
+------------------------------------------------------------
+[Step 30]
+스텝 (Step)
+1. HID OSDP Tool과 연결
+2. Exception Code 설정
+3. 출입그룹이 맞지 않는 사용자로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+1. 출입그룹을 설정하고 출입그룹에 속하지 않은 사용자를 생성
+2. Exception Code
+> 1(Default) - BioStar2 UI
+> 직접입력(0xFF...FF(8Byte))
+
+예상 결과 (Expected Result)
+1. Exception Code에 해당하는 데이터가  출력된다.
+> Default - 01로 출력
+> 직접입력 - 설정한 값이 그대로 출력되며 최대 8Byte까지 지원
+------------------------------------------------------------
+[Step 31]
+스텝 (Step)
+1. HID OSDP Tool과 연결
+2. Exception Code 설정
+3. 출입그룹이 맞지 않는 사용자로 인증
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+1. 출입그룹을 설정하고 출입그룹에 속하지 않은 사용자를 생성
+2. Exception Code
+> 사용안함
+
+예상 결과 (Expected Result)
+1. 출력되는 카드데이터가 없다.
+------------------------------------------------------------
+[Step 32]
+스텝 (Step)
+1. HID OSDP Tool과 연결
+2. Exception Code 설정
+3. 이중인증에 실패하는 인증을 시도
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+1. Door에서 이중인증 설정
+2. Exception Code
+> 1(Default) - BioStar2 UI
+> 직접입력(0xFF...FF(8Byte))
+
+예상 결과 (Expected Result)
+1. Exception Code에 해당하는 데이터가  출력된다.
+> Default - 01로 출력
+> 직접입력 - 설정한 값이 그대로 출력되며 최대 8Byte까지 지원
+------------------------------------------------------------
+[Step 33]
+스텝 (Step)
+1. HID OSDP Tool과 연결
+2. Exception Code 설정
+3. 이중인증에 실패하는 인증을 시도
+4. 출력되는 데이터 확인
+
+데이터 (Data)
+1. Door에서 이중인증 설정
+2. Exception Code
+> 사용안함
+
+예상 결과 (Expected Result)
+1. 출력되는 카드데이터가 없다.
+------------------------------------------------------------

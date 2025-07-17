@@ -1,0 +1,281 @@
+■ 이슈 키: COMMONR-259
+■ 제목: Device ID 변경 지원 - 재기획필요
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. BioStar2에서 장치 추가
+2. Device ID 변경할 장치에서 우클릭
+3. "장치ID 변경" 옵션 클릭
+4. Device ID 변경시도 후 동작확인
+
+데이터 (Data)
+변경할 장치ID
+: 9자리의 영숫자
+: 9자리의 숫자+공백
+: 3byte(=16777216) 숫자
+: 4byte(=1073741823, CS40 - 822083583) 외 임의값
+
+예상 결과 (Expected Result)
+1. Validation 체크를 통해 Device ID가 변경되지 않는다.
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. BioStar2에서 장치 추가
+2. Device ID 변경할 장치에서 우클릭
+3. "장치ID 변경" 옵션 클릭
+4. Device ID 변경시도 후 동작확인
+5. Device ID 정보확인
+
+데이터 (Data)
+변경할 장치ID
+: 16777216 ~ 1073741823, CS40 - 822083583 내 최소값/중간값/최대값
+
+예상 결과 (Expected Result)
+1. Device ID가 변경되고 Factory Default로 동작한다.
+2. 장치정보에 신규ID와 기존ID가 표시된다.
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. BioStar2에서 장치 추가
+2. Device ID 변경할 장치에서 우클릭
+3. "장치ID 변경" 옵션 클릭
+4. Device ID 변경시도 후 동작확인
+
+데이터 (Data)
+변경할 장치ID
+: BioStar2에 연결된 장치ID
+
+예상 결과 (Expected Result)
+1. Device ID 변경되지 않는다.
+2. BioStar2에서 에러팝업 발생된다.
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1. BioStar2에서 장치 추가
+2. Device ID 변경할 장치에서 우클릭
+3. "장치ID 변경" 옵션 클릭
+4. Device ID 변경시도 후 동작확인
+
+데이터 (Data)
+변경할 장치ID
+: 변경하고자 하는 Disconnected된 장치ID
+
+예상 결과 (Expected Result)
+1. ID 변경완료 후 해당 장치는 삭제되며, Factory Default로 동작한다.
+> IP 설정 및 SSL 유지
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1. Slave가 추가된 Master 장치에 대해 Device ID 변경 시도
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Slave가 연결된 Master 장치는 Device ID 변경이 불가하다.
+
+[수정 필요]
+Key 관련하여 변경이 안되면 Master/Slave ID 변경이 가능하며, RS 485 연결이 된다.
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1. Slave가 추가되지 않은 Master 모드인 장치에 대해 Device ID 변경시도
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Slave가 연결되지 않은 Master 장치는 Device ID 변경이 가능하다.
+2. Device ID가 변경되면 Factory Default로 동작한다.
+> IP 설정 및 SSL 유지
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+1. Master에서 교체할 새 장치를 Slave로 연결해 검색 및 추가
+2. 추가한 Slave 장치에서 우클릭
+3. "장치ID 변경" 옵션 클릭
+4. Device ID 변경시도 후 동작확인
+
+데이터 (Data)
+Slave 장치
+> 인증지원장치
+
+변경할 장치ID
+: Connected된 장치ID
+
+예상 결과 (Expected Result)
+1. Device ID 변경되지 않는다.
+2. BioStar2에서 에러팝업 발생된다.
+------------------------------------------------------------
+[Step 8]
+스텝 (Step)
+1. Master에서 교체할 새 장치를 Slave로 연결해 검색 및 추가
+2. 추가한 Slave 장치에서 우클릭
+3. "장치ID 변경" 옵션 클릭
+4. Device ID 변경시도 후 동작확인
+
+데이터 (Data)
+Slave 장치
+> 인증지원장치
+
+변경할 장치ID
+: 변경하고자 하는 Disconnected된 장치ID
+
+예상 결과 (Expected Result)
+1. ID 변경완료 후 해당 장치는 삭제되며, Factory Default로 동작한다.
+------------------------------------------------------------
+[Step 9]
+스텝 (Step)
+1. Master에서 교체할 새 장치를 Slave로 연결해 검색 및 추가
+2. 추가한 Slave 장치에서 우클릭
+3. "장치ID 변경" 옵션 클릭
+4. Device ID 변경시도 후 동작확인
+
+데이터 (Data)
+Slave 장치
+> IO Device
+
+변경할 장치ID
+: Connected된 장치ID
+
+예상 결과 (Expected Result)
+1. Device ID 변경되지 않는다.
+2. BioStar2에서 에러팝업 발생된다.
+------------------------------------------------------------
+[Step 10]
+스텝 (Step)
+1. Master에서 교체할 새 장치를 Slave로 연결해 검색 및 추가
+2. 추가한 Slave 장치에서 우클릭
+3. "장치ID 변경" 옵션 클릭
+4. Device ID 변경시도 후 동작확인
+
+데이터 (Data)
+Slave 장치
+> IO Device
+
+변경할 장치ID
+: 변경하고자 하는 Disconnected된 장치ID
+
+예상 결과 (Expected Result)
+1. ID 변경완료 후 해당 장치는 삭제되며, Factory Default로 동작한다.
+------------------------------------------------------------
+[Step 11]
+스텝 (Step)
+1. Disconnected된 교체할 장치에 대해 RS485 물리적으로 제거
+2. Device ID 변경한 신규장치 RS485 물리적으로 연결
+3. Slave 재검색 및 추가
+
+데이터 (Data)
+Slave 장치
+> 인증지원장치
+
+예상 결과 (Expected Result)
+1. Device ID 변경한 신규장치가 재검색 및 추가되어 Connected로 동작한다.
+------------------------------------------------------------
+[Step 12]
+스텝 (Step)
+1. Disconnected된 교체할 장치에 대해 RS485 물리적으로 제거
+2. Device ID 변경한 신규장치 RS485 물리적으로 연결
+3. Slave 재검색 및 추가
+
+데이터 (Data)
+Slave 장치
+> IO Device
+
+예상 결과 (Expected Result)
+1. Device ID 변경한 신규장치가 재검색 및 추가되어 Connected로 동작한다.
+------------------------------------------------------------
+[Step 13]
+스텝 (Step)
+1. Device ID 변경하지 않은 장치의 상세정보창 진입
+2. Device ID 확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 기존ID(=원본 시리얼)가 변경ID/기존ID UI에 표시된다.
+------------------------------------------------------------
+[Step 14]
+스텝 (Step)
+1. Device ID 변경한 신규장치의 상세정보창 진입
+2. Device ID 확인
+
+데이터 (Data)
+Device ID 변경한 신규장치
+> 인증지원장치
+> IO Device
+
+예상 결과 (Expected Result)
+1. 신규ID와 기존ID(=원본 시리얼)가 표시된다.
+------------------------------------------------------------
+[Step 15]
+스텝 (Step)
+1. BioStar2에서 LCD 있는 장치 추가
+2. Device ID 변경할 장치에서 우클릭
+3. "장치ID 변경" 옵션 클릭
+4. Device ID 변경
+5. 장치메뉴> Device> Device Info 확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 변경한 ID와 기존 ID(=원본 시리얼)를 모두 표시된다.
+> LCD 지원하는 장치 ID 확인
+ : 장치 Menu> Device> Device Info :  Device ID / Serial No.
+------------------------------------------------------------
+[Step 16]
+스텝 (Step)
+1. Device ID 변경한 신규장치의 FW Downgrade
+2. Device ID 확인
+
+데이터 (Data)
+FW Downgrade
+> Device ID 미지원 FW
+
+예상 결과 (Expected Result)
+1. 원본 Device ID로 원복되어 표시된다.
+2. Factory Default로 동작한다.
+------------------------------------------------------------
+[Step 17]
+스텝 (Step)
+1. Device ID 변경장치에 인증서 전송
+2. 장치에서 Factory Default 실행
+3. Device ID 확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Factory Default시 신규ID를 유지한다.
+------------------------------------------------------------
+[Step 18]
+스텝 (Step)
+1. 신규 Device ID 변경 장치를 교체하고자 하는 Master 위치에 연결
+2. Master의 Lan 케이블 연결
+3. 이후 동작확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 장치가 Connected로 동작되고, 장치 Reboot된다.
+> 신규장치와 Slave간 정상적인 통신을 위해 필요(BioStar에서 Reboot Command 내려줌)
+> 서버와 통신되면서 Reset Config가 내려와 Reset
+
+※ BioStar2와 연동 후 프로시저 및 동작에 대해 업데이트 예정
+------------------------------------------------------------
+[Step 19]
+스텝 (Step)
+BioStar2 연동 테스트 진행하면서 추가되는 내용 업데이트 예정
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+N/A
+------------------------------------------------------------

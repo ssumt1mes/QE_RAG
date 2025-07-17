@@ -1,0 +1,68 @@
+■ 이슈 키: COMMONR-192
+■ 제목: 장치 - User ID Type
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. Setting > Server > User/Device Management
+2. User ID Type 선택
+
+데이터 (Data)
+1. Number(Default)
+2. Alphanumeric
+
+예상 결과 (Expected Result)
+1. 선택한 User ID Type으로 사용자 ID를 생성할 수 있다.
+2. XPASS, XPASS Slim2의 경우, Alphanumeric 선택시 사용자 용량 및 로그 용량이 축소 된다.
+3. BioStar에 연결된 모든 장치에 대해서 User ID Type이 변경 되어야 한다.
+> Station : UI로 확인
+> Entry (W2,Xpass,Xpass S2) : Device Viewer or BioStar의 Search Device의 Status 확인
+ : User ID Type Error(Different Mode & Old FW)
+ : N/A(Server  IP : xxx.xxx.xxx.xxx)
+> 변경 시 장치 재부팅이 안되는 지 확인
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. Menu > Device > User ID Type 선택
+
+데이터 (Data)
+1. Number(Default)
+2. Alphanumeric
+
+예상 결과 (Expected Result)
+1. 선택한 User ID Type으로 사용자 ID를 생성할 수 있다.
+2. XPASS, XPASS Slim2의 경우, Alphanumeric 선택시 사용자 용량 및 로그 용량이 축소 된다.
+> 장치의 UI를 통해 변경 불가
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. Menu > Device > User ID Type : Number 선택
+2. 위의 선택으로 임의의 사용자 ID 생성하여 추가.
+3. Menu > Device > User ID Type : Alphanumeric 변경
+
+데이터 (Data)
+1. Number > Alphanumeric
+
+예상 결과 (Expected Result)
+1. Station 계열은 사용자 용량 및 로그 용량에 영향을 받지 않아야 한다.
+2. Number > Alphanumeric으로 변경 가능하여야 한다.
+
+> RS 485 구성 시 Master 설정을 따라 감
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1. Menu > Device > User ID Type : Alphanumeric 선택
+2. 위의 선택으로 임의의 사용자 ID 생성하여 추가.
+3. Menu > Device > User ID Type : Number 변경
+
+데이터 (Data)
+1. Alphanumeric > Number
+
+예상 결과 (Expected Result)
+1. Station 계열은 사용자 용량 및 로그 용량에 영향을 받지 않아야 한다.
+2. Alphanumeric > Number으로 변경 가능하여야 한다.
+
+> RS 485 구성 시 Master 설정을 따라 감
+------------------------------------------------------------

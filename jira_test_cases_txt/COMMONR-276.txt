@@ -1,0 +1,84 @@
+■ 이슈 키: COMMONR-276
+■ 제목: [Intelligent Slave] RS485 모드에 따른 Intelligent PD 지원 옵션
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. 바이오스타에 Intelligent Peripheral Device 추가
+2. RS485 모드: Master 설정
+3. Intelligent PD 옵션값 설정
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 해당 옵션들에 대해 지원하지 않는다.
+> UI 미표시
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. 바이오스타에 Intelligent Peripheral Device 추가
+2. RS485 모드: Slave 설정
+3. Intelligent PD 옵션값 설정
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 해당 옵션들에 대해 지원하지 않는다.
+> UI 미표시
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. 바이오스타에 Intelligent Peripheral Device 추가
+2. RS485 모드: Default 설정 
+3. Exception Code/Use User ID 설정
+4. 인증을 통해 동작확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 해당 옵션들에 대해 지원한다.
+> Exception Code
+: 사용안함(Default)/사용함
+> Output Info
+: Card ID(Default)/User ID
+> OSDP ID
+: 0(Default)
+2. 해당 옵션들은 3rd party Controller와 통신되지 않을 때에는 동작에 전혀 영향을 주지 않는다.
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+[BioStar에 장치 추가된 상태]
+
+1. HID OSDP Tool과 연결
+ 2. RS485 모드: Default 설정
+ 3. 바이오스타에서 Intelligent PD 옵션 설정
+ 4. 등록카드로 인증을 통해 동작확인
+
+데이터 (Data)
+Intelligent Slave 옵션
+> Default 설정
+
+예상 결과 (Expected Result)
+1. 3rd party Controller에 등록된 카드ID가 출력된다.
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+[BioStar에 장치 추가된 상태]
+
+1. HID OSDP Tool과 연결
+ 2. RS485 모드: Default 설정
+ 3. 바이오스타에서 Intelligent PD 옵션 설정
+ 4. 미등록카드로 인증을 통해 동작확인
+
+데이터 (Data)
+Intelligent Slave 옵션
+> Default 설정
+
+예상 결과 (Expected Result)
+1. Exception Code가 미설정(Default)되어 있으므로 3rd party Controller에 출력되는 값이 없다.
+------------------------------------------------------------

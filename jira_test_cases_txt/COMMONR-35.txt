@@ -1,0 +1,159 @@
+■ 이슈 키: COMMONR-35
+■ 제목: 인증 - 서버매칭(Card/Finger/QR 모델)
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. Device> Device 선택> Device 상세 정보
+2. Server Matching 설정
+
+데이터 (Data)
+Server Matching
+> Active
+> Inactive
+
+예상 결과 (Expected Result)
+1. 서버매칭에 대해 설정할 수 있어야 한다.
+> 서버매칭으로 동작할지, 로컬(장치)매칭으로 동작할 지에 대한 설정
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+<BioStar에서 서버매칭: 사용 설정한 상태>
+1. Device> Device 선택> Device 상세 정보
+2. Server Matching: Active 설정
+3. 인증모드 설정
+4. 인증시도
+
+데이터 (Data)
+인증모드
+> 장치인증모드
+> 개인인증모드
+> 이중인증
+
+예상 결과 (Expected Result)
+1. 각 인증모드에 맞게 서버에 저장된 사용자와 매칭이 이루어져야 한다.
+> 인증 성공/실패에 따라 로그가 남는다.
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+<BioStar에서 서버매칭: 사용안함 설정한 상태>
+1. Device> Device 선택> Device 상세 정보
+2. Server Matching: Deactivate 설정
+3. 인증모드 설정
+4. 인증시도
+
+데이터 (Data)
+인증모드
+> 장치인증모드
+> 개인인증모드
+> 이중인증
+
+예상 결과 (Expected Result)
+1. 장치 매칭이 이루어져야 한다.
+> 인증 성공/실패에 따라 로그가 남는다.
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+<BioStar<->Device간 서버매칭 설정값을 상이하게 설정한 상태>
+1. Device의 인증모드 설정
+2. 인증시도
+
+데이터 (Data)
+인증모드
+> 장치인증모드
+> 개인인증모드
+> 이중인증
+
+BioStar<->Device간 서버매칭 설정
+> BioStar: 사용함 <-> Device: 사용안함
+> BioStar: 사용안함 <-> Device: 사용함
+
+예상 결과 (Expected Result)
+1. BioStar에서는 서버매칭: 사용안함 <-> Device에서는 서버매칭: 사용함 인 경우 "서버인증거부"로 동작해야 한다.
+> "서버인증거부" 로그가 표시되어야 한다.
+2. BioStar에서는 서버매칭: 사용함 <-> Device에서는 서버매칭: 사용안함 인 경우 로컬매칭으로 동작해야 한다.
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+<BioStar에서 서버매칭: 사용 설정한 상태>
+1. Device> 장치 추가
+2. Master/Default 장치 상세정보> Server Matching: Activate 설정
+3. Master/Slave/Wiegand Reader 에 인증시도
+
+데이터 (Data)
+장치추가
+> 단일장치
+> Master-Slave 연결장치
+> Master-Slave/DM20-Wiegand Reader
+> Master/Default-Wiegand Reader
+
+예상 결과 (Expected Result)
+1. 서버에 등록된 사용자와 매칭이 이루어져야 한다.
+2. Slave/Wiegand Reader 장치인 경우 Master의 Server Matching 설정을 따라가야 한다.
+> Slave/Wiegand Reader에 대해 (BioStar UI 상)서버매칭을 설정할 수 없어야 한다.
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+<BioStar에서 서버매칭: 사용 설정한 상태>
+1. Device > Device List > Device 선택 > Device 상세 정보
+2. Server Matching : Activate 설정
+3. BioStar 서버 종료
+4. 인증시도
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 장치에 저장된 사용자와 매칭이 이루어져야 한다.
+> 인증 성공/실패에 따라 로그가 남는다.
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+<BioStar에서 서버매칭: 사용 설정한 상태>
+1. Device > Device List > Device 선택 > Device 상세 정보
+2. Server Matching : Activate 설정
+3. 장치재부팅 시도
+4. TCP Disconnected 상태에서 인증시도
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 장치에 저장된 사용자와 매칭이 이루어져야 한다.
+> 인증 성공/실패에 따라 로그가 남는다.
+------------------------------------------------------------
+[Step 8]
+스텝 (Step)
+<BioStar에서 서버매칭: 사용 설정한 상태>
+1. Device > Device List > Device 선택 > Device 상세 정보
+2. Server Matching : Activate 설정
+3. 장치의 랜선 물리적으로 제거
+4. 인증시도
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Server와 Disconnected된 것이 아니라 소켓은 유지를 하고 있기 때문에 "인증실패"로 동작해야 한다.
+> Network disconnected(Link disconnected)확인
+2. 서버와 연결이 완전히 끊어졌음이 확인되면 Local Matching 으로 동작되어야 한다.
+------------------------------------------------------------
+[Step 9]
+스텝 (Step)
+<BioStar에서 서버매칭: 사용 설정한 상태>
+1. Device > Device List > Device 선택 > Device 상세 정보
+2. Server Matching : Activate 설정
+3. BioStar 서버 종료
+4. 인증시도
+
+데이터 (Data)
+1) 물리적으로 PC 자체 종료
+2) BioStar Server만 종료
+
+예상 결과 (Expected Result)
+1. 장치에 저장된 사용자와 매칭이 이루어져야 한다.
+> 인증 성공/실패에 따라 로그가 남는다.
+2. 서버 매칭을 수행할 때 서버와 연결이 끊어진 상태라면 로컬 매칭에 의해 인증 속도에 차이가 없어야 한다.
+------------------------------------------------------------

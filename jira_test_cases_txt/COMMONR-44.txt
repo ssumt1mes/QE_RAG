@@ -1,0 +1,109 @@
+■ 이슈 키: COMMONR-44
+■ 제목: Upgrade - USB Memory
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+USB Memory을 이용한 FirmWare Upgrade을 지원한다.
+
+데이터 (Data)
+각 장치별 최신 버전의 FirmWare을 USB Memory에 준비한다.
+ > Station 계열 - BioStation 2, BioStation A2, FaceStation 2, FaceSttion2 F2, BioStation 3, XStation2, FaceLite, BioStation 2a
+
+예상 결과 (Expected Result)
+최신버전으로 FirmWare Upgrade가 된다.
+> 성공 팝업, 재부팅, 장치 상세정보의 Version확인
+: Master/Slave/Default 모두 지원한다.
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. 정규버전에서 최신 버전으로 FW Upgrade를 시도한다.
+2. 다시 이전의 정규버전으로 FW Upgrade를 시도한다.
+
+데이터 (Data)
+각 장치별 최신 버전의 FirmWare을 USB Memory에 준비한다.
+ > Station 계열 - BioStation 2, BioStation A2, FaceStation 2
+ > 전자서명 기능 도입 버전
+   : BS2 - v1.4.0 버전부터 도입
+   : A2 - v1.3.0 버전부터 도입
+   : FS2 - v1.0.0 버전부터 도입
+   : 이외 다른 제품은 기본 반영
+
+예상 결과 (Expected Result)
+1. FW Upgrade가 정상적으로 동작 한다.
+2. FW Upgrade시 서명이 유효하지 않아 Upgrade가 실패되고, Upgrade 시도 전 버전으로 유지된다.
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+[XS2: DTC LCD 적용시료]
+1. 최신FW에서 FW V1.1.1 이하로 FW Downgrade 시도
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. Upgrade Fail된다.
+> 해당시료는 v1.1.2부터 지원
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1.장치에 메모리 Full로 채운 상태에서 FW Upgrade 시도
+
+데이터 (Data)
+사용자
+> 모든 크리덴셜 저장된 상태로 Full
+
+이벤트 로그 Full
+> 이미지로그(지원시)
+> 일반로그
+
+예상 결과 (Expected Result)
+1. Upgrade 및 부팅이 정상적으로 이루어져야 한다.
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1. USB에 다국어 리소스파일 저장
+2. 다국어 리소스 파일 업그레이드 시도
+3. 업그레이드 후 확인
+
+데이터 (Data)
+*Station 장치의 Resource File Upgrade시 다국어 지원하는 리소스파일 개발자에 요청해 진행*
+
+예상 결과 (Expected Result)
+1. 설정된 다국어 리소스 파일로 표시된다.
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1. USB Memory를 장치에 삽입
+2. Menu> Device> USB Memory> FW Upgrade
+3. FW Upgrade 파일 선택
+4. FW Upgrade 유무 확인
+
+데이터 (Data)
+FW Upgrade 파일 선택
+> 타 모델의 FW 파일
+
+예상 결과 (Expected Result)
+1. FW Upgrade가 진행되지 않는다.
+> FW Upgrade Fail 팝업 발생
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+1. USB Memory를 장치에 삽입
+2. Menu> Device> USB Memory> FW Upgrade
+3. FW Upgrade 파일 선택
+4. FW Upgrade 중 USB 제거
+5. FW Upgrade 유무 확인
+
+데이터 (Data)
+FW Upgrade 파일 선택
+> 검증 진행중인 모델의 FW 파일
+
+예상 결과 (Expected Result)
+1. FW Upgrade가 진행되지 않는다.
+> FW Upgrade Fail 팝업 발생
+
+2. USB를 Upgrade 파일 선택 후 1분이내 제거 시 재부팅된다.
+------------------------------------------------------------

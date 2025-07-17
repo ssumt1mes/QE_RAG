@@ -1,0 +1,68 @@
+■ 이슈 키: COMMONR-76
+■ 제목: 통신 - Server
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. DEVICE > Device List > Device 선택 > Network > Server > Device -> Server Connection : Check
+2. Server IP, Server Port 입력 > Apply
+
+데이터 (Data)
+1. Direct Mode Connection
+2. Server IP 입력
+
+예상 결과 (Expected Result)
+1. 동기화(Animation) 화면 후 Device가 연결이 끊어지고 잠시 뒤 자동으로 연결이 되고 Server Mode로 동작이 된다.
+= Device 에 설정된 정보와 비교
+> 로그 업로드 실패가 미발생해야 한다.
+2. Device > Network > Server : Connection Mode, Server IP, Server Port에 대해서 비교한다.
+> TCP 로그가 남는다.
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. DEVICE > Device List > Device 선택 > Network > Server > Device -> Server Connection : Uncheck > Apply
+
+데이터 (Data)
+1. Server Mode Connection
+2. Server Address
+> Server IP 입력
+> Server URL 입력
+
+예상 결과 (Expected Result)
+1. 동기화(Animation) 화면 후 Device가 연결이 끊어지고 잠시 뒤 자동으로 연결이 되고 Direct Mode로 동작이 된다.
+= Device 에 설정된 정보와 비교
+2. Device > Network > Server : Connection Mode, Server IP, Server Port에 대해서 비교한다.
+> TCP, Ethernet, DHCP(설정된경우) 로그가 남는다.
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. DEVICE > Device List > Server Mode Device : 삭제
+2. Waiting Device > Device List > Device 선택 > Add Waiting Device or Drag & Drop
+
+데이터 (Data)
+1. Server Mode Connection
+2. Server Address
+> Server IP 입력
+> Server URL 입력
+
+예상 결과 (Expected Result)
+1. Waiting Device에서 Device가 표시된다.
+2. Add Waiting Device 또는 Drag & Drop 에 의해 정상적으로 추가, 연결이 되어야 한다.
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1. 장치에서 Server Mode (Direct Mode 에서 Server Mode) 로 변경
+*Server Address 에 따른 확인
+2. BioStar > DEVICE > Server Mode 변경한 장치 선택 > 마우스 우클릭 > Reconnected 선택
+
+데이터 (Data)
+1. Direct Mode Connection
+2. Server Address
+> Server IP 입력
+> Server URL 입력
+
+예상 결과 (Expected Result)
+Reconnected 후 장치와 정상적으로 재연결되어야 한다.
+------------------------------------------------------------

@@ -1,0 +1,343 @@
+■ 이슈 키: COMMONR-40
+■ 제목: 출입문 - 설정
+============================================================
+
+■ 테스트 스텝
+
+[Step 1]
+스텝 (Step)
+1. Door > Add Door > Entry Device 설정
+
+데이터 (Data)
+[BioStar]
+1. Master
+2. Slave
+3. Wiegand Reader
+
+예상 결과 (Expected Result)
+Entry Device가 설정된다.
+------------------------------------------------------------
+[Step 2]
+스텝 (Step)
+1. Door > Add Door > Exit Device 설정
+
+데이터 (Data)
+[BioStar]
+1. Master
+2. Slave
+3. Wiegand Reader
+
+예상 결과 (Expected Result)
+Exit Device가 설정된다.
+------------------------------------------------------------
+[Step 3]
+스텝 (Step)
+1. Door > Add Door > Door Relay 설정 > Apply
+2. 각 Reader에 인증시도
+
+데이터 (Data)
+[BioStar]
+1. Master
+2. Slave(SIO2, DM20 포함)
+
+OM-120 Relay 사용 가능
+> Floor 중복 안 된 경우
+
+예상 결과 (Expected Result)
+1. Door Relay가 설정된다
+2. 출입권한을 가진 사용자가 인증하면 설정된 출입문 Relay가 열리고,'출입문 잠금장치 개방간격'이 경과한 후에 Relay가 닫힌다.
+3. 출입문 열림/닫힘 로그가 저장된다.
+> Door unlocked, Door locked
+------------------------------------------------------------
+[Step 4]
+스텝 (Step)
+1. Door > Add Door > Exit Button 설정 > Apply
+
+데이터 (Data)
+[BioStar]
+1. Master
+2. Slave(SIO2, DM20 포함)
+
+예상 결과 (Expected Result)
+1. Exit 버튼으로 사용할 입력포트를 설정할 수 있다.
+2. WiegandReader는 설정불가(Master/Slave만 설정 가능)
+3. 입력방식을 N/O, N/C로 설정할 수 있다.
+4. Exit Button 을 이용한 relay 동작 ON/OFF 를 설정 할 수 있다. 
+5. 접지시 Relay가 열리고 Open Time이 경과한 후 Relay가 닫힌다.
+> Does not activate realy : OFF
+6. 출입문 열림/닫힘 로그가 저장된다.
+> Door unlocked, Door locked
+------------------------------------------------------------
+[Step 5]
+스텝 (Step)
+1. Door > Add Door > Exit Button 설정 > Apply 
+2. Exit Button input 접지
+3. Biostar2 Log 확인
+
+데이터 (Data)
+[BDP-518]
+Door > Exit Button > Input port 설정한 포트에 맞게 접지(ex 0번/1번 포트 선+GRD 선)
+
+예상 결과 (Expected Result)
+1. Exit 버튼 입력에 대한 로그가 저장된다.
+> 국문: 퇴실버튼에 의한 출입문 개방 요청
+> 영문: Door open request by exit button
+------------------------------------------------------------
+[Step 6]
+스텝 (Step)
+1. Door > Add Door > Door Sensor 설정 > Apply
+2. Input 접지/접지해제
+
+데이터 (Data)
+[BioStar]
+1. Master
+2. Slave(SIO2, DM20 포함)
+
+예상 결과 (Expected Result)
+1. Door Sensor가 설정된다.
+2. 출입문이 열리고 닫히면서 출입문 열림/닫힘로 로그 저장된다.
+> Door opened / Door closed
+------------------------------------------------------------
+[Step 7]
+스텝 (Step)
+1. Door > Add Door > Apply > 장치 재부팅 후 BioStar에 재 연결 > Door 설정 확인
+
+데이터 (Data)
+[BioStar]
+
+예상 결과 (Expected Result)
+1. 재부팅후에도 출입문 설정값은 유지가 된다.
+------------------------------------------------------------
+[Step 8]
+스텝 (Step)
+1. RS485로 장치 연결 > Door > Add Door
+장치 연결 : 장치-장치, 장치-SIO2, 장치-OM-120, 장치-DM-20 Door 설정
+(!) A Door : 장치(M)-장치(S)                     
+(!) B Door : 장치(M)-SIO2(S)
+(!) C Door : 장치(M)-OM-120(S)
+(!) D Door : 장치(M)-DM-20(S)
+
+2. Door Open(인증을 통해 Unlocked 한 후 Door Sensor 접지를 통해 Open 상태로 만듦)
+3. Master 장치 Reboot 후 Door Sensor 접지 해제
+4. 각 Door의 장치에 인증시도
+
+데이터 (Data)
+[BioStar]
+각 Door의 Relay는 Master와 Slave의 Relay를 모두 설정해봄
+
+*Relay로 설정된 장치 재부팅 시 Exit 버튼까지 접지된 상태면 unlock 유지
+
+예상 결과 (Expected Result)
+1. Master 재부팅 후 장치의 상태는 Close 상태이므로 Lock된 상태로 동작함.
+2. Master 재부팅 후 인증성공시 Locked/Unlocked 정상동작되어야 한다.
+------------------------------------------------------------
+[Step 9]
+스텝 (Step)
+1. RS485로 장치 연결 > Door > Add Door
+장치 연결 : 장치-장치, 장치-SIO2
+Door 설정
+(!) A Door : 장치(M)-장치(S)                     
+(!) B Door : 장치(M)-SIO2(S)
+ 
+2. BioStar>Monitoring>Door Status>Door 선택>Manual Unlock>Unlock 동작 확인
+3. Master 장치 Reboot
+4. 각 Door의 장치에 인증시도
+
+데이터 (Data)
+[BioStar]
+
+예상 결과 (Expected Result)
+1. Reboot 후 Unlock상태를 유지한다.
+2. 인증후에도 Open Time을 따라가지 않고, Unlock상태를 유지해야 한다.
+------------------------------------------------------------
+[Step 10]
+스텝 (Step)
+(*) DM20이용 출입문 4개 제어_1
+
+<Pre-Conditions>
+
+Master Device, Slave(DM20 1대/Device 2대), Wiegand Reader 2대
+
+1. Master 장치와 Slave 장치, DM20을 RS485로 연결
+
+2. DM20에 Wiegand Reader 2대 연결
+
+3. Wiegand Reader 0,1 에 대해 DM20의 Input/Relay Port를 이용해 Door를 각각 구성
+
+4. Slave 장치 2대에 대해 DM20의 Input/Relay Port를 이용해 Door를 각각 구성
+
+5. 인증을 통해 Door 제어가 정상적으로 동작하는지 확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 인증성공시 Unlocked/Locked으로 동작된다.
+------------------------------------------------------------
+[Step 11]
+스텝 (Step)
+(*) DM20이용 출입문 4개 제어_2
+
+<Pre-Conditions>
+
+Master Device, Slave(DM20 2대), Wiegand Reader 4대
+
+1. Master 장치와 DM20 2대를 RS485로 연결
+
+2. 각각의 DM20에 Wiegand Reader 2대씩 연결
+
+3. 각각의 Wiegand Reader 에 대해 DM20의 Input/Relay Port를 이용해 Door를 각각 구성
+
+4. 인증을 통해 Door 제어가 정상적으로 동작하는지 확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 인증성공시 Unlocked/Locked으로 동작된다.
+------------------------------------------------------------
+[Step 12]
+스텝 (Step)
+(*) DM20이용 출입문 2개 제어_1
+
+<Pre-Conditions>
+
+Master Device, DM20 1대, Wiegand Reader 2대
+
+1. Master 장치와 DM20을 RS485로 연결
+
+2. DM20에 Wiegand Reader 2대 연결
+
+3. Wiegand Reader 0,1에 대해 DM20의 Input/Relay Port를 이용해 Door를 각각 구성
+
+4. 인증을 통해 Door 제어가 정상적으로 동작하는지 확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 인증성공시 Unlocked/Locked으로 동작된다.
+------------------------------------------------------------
+[Step 13]
+스텝 (Step)
+(*) DM20이용 출입문 2개 제어_2
+
+<Pre-Conditions>
+
+Master Device, DM20 1대, Slave Device, Wiegand Reader 2대
+
+1. Master 장치와 Slave 장치, DM20을 RS485로 연결
+
+2. DM20에 Wiegand Reader 2대 연결
+
+3. Wiegand Reader 0에 대해 DM20의 Input/Relay Port를 이용해 Door 구성
+
+4. Wiegand Reader 1과 Slave 장치에 대해 DM20의 Input/Relay Port를 이용해 Door 구성
+
+5. 인증을 통해 Door 제어가 정상적으로 동작하는지 확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. 인증성공시 Unlocked/Locked으로 동작된다.
+------------------------------------------------------------
+[Step 14]
+스텝 (Step)
+(*) DM20이용 출입문 2개 제어_APB
+
+<Pre-Conditions>
+
+Master Device, Slave(DM20 1대/Device 2대), Wiegand Reader 2대
+
+1. Master 장치와 DM20, Slave 장치 2대를 RS485로 연결
+
+2. DM20에 Wiegand Reader 2대씩 연결
+
+3. Wiegand Reader 0과 Slave 장치에 대해 DM20의 Input/Relay Port를 이용해 Door를 각각 구성
+
+4. Wiegand Reader 1과 Slave 장치에 대해 DM20의 Input/Relay Port를 이용해 Door를 각각 구성
+
+5. APB 설정
+
+6. 동일 Reader에 반복인증을 했을 경우 동작확인
+
+데이터 (Data)
+N/A
+
+예상 결과 (Expected Result)
+1. APB 위반으로 동작되어야 한다.
+> Door 내 Entry/Exit Device 중 한쪽에만 사용자가 2번 인증을 한 경우 APB 위반 발생
+------------------------------------------------------------
+[Step 15]
+스텝 (Step)
+1. Door > Add Door > Door Relay 설정 > Apply
+
+데이터 (Data)
+[BioStar]
+1. Master
+2. Slave(SIO2, DM20 포함)
+
+OM-120 Relay 사용 가능
+> Floor 중복 안 된 경우
+
+예상 결과 (Expected Result)
+1. Door Relay가 설정된다
+2. 출입권한을 가진 사용자가 인증하면 설정된 출입문 Relay가 열리고,'출입문 잠금장치 개방간격'이 경과한 후에 Relay가 닫힌다.
+3. 출입문 열림/닫힘 로그가 저장된다.
+> Door unlocked, Door locked
+4. Scope를 이용하여 설정한 값으로 동작이 되는 지 확인할 수 있어야 한다.
+(/) 측정 : RND 개발 검증 결과로 대체
+
+※ Relay에 대한 동작 확인: Scope, LED 유지 시간(경광등 포함)
+------------------------------------------------------------
+[Step 16]
+스텝 (Step)
+1. Door 추가
+2. Relay로 설정된 장치 Disconnected
+3. Door 설정이면서 연결된 장치에 인증
+4. Disconnected된 장치에 대해 Connected
+5. Relay 동작 유무확인
+
+데이터 (Data)
+Entry/Exit Device
+> Slave
+
+Relay
+> IO Device
+> Slave Device
+
+예상 결과 (Expected Result)
+1. Relay로 설정된 장치가 Disconnected인 경우 인증성공으로는 동작하지만 Relay는 동작하지 않는다.
+2. Disconnected된 장치가 연결된 후에도 Relay가 동작되지 않아야 한다.(이전의 인증성공에 대한 동작에 대해 무시해야 함)
+------------------------------------------------------------
+[Step 17]
+스텝 (Step)
+[APB : Use]
+ 1. APB 위반을 발생
+ 2. Reset Time 이내 Master 장치를 Reboot
+
+데이터 (Data)
+Soft APB
+Hard APB
+
+예상 결과 (Expected Result)
+1.Reset Time 이내 장치가 재부팅 되는 경우 APB 유지
+ 2. APB 이전 설정 유지 확인
+------------------------------------------------------------
+[Step 18]
+스텝 (Step)
+[APB : Use]
+1. APB 위반을 발생
+2. Reset Time 이후 Master 장치를 Reboot
+
+데이터 (Data)
+Soft APB
+Hard APB
+
+예상 결과 (Expected Result)
+1. Reset Time 이후 장치가 재부팅되는 경우 모든 APB 정보가 리셋되어야 한다.
+ : Alarm 해제
+ : APB 위반 해제
+ 2. APB 이전 설정 유지 확인
+------------------------------------------------------------
